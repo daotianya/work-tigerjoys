@@ -1,0 +1,162 @@
+#index,#envelope,#result,#selectContent,#share{position: absolute;top: 0;left: 0;}
+
+/*开始页*/
+#index{height: 28.35rem;width: 18rem; background:no-repeat center center;background-size: contain;display: none;}
+.moon{position: absolute;top: 2.6rem;right: 1.2rem;width: 3.3rem;height: auto;}
+#title{font-size: 1.25rem;text-align: center;color: #fff;font-weight: normal;padding-top:7.7rem;letter-spacing: 3px;text-indent: 0.5em;}
+.startBtn{width:10rem;height: 2rem;line-height:2rem;border: 1px solid #fff;color: #fff;text-align: center;font-size: 1rem;display: block;position: absolute;bottom: 7rem;left: 50%;margin-left: -5rem;}
+.ibottom{position: absolute; bottom:1rem;right:1rem;background: no-repeat left center;background-size:27%;height: 1.6rem;padding-left:2rem;line-height: 2rem;color: #fff;font-size: 0.75rem;}
+/*飘动星星背景*/
+.innerWraper{background: repeat;position: absolute;width: 100%;height: 100%;z-index: 2;}
+/*开始页结束*/
+
+/*写信页*/
+#envelope{height: 28.35rem;width: 18rem;padding:1.25rem 0.65rem 0 0.65rem;box-sizing: border-box;-webkit-box-sizing: border-box;background:#fafafa no-repeat center center;background-size:cover;display: none;}
+/*.eWraper div{width:10rem;}*/
+.eWraper div span{padding-right:0.5rem;color: #666;font-size: 0.75rem;display: inline-block;}
+#receive1,#send1{width: 10rem;background:transparent;color: #666;font-size: 0.65rem;height: 1.5rem;line-height: 1..5rem;border: 1px solid #999;}
+textarea{width: 100%;color: #666;font-size:0.7rem;line-height:2rem;border: 1px solid #999;box-sizing: border-box;-webkit-box-sizing: border-box;height: 15rem;margin: 1rem 0;background:transparent;overflow: auto;}
+.selects{padding:1rem;}
+#eCon,#ePaper{vertical-align:top;display: inline-block;height:1.3rem;line-height:1.3rem;width:3rem;text-align:center;font-size:0.65rem;color: #666;border: 1px solid #999;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.selects span{vertical-align:top;display: inline-block;height:1.3rem;width: 1.3rem;line-height:1.2rem;box-sizing: border-box;-webkit-box-sizing: border-box;/*margin-right: 10px;margin-left: 4px;*/}
+.okBG{background: url(../img/ok2.png) no-repeat center center;background-size: 80%;}
+#finish{display: block;width: 15rem;color: #fff;font-size: 0.85rem;margin: 0 auto;text-align: center;background: #3b9ece;height: 2rem;line-height:2rem;}
+/*写信页结束*/
+
+/*结果页*/
+#result{height: 28.35rem;width: 18rem;display: block;background:no-repeat center center;background-size:cover;}
+.rCon{width: 90%;margin: 0 auto;padding: 16% 0;}
+.rCon p:nth-of-type(1){font-size: 2rem;padding-bottom: 5px;color: #333;}
+.rCon p:nth-of-type(2){font-size: 1.5rem;width: 100%;height: 20rem;overflow: auto;text-indent: 2em;margin-bottom: 10%;color: #333;}
+.rCon p:nth-of-type(3){font-size: 1.5rem;color: #333;text-align: right;}
+
+.rbottom{width: 90%;margin: 0 auto;}
+.btnGroup a:nth-of-type(1),.btnGroup a:nth-of-type(2){display:inline-block;font-size: 1.4rem;width: 34%;padding:4% 0; margin-top:2%;margin-bottom:8%;text-align: center;}
+.btnGroup a:nth-of-type(1){color: #333333;background: #51c783;margin-left:9% ;margin-right: 6%;}
+.btnGroup a:nth-of-type(2){color: #FFFFFF;background: #3b9ece;margin-left:6% ;margin-right: 9%;}
+.desc{height: 80px;width: 85%;margin: 0 auto;}
+.desc img{width: 80px;height: 80px;}
+.desc span{height: 100%;vertical-align: middle;display: inline-block;}
+.desc h3{display:inline-block;color: #333;font-size: 1.2rem;padding-left: 4%;vertical-align: middle;font-weight: normal;}
+/*结果页结束*/
+/*选择内容页*/
+#selectContent{width: 18rem;padding:0 15px;background:#fafafa;display: block;box-sizing: border-box;-webkit-box-sizing: border-box;}
+/*取消，确定按钮*/
+#selectContent a,#selectPaper a{display: none;width: 50%;height: 2rem;line-height:2rem;position: fixed;bottom: 0;font-size: 0.85rem;text-align: center;}
+#selectContent a:nth-of-type(1),#selectPaper a:nth-of-type(1){color: #999;background: #e5e5e5;left: 0;}
+#selectContent a:nth-of-type(2),#selectPaper a:nth-of-type(2){color: #fff;background: #51C783;left: 50%;}
+#selectContent ul{margin-bottom: 4.5rem;}
+.sBox{box-sizing: border-box;-webkit-box-sizing: border-box;width: 100%;border: 1px solid #999;border-radius: 5px;color: #333;font-size: 0.75rem;text-indent: 2em;height: 7.5rem;margin-top: 15px;background:url() no-repeat 94% 92%;background-size: 20px;}
+.shadow{box-shadow: 4px 4px 5px rgba(0,0,0,0.2)}
+.sBox:nth-last-of-type(1){margin-bottom: 2.2rem;}
+/*选择内容页结束*/
+/*选择信封页*/
+#selectPaper{width: 18rem;display: none;padding:0 15px;box-sizing: border-box;-webkit-box-sizing: border-box;}
+#selectPaper li{box-sizing: border-box;-webkit-box-sizing: border-box;width: 30%;margin-right: 5%;border: 1px solid #999;float: left;margin-top: 15px;position: relative;}
+#selectPaper li span{background: url(../img/ok2.png) no-repeat center center;background-size: 15%;position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+#selectPaper li:nth-of-type(3n){margin-right: 0;}
+
+/*分享按钮提示  弹窗*/
+.mask{display:none;background-color:rgba(0,0,0,0.8);position:absolute;z-index:99;left:0;top:0;width:100%;height:100%;opacity:0.8;filter: alpha(opacity=80);}
+.pop1{display: none;}
+.pop1 p{position:absolute;z-index:100;color:#fff;font-size: 2rem;top: 30%;left: 50%;line-height:2.8rem;}
+.pop1 img{width: 42px;position:absolute;z-index:100;top: 15%;right: 14%;}
+
+/*分享成功后  弹窗*/
+#appMask{z-index: 100; display: none;}
+.pop2{position:relative;width: 250px;height: 250px;background: #FFFFFF;border-radius: 10px;text-align: center;box-sizing: border-box;-webkit-box-sizing: border-box;padding: 6%;position: absolute;top: 50%;left: 50%;margin-left: -125px;margin-top: -125px;z-index: 101;}
+.close{width: 20px;height: 20px;position: absolute;top: 6px;right: 6px;}
+.pop2 p{font-size: 18px;color: #333;}
+.app{width: 66%;height: auto;margin: 5% auto;}
+
+/*动画*/
+/*遮罩层箭头*/
+@-webkit-keyframes move{
+	from{
+		-webkit-transform: translate(-5px,5px);
+		transform: translate(-5px,5px);
+	}
+	to{
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+@keyframes move{
+	from{
+		-webkit-transform: translate(-5px,5px);
+		transform: translate(-5px,5px);
+		
+	}
+	to{
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+.move{
+	-webkit-animation: .5s move infinite ;
+	animation: .5s move infinite ;
+	transform-origin: left bottom; 
+}
+
+/*月亮*/
+@-webkit-keyframes swing {
+	from{
+		-webkit-transform: rotate3d(0, 0, 1, -15deg);
+    transform: rotate3d(0, 0, 1, -15deg);
+	}
+	
+  50%{
+		-webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+	}
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, -15deg);
+    transform: rotate3d(0, 0, 1, -15deg);
+  }
+}
+
+@keyframes swing {
+	from{
+		-webkit-transform: rotate3d(0, 0, 1, -15deg);
+    transform: rotate3d(0, 0, 1, -15deg);
+	}
+	
+  50%{
+		-webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+	}
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, -15deg);
+    transform: rotate3d(0, 0, 1, -15deg);
+  }
+}
+
+.swing {
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-animation:3s swing linear infinite ;
+  animation: 3s swing linear infinite ;
+}
+
+/*飘动星星背景*/
+@-webkit-keyframes STAR-MOVE {
+	from {
+		background-position:0% 0%
+	}
+	to { 
+		background-position: 600% 0%
+	}
+}
+@keyframes STAR-MOVE {
+	from {
+		background-position: 0% 0%
+	}
+	to { 
+		background-position: 600% 0%
+	}
+}
+.starMove{
+	-webkit-animation: STAR-MOVE  200s linear infinite;
+	animation: STAR-MOVE 200s linear infinite;
+}
+

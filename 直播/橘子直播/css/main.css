@@ -1,0 +1,22 @@
+/*头部*/
+#header{height: 100px;background: #f5f5f5;}
+#logo{width: 340px;height: 70px;margin-left: 20px;padding-top:20px ;float: left;}
+.links{float: right;margin-right: 70px;padding-top: 56px;}
+.links a{text-align:center;display: inline-block;color: #fe5919;font-size: 18px;margin-right: 30px;padding:0 1px 4px 1px;}
+.current{border-bottom: 2px solid #FE5919;}
+/*主体部分*/
+.center{width: 1200px;margin: 0 auto;}
+.item1{background: url(../img/item1-bg.png) repeat-x; height: 800px;}
+.item2{background: #fafafa;height: 760px;}
+.item3{background: #eef3fa;height: 760px;}
+.item4{background: #fafafa;height: 760px;}
+/*底部*/
+#footer{height: 90px;background: #222222;color: #FFFFFF;font-size: 14px;padding-top: 30px;}
+#footer div p{padding-bottom: 10px;}
+#footer div.group1{padding-right: 96px;padding-left: 220px;}
+
+/*关于我们*/
+.aboutUS{min-height:470px;background: #FAFAFA;}
+.hgroup{padding: 200px 30px 0 50px;color: #333;font-size: 20px;}
+.hgroup p{padding-bottom: 10px;}
+.aboutUS img{width: 650px;height: 300px;padding-top: 140px;float: left;}

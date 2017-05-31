@@ -1,0 +1,92 @@
+1.在for循环中，当循环数组时，最好把数组长度先计算出来，这样可以避免重复计算：
+for(var i = 0;,len = array.length;i<len;i++){}
+
+2.用函数声明替代函数表达式，因为函数声明被命名，因此它们更容易在调用堆栈中识别。
+// bad
+
+const foo = function () {
+};
+
+
+// good
+
+function foo() {
+}
+
+3.使用默认参数的语法。
+// bad
+
+function handleThings(opts) {
+  
+	opts = opts || {};
+
+}
+
+// good
+
+function handleThings(opts = {}) {
+  // ...
+}
+
+4.减少DOM查找。
+// bad
+
+function setSidebar() {
+  
+	$('.sidebar').hide();
+  
+	$('.sidebar').css({'background-color': 'pink'
+});
+}
+
+// good
+
+function setSidebar() {
+  
+	var $sidebar = $('.sidebar');
+  
+	$sidebar.hide();
+  
+	$sidebar.css({
+'background-color': 'pink'});
+
+}
+
+5.使用数组加入代替字符串连接。
+// bad
+
+function inbox(messages) {
+
+  items = '<ul>';
+  
+  for (i = 0; i < length; i++) {
+
+    items += '<li>' + messages[i].message + '</li>';
+  
+  }
+
+
+  return items + '</ul>';
+
+}
+
+
+// good
+
+function inbox(messages) {
+
+  items = [];
+
+  for (i = 0; i < length; i++) {
+
+    // use direct assignment in this case because we're micro-optimizing.
+
+    items[i] = '<li>' + messages[i].message + '</li>';
+
+  }
+
+
+  return '<ul>' + items.join('') + '</ul>';
+
+}
+

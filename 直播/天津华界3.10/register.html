@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/web.css" />
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+		<!--表单验证插件-->
+		<script src="js/additional-methods.js" type="text/javascript" charset="utf-8"></script>
+		<!--表单验证插件-->
+		<!--以下兼容IE浏览器-->
+		<script src="js/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+		<!--[if IE 6]>
+			<script src="js/DD_belatedPNG_0.0.8a.js"></script>
+			<script>
+				DD_belatedPNG.fix('*');
+			</script>
+		<![endif]-->
+		<title></title>
+		<script type="text/javascript">
+			$().ready(function() {
+				// 在键盘按下并释放及提交后验证提交表单
+				$("#register-form").validate({
+					rules: {
+						style: {
+							required: true,
+						},
+						username: {
+							required: true,
+							minlength: 6,
+							maxlength: 12
+						},
+						realname: {
+							required: true,
+							chinese: true,
+							minlength: 2,
+							maxlength: 4
+
+						},
+						idcard: {
+							required: true,
+							isIdCardNo: true,
+						},
+						email: {
+							required: true,
+							email: true,
+						},
+						telephone: {
+							required: true,
+							isMobile: true,
+						},
+						password: {
+							required: true,
+							minlength: 4
+						},
+						conpassword: {
+							required: true,
+							minlength: 4,
+							equalTo: "#password"
+						},
+						agreement: {
+							required: true,
+						},
+					},
+					messages: {
+						style: {
+							required: "请选择类型"
+						},
+						username: {
+							required: "请输入用户名",
+							minlength: "用户名必须是 6-12个字符",
+							maxlength: "用户名必须是 6-12个字符"
+						},
+						realname: {
+							required: "请输入真实姓名",
+							chinese: "请输入真实姓名",
+							minlength: "请输入真实姓名",
+							maxlength: "请输入真实姓名"
+						},
+						idcard: {
+							required: "请输入有效身份证号",
+						},
+						email: {
+							required: "请输入邮箱",
+							email: "邮箱格式不正确",
+						},
+						telephone: {
+							required: "请输入手机号",
+						},
+						password: {
+							required: "请输入密码",
+							minlength: "密码必须是4个字符以上"
+						},
+						conpassword: {
+							required: "请输入确认密码",
+							minlength: "确认密码必须是4个字符以上",
+							equalTo: "密码和确认密码不匹配"
+						},
+						agreement: {
+							required: "请同意天津华界服务协议"
+						},
+					},
+					errorElement: "span",
+					errorClass: "help-block",
+
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent().siblings('.tiperror')); //这里的element是录入数据的对象
+					},
+					submitHandler: function(form) {
+						alert("注册成功");
+						window.location.href = "index.html";
+					}
+
+				});
+			});
+		</script>
+		<style>
+			.help-block {
+				color: #a94442 !important;
+			}
+			
+			.tiperror {
+				margin-left: 196px;
+			}
+			
+			.agreement_span a {
+				text-decoration: none;
+				color: #000;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="outter">
+			<div id="header">
+				<div class="center2">
+					<div id="logo"><img src="img/logo.png" /></div>
+					<div class="links">
+						<a href="index.html">网站首页</a><span>|</span>
+						<a href="login.html">用户中心</a><span>|</span>
+						<a href="pay.html" style="color: #333;border-bottom: 2px solid #666;">用户充值</a><span>|</span>
+						<a href="shensu.html">被盗申诉</a><span>|</span>
+						<a href="fangdao.html">防盗防骗</a><span>|</span>
+						<a href="chenmi.html">防沉迷系统</a><span>|</span>
+						<a href="jiazhang.html">家长监控</a><span>|</span>
+						<a href="aboutUS.html">关于我们</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="body ">
+				<div class="container margin-top-10">
+					<form class="login-panel form form-horizontal" id="register-form">
+						<div class='reg-header'>
+							<h2>用户注册</h2></div>
+
+						<div class="type_content">
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3">用户昵称</label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" type="text" name="username" placeholder="用户名"><span>&nbsp;*</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div id="g-id-card">
+								<div class="form-group clearfix">
+									<label class="control-label col-sm-3">身份证号</label>
+
+									<div class="col-sm-6">
+										<input class="form-control input-sm" type="text" placeholder="身份证号" name="idcard"><span>&nbsp;*</span>
+									</div>
+									<div style="clear:both;" class="clear"></div>
+									<div style="" class="tiperror"></div>
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3">真实姓名</label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" type="text" name="realname" placeholder="真实姓名"><span>&nbsp;*</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3">电子邮箱</label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" type="text" placeholder="电子邮箱" name="email"><span>&nbsp;*</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3">手机号</label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" type="text" name="telephone" placeholder="手机号"><span>&nbsp;*</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3">密码</label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" type="password" name="password" id="password" placeholder="密码"><span>&nbsp;*</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3">确认密码</label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" type="password" name="conpassword" placeholder="确认密码"><span>&nbsp;*</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="control-label col-sm-3"></label>
+
+								<div class="col-sm-6">
+									<input class="form-control input-sm" style="width:17px;height:17px;;float:left;" type="checkbox" name="agreement" placeholder="">
+									<span class="agreement_span">同意《<a href="xieyi.html" target="_blank">天津华界用户协议</a>》</span>
+								</div>
+								<div style="clear:both;" class="clear"></div>
+								<div style="" class="tiperror"></div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-6 col-sm-offset-3">
+									<input type="submit" name="commit" value="注册" class="btn btn-sm btn-danger btn-block login_2" />
+									<input type="reset" name="commit" value="重置" class="btn btn-sm  btn-block reset_2" />
+								</div>
+							</div>
+
+							<hr>
+					</form>
+					</div>
+				</div>
+
+			</div>
+			<div id="footer" class="center clear" style="width: 100%;">
+				<p>
+					<span>津ICP备17000388号-1</span>
+					<span>天津华界科技有限公司</span>
+					<span>地址：天津市武清区京津电子商务产业园宏旺道2号10号楼</span>
+					<span>联系电话：022-59686758</span>
+				</p>
+				<p>健康游戏忠告：抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当 适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活</p>
+			</div>
+			<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+
+</html>

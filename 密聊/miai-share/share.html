@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!--winphone系统a、input标签被点击时去掉半透明灰色背景-->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--清除缓存-->
+
+		<meta http-equiv="Pragma" content="no-cache">
+
+		<meta http-equiv="Cache-Control" content="no-cache">
+
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+
+		<style type="text/css">
+			/*样式重置*/
+			
+			html,body,address,div,form,input,textarea,button,select,h1,h2,h3,h4,h5,h6,p,ul,ol,li,dd,dt,dl,tbody,table,td,tr,th,thead,tfoot,a,em,i,img,span,strong
+			{
+				margin: 0;
+				padding: 0;
+				font-family: "Microsoft YaHei", "微软雅黑", Arial, Georgia, "Times New Roman", STXihei, "华文细黑", sans-serif;
+				-ms-text-size-adjust: 100%;
+				-webkit-text-size-adjust: 100%;
+				text-transform: none;
+			}
+			
+			article,
+			aside,
+			details,
+			figcaption,
+			figure,
+			footer,
+			header,
+			hgroup,
+			menu,
+			nav,
+			section,
+			summary {
+				display: block;
+				margin: 0;
+				padding: 0;
+			}
+			
+			audio,
+			canvas,
+			progress,
+			video {
+				display: inline-block;
+				vertical-align: baseline;
+			}
+			
+			audio:not([controls]) {
+				display: none;
+				height: 0;
+			}
+			
+			video::-webkit-media-controls {
+				display: none;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				cursor: pointer;
+			}
+			
+			a:active,
+			a:hover {
+				outline: none;
+			}
+			
+			img {
+				border: none;
+				vertical-align: top;
+				max-width: 100%;
+				width: 100%;
+				-ms-interpolation-mode: bicubic;
+			}
+			
+			button,
+			input,
+			textarea,
+			select {
+				-webkit-appearance: none;
+				border: 0;
+			}
+			
+			button:focus,
+			input:focus,
+			textarea:focus,
+			select:focus {
+				outline: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+			
+			input::-ms-clear {
+				display: none;
+			}
+			
+			textarea {
+				resize: none;
+				overflow: auto;
+				outline: none;
+			}
+			
+			[hidden],
+			template {
+				display: none;
+			}
+			
+			.clear {
+				zoom: 1;
+			}
+			
+			.clear:after,
+			.clear:before {
+				content: "";
+				display: block;
+				clear: both;
+				line-height: 0;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			/*页面样式*/
+			
+			.shareWrap {
+				width: 18rem;
+				height: auto;
+				position: relative;
+			}
+			
+			.main {
+				position: relative;
+			}
+			
+			.bg {
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.icon {
+				position: absolute;
+				left: 1rem;
+				top: 1.25rem;
+				width: 3.25rem;
+				height: 3.25rem;
+			}
+			
+			.content {
+				width: 11.75rem;
+				overflow: auto;
+				font-size: 0.65rem;
+				color: #333;
+				position: absolute;
+				top: 1.35rem;
+				left: 5.25rem;
+			}
+			
+			.shareBtn {
+				display: block;
+				width: 7.5rem;
+				height: 2.1rem;
+				line-height: 2.1rem;
+				background: url(img/btn.png) no-repeat center center;
+				background-size: contain;
+				position: absolute;
+				top: 23rem;
+				left: 5.25rem;
+				color: #fff;
+				font-size: 0.7rem;
+				text-align: center;
+				-webkit-text-stroke: 0.4px #61AE0F;
+			}
+			.wx{
+				position: absolute;
+				top: 25.3rem;
+				left: 6.25rem;
+				color: #fff;
+				font-size: 0.7rem;
+				text-align: center;
+				display: none;
+			}
+			
+		</style>
+		<title>可配置title在这里</title>
+	</head>
+
+	<body>
+		<!--可配置
+			1、title--分享标题
+			2、content--分享内容
+			3、bg--背景图
+			4、shareBtn--分享按钮
+		-->
+
+		<div class="shareWrap">
+			<img src="img/bg.png" class="bg" />
+			<div class="main">
+				<img src="img/icon.jpg" class="icon" />
+				<p class="content">分享内容分享内容分享内容分享内容分享内容分享内容分享内容分享内容</p>
+				<a href="https://www.baidu.com" class="shareBtn">点击下载</a>
+				<p class="wx">请在浏览器中打开</p>
+			</div>
+		</div>
+		<script src="jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+					};
+
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+			
+			
+			//判断是否用微信打开
+			function isWeiXin(){
+			    var ua = window.navigator.userAgent.toLowerCase();
+			    if(ua.indexOf('micromessenger')!=-1){
+			        return true;
+			    }else{
+			        return false;
+			    }
+			}
+			
+			if(isWeiXin()){
+				$(".wx").show();
+				$(".shareBtn").attr('href','#');
+			}
+		</script>
+	</body>
+
+</html>

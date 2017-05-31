@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    	<meta http-equiv="Pragma" content="no-cache">
+    	<meta http-equiv="Cache-Control" content="no-cache">
+    	<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>双11专题</title>
+		<script>
+		        (function (doc, win) {
+		          var docEl = doc.documentElement,
+		            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		            recalc = function () {
+		              var clientWidth = docEl.clientWidth;
+		              if (!clientWidth) return;
+		              docEl.style.fontSize = Math.floor(20 * (clientWidth / 360) ) + 'px';
+		            };
+		
+		          if (!doc.addEventListener) return;
+		          win.addEventListener(resizeEvt, recalc, false);
+		          doc.addEventListener('DOMContentLoaded', recalc, false);
+		        })(document, window);
+		</script>
+		<style type="text/css">
+			/*样式重置*/
+			html, body, div, form, h1, h2, h3, h4, h5, h6, p, ul,li, button,a,img,span{
+			    margin: 0;
+			    padding: 0;
+			    font-family: "微软雅黑",arial,"arial black";
+			}
+			article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+			    display: block;
+			}
+			li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+			img{border:none;vertical-align:top;width: 100%;height: auto;width: auto\9;max-width: 100%;}
+			.clear{zoom:1;}
+			.clear:after{content:"";display:block;clear:both;}
+			.fl{float:left;}
+			.fr{float:right;}
+			/*样式重置结束*/
+			
+			.double11-wraper{width: 18rem;height: auto;background: #ffd162;}
+			.double11-content{width: 17.25rem;margin: 0 auto;background: #fcf5e3;}
+			.double11-content li{width: 15.05rem;margin: 0 auto;height: 5.3rem; background: #860ece;border: 0.1rem solid #a04dd3;margin-bottom: 0.25rem;padding: 0.5rem 0.5rem 0 0.75rem;}
+			.goodsImg{width: 5rem;height: 5rem;}
+			.goodsDesc{width: 10.05rem;text-align: center;color: #fff;}
+			.goodsDesc h2{font-size: 0.85rem;font-weight: normal;margin-bottom: 0.25rem;margin-top: 0.25rem;}
+			.goodsDesc p{font-size: 0.7rem;margin-bottom:0.6rem;}
+			.goodsDesc a{display: block;width: 3.75rem;background: #ff5998;color: #fff;font-size: 0.75rem;margin: 0 auto;padding: 0.25rem 0;}
+		</style>
+	</head>
+	<body>
+		<div class="double11-wraper">
+			<img src="images/double11-headImg.jpg" />
+			<div class="double11-content">
+				<ul>
+					<li class="clear">
+						<img src="images/goods-01.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>小米5S</h2>
+							<p>拍照黑科技  照亮你的美</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-02.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>飞利浦空气净化器</h2>
+							<p>对抗雾霾  好评破万</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-03.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>乐视超级电视X55</h2>
+							<p>超清画质 私家影院体验</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-04.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>膳魔师焖烧罐</h2>
+							<p>无火焖烧  随时随地喝好汤</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-05.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>科沃斯扫地机器人</h2>
+							<p>天冷不想动 有它来帮你</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-06.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>斯诺曼双人羽绒被</h2>
+							<p>90%白鸭绒 温暖秋冬</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-07.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>飞利浦负离子吹风机</h2>
+							<p>和干燥静电说拜拜</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear">
+						<img src="images/goods-08.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>1000元京东购物卡</h2>
+							<p>足不出户 好货到家</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+					<li class="clear" style="margin-bottom: 0;">
+						<img src="images/goods-09.png" class="goodsImg fl"/>
+						<div class="goodsDesc fr">
+							<h2>九阳榨汁机</h2>
+							<p>原汁原味 喝出健康好气色</p>
+							<a href="#">1元抢购</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<img src="images/double11-footImg.png"/>
+		</div>
+	</body>
+</html>

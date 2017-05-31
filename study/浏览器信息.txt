@@ -1,0 +1,13 @@
+浏览器版本号：navigator.appVersion  parseFloat(navigator.appVersion)
+
+浏览器名称：navigator.appName    
+
+
+			var u = navigator.userAgent, app = navigator.appVersion;
+			if(u.indexOf('Android') > -1){
+				alert("安卓11");
+			}else if(u.indexOf('iPhone') > -1){
+				alert("苹果22");
+			}else if(u.indexOf('MSIE') > -1){
+				alert('IE浏览器33');
+			}

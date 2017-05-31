@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>提现帮助</title>
+		
+		
+		<style type="text/css">
+			*{
+			    margin: 0;
+			    padding: 0;
+			    font-family: "Microsoft YaHei", "微软雅黑",Arial, Georgia, "Times New Roman",STXihei, "华文细黑",sans-serif;
+			}
+			li{list-style:none;}
+			.help{width: 16rem;padding: 1rem;padding-top: 1.5rem;}
+			.help h2{font-size: 0.75rem;color: #333;padding-bottom: 0.35rem;font-weight: normal;margin: 0;}  /*30px*/
+			.help p{color: #666;font-size: 0.6rem;padding-bottom: 0.6rem;margin: 0;text-indent:1.5em;}
+		</style>
+		
+	</head>
+	<body style="background: #fafafa;">
+		<div class="help">
+			<h2>1.首次充值</h2>
+			<p>1元充值，即可获得精美礼包，赶紧去充值啦！</p>
+			<h2>2.天天领金币</h2>
+			<p>登录即可领金币，每天都可以领哟！</p>
+			<h2>3.天天偷红包</h2>
+			<p>偷3个好友的红包，即可获得奖励，赶紧行动啦！</p>
+			<h2>4.天天分享</h2>
+			<p>每天分享一次，即可获得奖励，赶紧行动！</p>
+			<h2>5.天天心愿</h2>
+			<p>写下你的心愿，收获一份期望，领取一份金币！</p>
+		</div>
+		
+		<script>
+	        (function (doc, win) {
+	          var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	              var clientWidth = docEl.clientWidth;
+	              if (!clientWidth) return;
+	              docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+	            };
+	
+	          if (!doc.addEventListener) return;
+	          win.addEventListener(resizeEvt, recalc, false);
+	          doc.addEventListener('DOMContentLoaded', recalc, false);
+	        })(document, window);
+		</script>
+	</body>
+</html>
+
+
+
+

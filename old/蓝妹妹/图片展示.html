@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<title>图片展示 - 蓝蜜蜂</title>
+<link type="text/css" rel="stylesheet" href="http://bluebee.b0.upaiyun.com/app/lmm/css/comm.css" />
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+</head>
+
+<body class="huandeng">
+<div class="piclist" id="piclist"></div>
+<script type="text/javascript">
+$(function(){
+	var container = $('#piclist') , scroll;
+	var imgs = [{'src':'http://bluebee.b0.upaiyun.com/app/lmm/images/ad2.jpg','width':720,'height':381,'title':'1'},{'src':'http://bluebee.b0.upaiyun.com/app/lmm/images/ad2.jpg','width':720,'height':381,'title':'2'},{'src':'http://bluebee.b0.upaiyun.com/app/lmm/images/ad.jpg','width':218,'height':218,'title':'3'},{'src':'http://bluebee.b0.upaiyun.com/app/lmm/images/ad.jpg','width':218,'height':218,'title':'4'}];
+	var clientHeight = $(window).height() , clientWidth = $(window).width() , picHeight = clientHeight - 60 , currIndex = 0;
+	container.css({'height':clientHeight-10});
+
+	function initList(){
+		s = '<div class="scroll"><ul style="width:'+(imgs.length*100)+'%;height:'+picHeight+'px;">';
+		for(var x in imgs) {
+			var size = catualImg(imgs[x].width , imgs[x].height);
+			var point = position(size[0],size[1]);
+
+			s += '<li style="width:'+(100/imgs.length)+'%;"><img src="'+imgs[x].src+'" w="'+imgs[x].width+'" h="'+imgs[x].height+'" style="width:'+size[0]+'px;height:'+size[1]+'px;margin-left:'+point[0]+'px;margin-top:'+point[1]+'px;" /></li>';
+		}
+		s += '</ul></div>';
+		container.append(s);
+
+		scroll = container.find('ul');
+
+		//计算每张图片的最大伸缩性
+		
+
+		//计算完成添加页数
+		$('#piclist').append('<div class="page"><span id="jishu">1</span>/'+imgs.length+'</div>');
+	}
+
+	function position(w,h){
+		return [(clientWidth-w)/2,(picHeight-h)/2];
+	}
+
+	function catualImg(w,h){
+		var swidth , sheight;
+		var f=w/clientWidth,k=h/picHeight;
+		if(f>k){//宽度先满足
+			swidth = clientWidth;
+			sheight = h*clientWidth/w;
+		} else {//高度
+			swidth = w*picHeight/h;
+			sheight = picHeight;
+		}
+
+		return [swidth , sheight];
+	}
+
+	function initEvent(){
+		var obj = container.get(0);
+		var pressX = 0, pressY = 0, direct = "none" , isMiddle = false , startTime = 0 , speed = 0;
+
+		obj.addEventListener('touchstart', function(event) {
+			// 如果这个元素的位置内只有一个手指的话
+			if (event.targetTouches.length == 1) {
+				event.preventDefault();
+				var touch = event.targetTouches[0];
+				// 把元素放在手指所在的位置
+				pressX = touch.pageX;
+				pressY = touch.pageY;
+				startTime = new Date().getTime();
+			}
+		});
+
+		obj.addEventListener('touchmove', function(event) {
+			// 如果这个元素的位置内只有一个手指的话
+			if (event.targetTouches.length == 1) {
+				event.preventDefault();
+
+				var touch = event.targetTouches[0];
+				var spanX = touch.pageX - pressX;
+				//var spanY = touch.pageY - pressY;
+
+				/*if (Math.abs(spanX) > Math.abs(spanY)) {
+					//水平方向
+					if (spanX > 0) {
+						direct = "right";//向右
+					} else {
+						direct = "left";//向左
+					}
+				} else {
+					//垂直方向
+					if (spanY > 0) {
+						direct = "down";//向下
+						//do down function
+	                } else {
+	                    direct = "up";//向上
+	                    //do up function
+	                }
+				}*/
+
+				//水平方向
+				if (spanX > 0) {
+					direct = "right";//向右
+				} else {
+					direct = "left";//向左
+				}
+
+				if(currIndex == 0 && spanX > 0) return;
+				if(currIndex == imgs.length-1 && spanX < 0) return;
+
+				var x = -currIndex*clientWidth+spanX;
+				scroll.css('marginLeft',x);
+
+				if(Math.abs(spanX) > clientWidth/2) {
+					isMiddle = true;
+				} else {
+					isMiddle = false;
+				}
+				speed = Math.abs(spanX);
+			}
+		});
+
+		obj.addEventListener('touchend', function(event) {
+			event.preventDefault();
+			// 如果这个元素的位置内只有一个手指的话
+			//alert(direct + "," + isMiddle);
+			//console.log(speed/(new Date().getTime() - startTime));
+			if(startTime >0 && (speed/(new Date().getTime() - startTime)) > 0.5) {
+				isMiddle = true;
+			}
+
+			if(isMiddle) {
+				if(direct == 'left') {
+					if(currIndex < imgs.length) {
+						currIndex++;
+						scroll.animate({'marginLeft':-clientWidth*currIndex},200);
+					}
+				} else if(direct == 'right') {
+					if(currIndex > 0) {
+						currIndex--;
+						scroll.animate({'marginLeft':-clientWidth*currIndex},200);
+					}
+				}
+			} else {
+				if(direct == 'left' || direct == 'right') {
+					scroll.animate({'marginLeft':-clientWidth*currIndex},200);
+				}
+			}
+
+			$('#jishu').html(currIndex+1);
+
+			direct = "none";
+			isMiddle = false;
+			startTime = 0;
+			speed = 0;
+		});
+	}
+	
+	initList();
+	initEvent();
+});
+</script>
+</body>
+</html>

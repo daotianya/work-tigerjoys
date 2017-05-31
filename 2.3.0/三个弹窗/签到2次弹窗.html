@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <title></title>
+    <script src='js/jquery-1.8.3.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <style>
+    	/*样式重置*/
+    	html, body,div, h1, h2, h3, h4, h5, h6, p,a,img,span,button
+		{
+		    margin: 0;
+		    padding: 0;
+		    font-family: arial,"微软雅黑";
+		}
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section ,button{ 
+		    display: block;
+		}
+		
+		a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		img{border:none;vertical-align:top; width: 100%;height: auto;width: auto\9;}
+		
+		.clear{zoom:1;}
+		.clear:after{content:"";display:block;clear:both;}
+		.fl{float:left;}
+		.fr{float:right;}
+		
+		
+		
+		#secSign{width:100%;height:auto; margin: 0 auto;position: absolute;top: 0;left: 0;}
+		#secSign a{width: 100%;height:auto;display: block;}
+		#secSign span{display: block;position: absolute;top: 3%;right:4%;width:7%;height:auto;}
+    </style>
+    
+    <script>
+//  控制页面放缩
+    (function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth) return;
+				docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+			};
+	
+		if (!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+</head>
+<body>
+	<div id="secSign">
+		<a href="javascript:;">
+			<img src="3.png"/>
+			<span><img src="close.png"/></span>
+		</a>
+	</div>
+	
+</body>
+</html>

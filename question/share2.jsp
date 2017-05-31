@@ -1,0 +1,340 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- 页面描述 -->
+		<meta name="description" content=""/>
+		
+		<!-- 页面关键词 -->
+		<meta name="keywords" content=""/> 
+		
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+		
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    	<meta http-equiv="Pragma" content="no-cache">
+    	<meta http-equiv="Cache-Control" content="no-cache">
+    	<meta http-equiv="Expires" content="0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../media/web/question/css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../media/web/question/css/style.css"/>
+		<script src="../media/web/question/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../media/web/question/js/jquery.tmpl.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../media/web/question/js/zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	</head>
+	<body>
+		<!--开始页-->
+		<div id="index">
+			<h2 id="title"></h2>
+			<a href="javascript:;" id="start">开始测试</a>
+			<div class="ibottom" style="background-image:  url(../media/web/question/img/logo.png);">蓝蜜蜂|出品</div>
+		</div>
+		
+		<!--问题页-->
+		<div id="questions">
+			<p id="page"><span class="span1"></span>/<span class="totalPage"></span></p>
+		</div>
+		<script type="text/x-jquery-tmpl" id="qContent">
+			{{each(i,ques) question}}
+				<div class="paper">
+					<dl>
+						<dt></dt>
+						{{each(j,con) contents}}
+							<dd><a href="javascript:;"></a></dd>
+						{{/each}}
+					</dl>
+				</div>
+			{{/each}}
+		</script>
+		
+		<!--结果页-->
+		<div id="result">
+			<div class="paper" id="paper2">
+				<h2>测试结果:</h2>
+				<div class="resultText">
+					<!--存放结果-->
+				</div>
+				<script type="text/x-jquery-tmpl" id="results">
+					{{each(i,res) result}}
+						<p class="result-list"></p>
+					{{/each}}
+				</script>
+				<div class="rbottom">
+					<div class="btnGroup">
+						<a href="javascript:;" class="shareBtn">点击分享</a>
+						<a href="javascript:;" class="replay">再玩一次</a>
+					</div>
+					<div class="desc">
+						<img src="../media/web/question/img/wxpublic.png"/>
+						<h3>长按二维码关注<br />玩更多精彩游戏!</h3>
+						<span></span>
+					</div>
+				</div>
+			</div>
+			<!--遮罩层1-->
+			<div class="mask"></div>
+			<div class="pop1">
+				<p>请点击右上角<br />分享到朋友圈<br />或发送给好友/群</p>
+				<img src="../media/web/question/img/arrow.png" class="move"/>
+			</div>
+			<p style="display: none;" id="totalScore"></p>
+		</div>
+		
+		<!--微信分享成功后弹窗-->
+		<div id="appMask">
+			<div class="mask"></div>
+			<div class="pop2">
+				<img src="../media/web/question/img/close.png" class="close"/>
+				<p>求职招聘就上蓝蜜蜂</p>
+				<img src="../media/web/question/img/app.png" alt="" class="app"/>
+				<p>长按二维码立刻下载</p>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				var cdn;
+				var que;
+//				var json1={'question':[{'title':'问题一','contents': ['选项1','选项2','选项3'],'values':[1,2,3]},{'title':'问题二','contents': ['选项4','选项5','选项6'],'values':[4,5,6]}],'result':['结果1','结果2']};
+				var json1={'question':[],'result':[{'content':[]}]};
+				$.ajax({
+					url : "http://bluebee.chenmenghan.cn/activity/question/load",
+					type : "get",
+					dataType : "jsonp",
+		           	jsonp: "callback",
+					async: true, 
+					success: function(data){
+						cdn=data.cdn;
+						que=data.question;
+						$("#title").html(que.qtitle);//活动标题
+						var indexbg=cdn+que.id+"/"+que.titlePaperMd5;
+						$("#index").css({"background-image":"url("+indexbg+")"});
+						document.title=que.share.title;//头部标题
+						var mainBackgroudMd5=cdn+que.id+"/"+que.mainBackgroudMd5;
+						$("#result,#questions").css({"background-image":"url("+mainBackgroudMd5+")"});
+						json1.question=que.questionContext;
+						json1.result=que.resultModelContext;
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown){
+						console.log(errorThrown);  //404   500以上服务器错误
+					},
+					complete:function(){
+						$( "#qContent" ).tmpl(json1).appendTo("#questions");
+						$( "#results" ).tmpl(json1).appendTo("#result .resultText");
+						var resultBackgroudMd5=cdn+que.id+"/"+que.resultBackgroudMd5;
+						$(".paper").css({"background-image":"url("+resultBackgroudMd5+")"});
+						//将json1.question数据赋值给问题列表
+						var oQue=document.getElementById("questions");
+						var aPapers=oQue.getElementsByClassName('paper');
+						for (var i = 0; i < aPapers.length; i++) {
+							aPapers[i].children[0].children[0].innerHTML=json1.question[i].title;
+							var aDD=aPapers[i].getElementsByTagName('dd');
+							for (var j = 0; j < aDD.length; j++) {
+								aDD[j].children[0].innerHTML=json1.question[i].contents[j];
+								aDD[j].setAttribute('score',json1.question[i].values[j]);
+							}
+						}
+						//将json1.result赋值给结果列表
+						var aResList=document.getElementsByClassName('result-list');
+						for (var i = 0; i < aResList.length; i++) {
+							aResList[i].innerHTML=json1.result[i].content;
+						}
+						main();
+						wx.config({
+						    debug: false,
+						 	appId:"<%=request.getAttribute("appId")%>",
+				            timestamp: "<%=request.getAttribute("timestamp") %>",
+				            nonceStr: "<%=request.getAttribute("nonceStr") %>",
+				            signature:"<%=request.getAttribute("signature") %>",
+						    jsApiList: [
+						        'onMenuShareAppMessage',
+						        'onMenuShareTimeline'
+						    ]
+						});
+						var share_title=""+que.share.title+"";
+				        var share_desc=""+que.share.content+"";
+				        var share_image=""+cdn+que.id+"/"+que.share.iconMd5+"";
+				        var share_link="http://bluebee.chenmenghan.cn/activity/question/share";
+				        wx.ready(function () {
+						   wx.checkJsApi({
+						       jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'], 
+						       success: function(res) {}
+						   });
+					        wx.onMenuShareAppMessage({
+					            title: share_title, // 分享标题
+					            desc: share_desc, // 分享描述
+					            link: share_link, // 分享链接
+					            imgUrl: share_image, // 分享图标
+					            success: function () {
+					                    show();
+							    }
+					        });
+					        wx.onMenuShareTimeline({
+					            title: share_title, // 分享标题
+					            link: share_link, // 分享链接
+					            imgUrl: share_image, // 分享图标
+					            success: function () {
+					                    show();
+								}
+					        });
+					    });
+					}	
+				});
+				//选项跳转  主函数
+				function main(){
+					var num=1;
+					$('span.totalPage').html($('dl').size());//右下角页面总数
+					$('span.span1').html(num);
+					if($('dl').size()==1){
+					//如果只有一个问题
+						var optionList=document.getElementsByTagName('dd');
+						var index=null;
+						for (var i = 0; i < optionList.length; i++) {
+							optionList[i].setAttribute("index",i);    //给dd添加索引
+							optionList[i].onclick=function(){
+								//问题页-->结果页跳转
+								index=this.getAttribute('index');
+								$('#questions').fadeOut();
+								$('#result').fadeIn();
+								$('#paper2 p').css('display','none').eq(index).css('display','block');
+							}
+						}
+					}else{
+						//如果有两个以上问题
+						//初始化  第一组问题显示，其他问题组不显示
+						$('#questions .paper').css({'left':'150%'});
+						$('#questions .paper').eq(0).css({'left':'50%'});
+						var totalScore=0;
+						var n=0;
+						$("dd").click(function(){
+							//右下角分页
+							num++;
+							if(num>$('dl').size()){
+								num=$('dl').size();
+							}
+							$('span.span1').html(num);
+							//分页结束
+							totalScore+=Number($(this).attr('score'));  //分数记总
+						   	$('#totalScore').html(totalScore);
+							n=$('dl').size();
+							if($(this).parents('#questions .paper').index()==n){
+								//当选完最后一个问题时   结果页显示
+								
+								$('#questions').fadeOut();
+								$("#result").fadeIn();	
+								$('#paper2 p').css('display','none');
+								
+								//totalScore>=6&&totalScore<=7  总分区间不同，显示不同答案
+								if(totalScore>=json1.result[0].startVal&&totalScore<=json1.result[0].endVal){
+									$('.result-list').eq(0).css('display','block');	
+									
+								}else if(totalScore>=json1.result[1].startVal&&totalScore<=json1.result[1].endVal){
+									
+									$('.result-list').eq(1).css('display','block');
+									
+								}else if(totalScore>=json1.result[2].startVal&&totalScore<=json1.result[2].endVal){
+									
+									$('.result-list').eq(2).css('display','block');
+									
+								}else if(totalScore>=json1.result[3].startVal&&totalScore<=json1.result[3].endVal){
+									
+									$('.result-list').eq(3).css('display','block');
+								}
+							}else{
+								//问题没有选完时
+								$(this).parents('.paper').css({'left':'-44%'}).next('.paper').css({'left':'50%'});
+							}
+						});
+					}
+				}
+				main();
+				//选项跳转结束
+				
+				//开始页
+				$('#index').click(function(){
+					$('#index').css('display','none');
+					$('#questions').css('display','block');
+				})
+				
+				//遮罩层
+		    	$('.shareBtn').click(function(){
+		    		$('.mask,.pop1').css('display','block');
+		    		
+		    		var w=-Math.round($('.pop1 p').innerWidth()/2)+'px';  //控制遮罩内文字居中
+		    		$('.pop1 p').css('margin-left',w);
+		    		
+		    		setTimeout(function(){
+		    			$('.mask,.pop1').css('display','none');
+		    		},3000)
+		    	})
+		    	$('.mask').click(function(){
+		    		$('.mask,.pop1').css('display','none');
+		    	})
+				//遮罩层结束
+				
+				//再玩一次
+				$('.replay').click(function(){
+					$('#questions').css('display','block');
+					$('#result').css('display','none');
+					main();
+				})
+				
+				//分享后弹窗--》页面跳转     微信分享成功后回调函数
+				function fade(){
+					$('#appMask,.mask').css('display','none');
+					$('#result').css('display','block');
+				}
+				$('.close,.mask').click(function(){
+					fade();
+				})
+				
+				function show(){
+					$('#appMask,.mask').css('display','block');
+					$('#result').css('display','none');
+				}
+				
+			})
+		</script>
+	</body>
+</html>

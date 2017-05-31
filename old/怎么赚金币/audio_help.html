@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    
+		<meta http-equiv="Pragma" content="no-cache">
+    
+		<meta http-equiv="Cache-Control" content="no-cache">
+    
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>电台点赞</title>
+		<style type="text/css">
+			html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+			dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+			a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+			strong, sub, sup, tt, var, legend, fieldset {
+			    margin: 0;
+			    padding: 0;
+			    font-family: arial,"微软雅黑";
+			}
+			li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+			
+			.audio_help{width: 18rem;height:30.75rem;}
+			
+			.aHelpCon{width: 15rem;margin: 0 auto;padding-top: 1.5rem;}
+			.aHelpCon h1{font-size: 0.9rem;color: #333;padding-bottom: 0.75rem;}
+			.aHelpCon h2{color: #333;font-size: 0.75rem;padding-bottom: 0.5rem;}
+			.aHelpCon p{color: #666;font-size: 0.65rem;padding-bottom: 0.5rem;}
+			.aHelpCon hgroup{padding-bottom: 0.35rem;}
+			
+			.aHelpNav{width: 18rem;height: 2.4rem;background: #1a95fc;color: #fff;font-size: 0.95rem;text-align: center;line-height: 2.4rem;}
+			.aHelpNav a{display: inline-block;}
+			.backBtn img{width: 0.6rem;height: auto;position: absolute;top: 0.65rem;left: 1rem;}
+		</style>
+		<script>
+	        (function (doc, win) {
+	          var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	              var clientWidth = docEl.clientWidth;
+	              if (!clientWidth) return;
+	              docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+	            };
+	
+	          if (!doc.addEventListener) return;
+	          win.addEventListener(resizeEvt, recalc, false);
+	          doc.addEventListener('DOMContentLoaded', recalc, false);
+	        })(document, window);
+	</script>
+	</head>
+	<body style="background: #fafafa;">
+		<div class="audio_help">
+			<nav class="aHelpNav">
+				<a href="javascript:;" class="backBtn"><img src="back.png"/></a>
+				<span>蜜蜂电台点赞</span>
+			</nav>
+			<div class="aHelpCon">
+				<h1>为您喜欢的节目点赞，赚金币。</h1>
+				<hgroup>
+					<p>1.打开社区；</p>
+					<p>2.选择电台；</p>
+					<p>3.收听自己喜欢的节目；</p>
+					<p>4.为节目点赞；</p>
+					<p>3.获得金币奖励；</p>
+				</hgroup>
+				<h2>赶紧行动吧！</h2>
+			</div>
+		</div>
+	</body>
+</html>
+

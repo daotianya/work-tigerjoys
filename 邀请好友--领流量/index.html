@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    	<meta http-equiv="Pragma" content="no-cache">
+    	<meta http-equiv="Cache-Control" content="no-cache">
+    	<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>免费流量</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#freeWraper{width: 18rem;height:30.75rem;background:url(img/2000.png) no-repeat center center;background-size: cover;-webkit-background-size: cover;overflow: auto;}
+			header{height: 2.4rem;line-height: 2.4rem;width: 18rem;background: rgba(0,0,0,0.1);position: relative;}
+			.backBtn{position: absolute;left: 0;top:0;width: 2.4rem;height: 2.4rem;text-align: center;}
+			.backBtn img{width: 0.6rem;height: auto;vertical-align: middle;}
+			
+			.TabWraper{height: 16.85rem;width: 18rem;padding-top:8.3rem;position: relative;}
+			.TabWraper a{float: left;width: 4.75rem;height: 1.65rem;line-height: 1.55rem;text-align:center;margin:0 0.9375rem;border: 2px solid #4d190e;border-radius: 5px;-webkit-border-radius: 5px;color:#333;font-size: 0.75rem;box-sizing: border-box;-webkit-box-sizing: border-box;}
+			.no{background:linear-gradient(top,#fff 0,#fff 60%,#e6e6e6 60%,#e6e6e6 100%);background: -webkit-linear-gradient(top,#fff 0,#fff 60%,#e6e6e6 60%,#e6e6e6 100%);}
+			.active{background:linear-gradient(top,#ffee5d 0,#ffee5d 60%,#f0db2b 60%,#f0db2b 100%);background: -webkit-linear-gradient(top,#ffee5d 0,#ffee5d 60%,#f0db2b 60%,#f0db2b 100%);}
+			
+			.TabWraper a:nth-of-type(2){margin: 0;}
+			.TabWraper div{position: absolute;top: 10.5rem;left: 0;width:18rem;height: 14.65rem;text-align: center;box-sizing: border-box;-webkit-box-sizing: border-box;}
+			.TabWraper div:nth-of-type(2){background: rgba(0,0,0,0.2);padding-top: 4px;}
+			.TabWraper div:nth-of-type(3){background: rgba(0,0,0,0.2);padding:0.4rem 0.8rem;overflow:scroll;}
+			.TabWraper div:nth-of-type(1) img{width: 15.7rem;height: 10.05rem;}
+			.TabWraper hgroup p{font-size: 0.65rem;color: #fff;text-align: left;line-height:1rem;}
+			.TabWraper hgroup.hg1{height:4.075rem;width: 18rem;background: rgba(0,0,0,0.2);margin-top: 0.525rem;padding: 0.6rem 0 0.6rem 1.2rem;box-sizing: border-box;-webkit-box-sizing: border-box;}
+			
+			.TabWraper hgroup.hg3 p{line-height: 1.1rem;}
+			
+			.bottomBtn{display:block;width: 18rem;height: 2.4rem;text-align: center;padding:0.5rem 0 0.3rem 0;}
+			.bottomBtn img{width: 9.15rem;height: auto;vertical-align: middle;}
+		</style>
+	</head>
+	<body>
+		<div id="freeWraper">
+			<header>
+				<a href="javascript:;" class="backBtn"><img src="img/back.png"/></a>
+			</header>
+			<div class="TabWraper">
+				<a href="javascript:;" class="active">邀请有奖</a>
+				<a href="javascript:;" class="no">活动流程</a>
+				<a href="javascript:;" class="no">活动规则</a>
+				<div style="display: block;">
+					<img src="img/yq.png"/>
+					<hgroup class="hg1">
+						<p>1.每邀请1名好友注册，您将获得500金币；</p>
+						<p>2.好友再邀请1名好友注册，您可获得250金币；</p>
+						<p>3.好友的好友再邀请1人注册，您还可获得50金币。</p>
+					</hgroup>
+				</div>
+				<div style="display: none;">
+					<img src="img/lc.png"/>
+				</div>
+				<div style="display: none;">
+					<hgroup class="hg3">
+						<p>一、活动时间：2016年6月7日-2016年7月7日</p>
+						<p>二、参与方式：</p>
+						<p>1、下载登录蓝蜜蜂客户端，在首页进入活动页面点击"我要邀请"，将专属邀请码通过发送二维码，或分享链接两种方式邀请好友。</p>
+						<p>2、好友接受邀请注册并填写邀请码，您将获得500金币奖励；好友邀请另一名好友注册，您可获得250金币奖励；好友的好友再邀请1人注册，您可再获得50金币奖励。</p>
+						<p>3、活动邀请奖励设置为一级邀请、二级邀请、三级邀请关系。</p>
+						<p>4、活动中邀请新用户越多，奖励越多，上不封顶。</p>
+						<p>5、邀请好友必须是新用户（以前未注册过蓝蜜蜂），您才能获得奖励。</p>
+						<p>6、邀请好友在注册时必须填写您的邀请码，否则无法认定为您的邀请。</p>
+						<p>三、奖励发放与兑换：</p>
+						<p>1、每当有人通过填写您的【邀请码】注册成功后，系统将自动将金币发送到您的账号，您可在【钱包】中随时查看金币数量。</p>
+						<p>2、您可在【钱包商城】中使用金币兑换所有商品。</p>
+						<p>四、以上活动的解释权归蓝蜜蜂所有，如有疑问请加问题反馈QQ群：176628093</p>
+					</hgroup>
+				</div>
+				
+			</div>
+			<a href="javascript:;" class="bottomBtn"><img src="img/bottomBtn.png"/></a>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$(".TabWraper a").click(function(){
+					$(this).removeClass('no').addClass('active').siblings('a').addClass('no').removeClass('active');
+					$(".TabWraper div").css('display','none');
+					$(".TabWraper div").eq($(this).index()).css('display','block');
+				})
+			})
+		</script>
+	</body>
+</html>

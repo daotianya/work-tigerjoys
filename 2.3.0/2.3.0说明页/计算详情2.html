@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    
+		<meta http-equiv="Pragma" content="no-cache">
+    
+		<meta http-equiv="Cache-Control" content="no-cache">
+    
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		
+		<title></title>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+	        (function (doc, win) {
+	          var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	              var clientWidth = docEl.clientWidth;
+	              if (!clientWidth) return;
+	              docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+	            };
+	
+	          if (!doc.addEventListener) return;
+	          win.addEventListener(resizeEvt, recalc, false);
+	          doc.addEventListener('DOMContentLoaded', recalc, false);
+	        })(document, window);
+		</script>
+		
+		<style type="text/css">
+			html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+			dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+			a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+			strong, sub, sup, tt, var, legend, fieldset {
+			    margin: 0;
+			    padding: 0;
+			    font-family: arial,"微软雅黑";
+			}
+			li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+			.clear{zoom:1;}
+			.clear:after{content:"";display:block;clear:both;}
+			.fl{float:left;}
+			.fr{float:right;}
+			
+			.count_help{width: 18rem;height:30.75rem;overflow-y: auto;}
+			
+			.cHelpNav{width: 18rem;height: 2.4rem;background: #1a95fc;color: #fff;font-size: 0.95rem;text-align: center;line-height: 2.4rem;}
+			.cHelpNav a{display: inline-block;}
+			.backBtn img{width: 0.6rem;height: auto;position: absolute;top: 0.65rem;left: 1rem;}
+			
+			.cHelpCon{width: 18rem;background: #FAFAFA;}
+			.luckNum{text-align: center;width: 18rem;height: 7.5rem;background: #FAFAFA;box-sizing: border-box;-webkit-box-sizing: border-box;padding: 2.25rem 0;}
+			.luckNum h1{font-size: 1.5rem;color: #333;font-weight: normal;padding-bottom: 0.5rem;}
+			.luckNum p{font-size: 0.9rem;color: #c93437;}
+			
+			.count{width: 18rem;background: #eee;}
+			.count_m{border-bottom: 1px solid #dcdcdc;padding:0.5rem;}
+			.count_m h3{font-size: 0.8rem;color: #333;font-weight: normal;padding-bottom: 0.3rem;}
+			.count_m p,.count_m li{font-size: 0.65rem;color: #666;padding-bottom: 0.25rem;}
+			
+			.count_m1{position: relative;}
+			.count_m1 span{position: absolute;bottom:0.4rem;right: 0.55rem; color:#1a95fc ;font-size: 0.65rem;}
+			
+			.userID{border-bottom: 1px solid #dcdcdc;display: none;width: 18rem;padding: 0.2rem 0;}
+			.userID li{float: left;font-size: 0.65rem;color: #666;width: 3.6rem;text-align: center;height: 1.4rem;line-height: 1.4rem;overflow: auto;box-sizing: border-box;-webkit-box-sizing: border-box;}
+		</style>
+		
+	</head>
+	<body style="background: #fafafa;">
+		<div class="count_help">
+			<!--<nav class="cHelpNav">
+				<a href="javascript:;" class="backBtn"><img src="back.png"/></a>
+				<span>计算详情</span>
+			</nav>-->
+			<div class="cHelpCon">
+				<div class="luckNum">
+					<h1>本期幸运号码</h1>
+					<p>100000026</p>
+				</div>
+				<div class="count">
+					<div class="count_m">
+						<h3>计算方法</h3>
+						<p>(数值A+数值B)/商品所需人次+初始值=幸运号码</p>
+					</div>
+					<div class="count_m count_m1">
+						<h3>数值A：</h3>
+						<li>=本期所有参与用户的ID之和</li>
+						<li>=11111111111</li>
+						<span id="open">展开</span>
+					</div>
+					<ul class="userID clear">
+						<li>3333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>3333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+						<li>333333</li>
+					</ul>
+					<div class="count_m">
+						<h3>数值B：</h3>
+						<li>=000000001-999999999中的随机值</li>
+						<li>=本期随机数为<span>11111</span></li>
+					</div>
+					<div class="count_m">
+						<h3>计算过程</h3>
+						<p>求和：数值A + 数值B = <span>111111</span> + <span>33333</span> = <span>xxxxx</span></p>
+						<p>取余：<span>xxxx</span> / <span>550</span>(本商品所需人次) = <span>25</span>(取余)</p>
+						<p>相加：<span>100000001</span> + <span>25</span> = <span>100000026</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function slideDown(){
+	        	var tog=true;
+	        	$("#open").click(function(){
+	        		$(".userID").slideToggle();
+	        		
+	        		if(tog){
+	        			$(this).text('收缩');
+	        			tog=false;
+	        		}else{
+	        			$(this).text('展开');
+	        			tog=true;
+	        		}
+	        	})
+	        }
+			slideDown();
+		</script>
+	</body>
+</html>
+

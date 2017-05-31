@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<link rel="prerender" href="http://bluebee.b0.upaiyun.com/activity/redtag/bg.jpg" />
+<title>过大年摇红包 - 蓝蜜蜂</title>
+<style type="text/css">
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,em,img,small,strong,sub,sup,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{-moz-user-select: none;–webkit-user-select:none;background-color:#f1f2f7;font-family: "Microsoft YaHei", "SimSun", "Arial Narrow", HELVETICA;font-size:12px;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+ol,ul{list-style:none}
+img{border:none}
+a:active,a:hover{outline:0 none}
+a,a:hover{text-decoration:none}:focus{outline:0 none}
+img{width:100%;vertical-align:middle;}
+
+span.tag{background:url('http://bluebee.b0.upaiyun.com/activity/redtag/wenzi.png') no-repeat;background-size: 90% 90%;height: 74px;width: 260px;display: block;position: absolute;top: 390px;z-index: 10;left: 39px;}
+span.hand{background:url('http://bluebee.b0.upaiyun.com/activity/redtag/yao.png') no-repeat;background-size: 90% 90%;height: 236px;width: 144px;display: block;position: absolute;top: 218px;left: 99px;z-index: 9;}
+ul.desc{color:#fffc00;font-size:14px;list-style-type:decimal;position:absolute;z-index:10;top: 550px;left: 56px;margin-right: 32px;}
+ul.desc li{margin-bottom: 8px;line-height: 24px;}
+
+#overmask{position:fixed;height:100%;width:100%;background:#000;opacity: 0.7; -moz-opacity: 0.7; -webkit-opacity: 0.7; -khtml-opacity: 0.7;filter:alpha(opacity=70);z-index:9999;top: 0;left: 0;}
+#dialog{width:90%;height:450px;position:absolute;top:7%;left:5%;z-index:10000;overflow: hidden;}
+#dialog .close{text-decoration: none;display: block;cursor: pointer;width:30px;height:30px;background:url('http://bluebee.b0.upaiyun.com/activity/redtag/close.png') no-repeat;background-size:90%;position:absolute;right:0;top:0;}
+#dialog .tips{width:188px;height:77px;margin: 0 auto;}
+#dialog .redtag{position: absolute;top: 68px;left: 77px;background: url('http://bluebee.b0.upaiyun.com/activity/redtag/redbag.png') no-repeat;background-size: 100%;width: 135px;height:135px;}
+#dialog .content{background:#a33bf2;width:100%;height:245px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;margin-top: 38px;padding-top:90px;overflow: hidden;}
+#dialog .content p{font-size:24px;color:#fffc00;letter-spacing: 1px;text-align:center;margin-top:10px;line-height: 40px;}
+#dialog .content a.btn{width:140px;border-radius:18px;-moz-border-radius:18px;-webkit-border-radius:18px;display:block;margin:0 auto;text-align:center;line-height:36px;height:36px;font-size:14px;font-weight:bold;letter-spacing: 2px;margin-top: 18px;}
+#dialog .content a.yellow{background:#fff100;color:#6b04b9;border:2px solid #8904ee;}
+#dialog .content a.blue{background:#8904ee;color:#fff100;border:2px solid #c87fff;}
+
+.roate{animation:myhand 0.5s infinite;-webkit-animation:myhand 0.5s infinite;}
+@-webkit-keyframes myhand {
+0% {-moz-transform:rotate(0);-webkit-transform:rotate(0);-o-transform:rotate(0);}
+12% {-moz-transform:rotate(-10deg);-webkit-transform:rotate(-10deg);-o-transform:rotate(-10deg);}
+25% {-moz-transform:rotate(-20deg);-webkit-transform:rotate(-20deg);-o-transform:rotate(-20deg);}
+37% {-moz-transform:rotate(-10deg);-webkit-transform:rotate(-10deg);-o-transform:rotate(-10deg);}
+50% {-moz-transform:rotate(0);-webkit-transform:rotate(0);-o-transform:rotate(0);}
+62% {-moz-transform:rotate(10deg);-webkit-transform:rotate(10deg);-o-transform:rotate(10deg);}
+75% {-moz-transform:rotate(20deg);-webkit-transform:rotate(20deg);-o-transform:rotate(20deg);}
+87% {-moz-transform:rotate(10deg);-webkit-transform:rotate(10deg);-o-transform:rotate(10deg);}
+}
+</style>
+</head>
+
+<body>
+<img src="http://bluebee.b0.upaiyun.com/activity/redtag/bg.jpg" />
+<span class="tag"></span>
+<span class="hand" id="hand"></span>
+<ul class="desc">
+	<li>每人每天有3次摇红包机会；</li>
+	<li>不允许通过其它手段获取流量奖励，一经查证取消抽奖资格；</li>
+	<li>活动时间：2016.2.1–2016.2.18；</li>
+	<li>本活动的最终解释权归蓝蜜蜂所有。</li>
+</ul>
+
+<!-- dialog -->
+<div id="overmask" style="display:none;"></div>
+<div id="dialog" style="display:none;">
+	<a href="javascript:close();" class="close"></a>
+	<div class="tips"><img id="top_img" src="http://bluebee.b0.upaiyun.com/activity/redtag/fail.png" /></div>
+	<div class="redtag"></div>
+	<div class="content" id="content">
+		<p><br/>您没有中奖<br/><br/></p>
+		<a href="###" class="btn blue">再来一次</a>
+	</div>
+</div>
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+function close(){
+	$('#overmask,#dialog').hide();
+}
+function fail(){
+	$('#top_img').attr('src','http://bluebee.b0.upaiyun.com/activity/redtag/fail.png');
+	$('#content').html('<p><br/>您没有中奖<br/><br/></p><a href="###" class="btn blue">再来一次</a>');
+}
+function succ(){
+	$('#top_img').attr('src','http://bluebee.b0.upaiyun.com/activity/redtag/succ.png');
+	$('#content').html('<p><br/>摇到100M红包<br/></p><a href="###" class="btn yellow">炫耀一下</a><a href="###" class="btn blue">再来一次</a>');
+}
+function login(){
+	$('#top_img').attr('src','http://bluebee.b0.upaiyun.com/activity/redtag/def.png');
+	$('#content').html('<p><br/>登录后可参加哦<br/><br/></p><a href="###" class="btn yellow">登录</a>');
+}
+function over(){
+	$('#top_img').attr('src','http://bluebee.b0.upaiyun.com/activity/redtag/def.png');
+	$('#content').html('<p><br/>三次机会已摇完<br/>明天再来吧！<br/></p>');
+}
+login();
+
+if (window.DeviceMotionEvent) {
+	window.addEventListener('devicemotion', deviceMotionHandler, false);
+}
+
+var SHAKE_THRESHOLD = 400;
+var lastUpdate = 0;
+var x, y, z, last_x, last_y, last_z;
+function deviceMotionHandler(eventData) {
+  var acceleration = eventData.accelerationIncludingGravity;
+
+  var curTime = new Date().getTime();
+  if ((curTime - lastUpdate) > 200) {
+
+      var diffTime = (curTime - lastUpdate);
+      lastUpdate = curTime;
+
+      x = acceleration.x;
+      y = acceleration.y;
+      z = acceleration.z;
+
+      var speed = Math.abs(x+y+z-last_x-last_y-last_z) / diffTime * 8000;
+	  if (speed > SHAKE_THRESHOLD) {
+		//摇动手机触发事件，监测代码可以加在这里
+		yaohuan(); //触发事件
+      }
+      last_x = x;
+      last_y = y;
+      last_z = z;
+    }
+}
+
+var b = false;
+function yaohuan(){
+	$('#hand').addClass('roate');
+	//此处需要调用震动2次
+	try {
+		window.target.shock(2);
+	} catch (e) {
+		
+	}
+if(b) return;
+	b = true;
+	
+	//然后ajax访问接口
+	alert('ajax 调用');
+}
+</script>
+<script src="http://bluebee.b0.upaiyun.com/static/js/zoom.js"></script>
+</body>
+</html>

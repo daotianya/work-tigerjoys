@@ -1,0 +1,158 @@
+
+.body{padding: 40px 0;}
+/*头部*/
+#header{height: 100px;background: #f5f5f5;}
+#logo{width: 340px;height: 70px;margin-left: 20px;padding-top:20px ;float: left;}
+.links{float: right;margin-top: 46px;padding:2px 2px 0 2px;padding-bottom: 0;}
+.links a{text-align:center;display: inline-block;color: #333;font-size: 18px;line-height: 38px; margin:0 10px;}
+.links span{color: #DCDCDC;}
+.current{background: #fafafa;}
+/*底部*/
+#footer{height: 90px;background: #222222;color: #FFFFFF;font-size: 14px;padding-top: 30px;}
+#footer p{padding-bottom: 10px;text-align: center;}
+#footer p span{padding: 0 6px;}
+
+/*======index======*/
+.center{width: 1200px;margin: 0 auto;}
+.item1{width: 100%;}
+.item2{background: #fafafa;height: 810px;}
+
+/*index游戏列表*/
+/*300*380*/
+.game_list ul{padding-top: 30px;}
+.game_list li{float: left;width: 250px;height: 330px;margin-right: 66px;}
+.game_list li a{display: block;}
+
+/*.game_title{color: #666;font-size: 16px;margin-top: 6px;}
+.game_button{width: 240px;height: 60px;border: 1px solid #B412FF;color: #B412FF;background: #fafafa;font-size: 18px;margin-top: 50px;text-align: center;line-height: 60px;cursor: pointer;}*/
+.game_sorts{height: 96px;border-bottom: 1px solid #DCDCDC;}
+.game_sorts h3{display: inline-block; font-size: 26px;color: #333;font-weight: normal;height: 40px;line-height: 40px; background: url(../img/action.png) no-repeat left center;padding-left: 42px;margin-top: 46px;margin-left: 20px;}
+/*======关于我们======*/
+.aboutUS{min-height:470px;background: #FAFAFA;margin-bottom: 50px;}
+.hgroup{padding: 150px 30px 0 50px;color: #333;font-size: 20px;}
+.hgroup p{padding-bottom: 10px;}
+.aboutUS img{width: 650px;height: 300px;padding-top: 90px;float: left;}
+.about{font-size: 14px;color: #333;line-height: 20px;padding-top: 28px;}
+/*======游戏详情页======*/
+.game_box{background: #515151;height: 780px;padding-top: 20px;}
+
+.fash_box{width: 1200px;height: 660px;}
+
+.play_tool{background: #333;height: 50px;text-align: right;padding-right: 20px;}
+
+.game_info{width: 1200px;height: 36px;line-height: 36px;margin: 16px auto 0 auto;text-align: right;color: #999;font-size: 16px;}
+.game_info h2{float: left;font-size: 24px;font-weight: bold;text-align: left;}
+.game_info em {margin: 0 10px;}    
+.game_info em i{color: #f60;}    
+.favorite {color: #999;padding-left: 21px;margin: 0 10px; background: url(../img/comm_bg.png) no-repeat; background-position: 0 -398px;}    
+.bdsharebuttonbox {
+    float: right;
+    margin-left: 10px;
+}
+.bdsharebuttonbox span {
+    float: left;   
+}
+.bdsharebuttonbox a, .bdsharebuttonbox .bds_more {
+    float: left;
+    font-size: 18px;
+    padding-left: 25px;
+    line-height: 24px;
+    height: 24px;
+    background-image: url(../img/icons_1_24.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 6px 6px 6px 0;
+}
+.bds_qzone {
+    background-position: 0 -52px;
+}
+.bds_tsina {
+    background-position: 0 -104px;
+}
+.game_comment{padding-bottom: 30px;padding-top: 20px;}
+.comm_tit{width: 1200px;height: 58px;border-bottom: 1px solid #d8d8d8;margin: 0 auto;}
+.comm_tit h3{display:inline-block;font-size: 24px;height: 28px;line-height: 28px;margin-top: 15px;color: #333;font-weight: normal;background: url(../img/comm_bg.png) no-repeat;}
+.guide{width: 1200px;margin: 0 auto;padding: 15px 0;font-size: 14px;color: #666;}
+.tit01 h3{padding-left: 33px;background-position: 0 -750px;}
+.tit02 h3{padding-left: 34px;background-position: 0 -417px;}
+
+.play_tool a {
+    display: inline-block;
+    height: 33px;
+    line-height: 32px;
+    margin: 8px 2px;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 38px;
+    color: #666;
+    background: url(../img/comm_bg.png) no-repeat;
+}
+.play_tool .full {
+    background-position: 18px -575px;
+}
+.play_tool .zoomin {
+    background-position: 18px -473px;
+}
+.play_tool .zoomout {
+    background-position: 18px -523px;
+}
+.play_tool .replay {
+     background-position: 18px -627px;
+}
+.play_tool a.mbplay {
+    
+    background-position: 18px -680px;
+    }
+
+/*======用户中心======*/
+div.reg{border:1px solid #DDDDDD;margin-top:40px;}
+div.reg .tit_login{border-bottom:1px solid gainsboro;padding:0 30px;background: #F5F5F5;}
+div.reg .tit_login h3{font-size:20px;color:#FFB525;padding:10px 0;}
+div.reg .tit_login p{color:gray;}
+div.reg form td{display: table-cell;padding: 10px;}
+div.reg form .txt_login{width:260px;height:24px;border:1px solid #BBB;line-height:24px;text-indent:2px;}
+div.reg form .btn_login{width:125px;height:39px;border:none;cursor:pointer;_cursor:hand;background: #FFB525;font-size: 14px;color: #333;}
+
+/*======用户充值======*/
+/* 用户信息 */
+.payBody{padding: 20px 0;}
+.user{border: 1px solid #FFB525; zoom:1;overflow:hidden;}
+.user .userLogs{width:149px;height:40px;display: inline-block;background: #FFB525;text-align: center;color: #fff;line-height: 40px;}
+.user .userLogs2{color: #333;background: #FFFFFF;}
+.user form{clear:both;zoom:1;overflow:hidden;padding:10px 0;_padding:15px 0 20px 0;}
+.user form p{margin:10px 0;}
+.user form label{margin-left:26px;vertical-align: baseline;}
+.user form .txt_pay{width:180px;height:22px;line-height:22px;border:1px solid #E59B28;text-indent:2px;margin-left: 4px;}
+/*.user form .btn_pay{background:#FFB525;width:114px;height:36px;border:none;margin-left:92px;cursor:pointer;_cursor:hand;font-size: 14px;color: #333;margin-top: 10px;}*/
+.user form .btn_pay{text-align: center; display: inline-block; background:#FFB525;width:114px;height:36px;line-height:36px;border:none;margin-left:22px;cursor:pointer;_cursor:hand;font-size: 14px;color: #F5F5F5;}
+.user form a{margin-left:20px;}
+.user .info{height:223px;margin:3px;background-color:#FFFFFF;}
+.user .info h3{margin:0px;line-height:50px;text-indent:10px;color:red;}
+.user .info p{zoom:1;overflow:hidden;margin:0 10px;line-height:30px;color:gray;}
+.user .info p .l{float:left;}
+.user .info p .r{float:right;}
+.title{padding: 0;font-size: 18px;font-weight: bold;}
+select{border: 1px solid #999;width: 120px;}
+.txt_pay2{width:140px;height:22px;line-height:22px;border:1px solid #999;}
+.xsk p{padding: 4px 0;}
+.left{width: 300px;margin-left: 160px;}
+.right{width:500px;margin-left: 60px;}
+
+/*共同box*/
+.box{width:1120px; border: 1px solid #FFB525;padding: 40px;background: #FFFDF8;}
+.box h3,.jiaz h3{font-size: 16px;padding: 16px 0;}
+.box p,.jiaz h3{font-size: 14px;padding-bottom: 4px;}
+
+/*家长--侧旁*/
+.jiaz{float: left;width:830px; border: 1px solid #FFB525;padding: 40px;background: #FFFDF8;}
+
+.left_con{ float:right; width:260px;}
+.tigg{ width:260px; margin-bottom:10px;}
+.tigg h3{font-size: 13px; color:#000; height:26px; line-height:26px; background:#D8D8D8; padding:6px;padding-left:10px;font-weight: 800;border-top-left-radius: 4px;-webkit-border-top-left-radius: 4px;border-top-right-radius: 4px;-webkit-border-top-right-radius: 4px;}
+.tigg .txts{font-size: 13px; width:238px; border-left:1px solid #dbe1e6; border-right:1px solid #dbe1e6; background:#FFF; padding:4px 10px 2px 10px;}
+.color1 {color: #ff8101;}
+.tigg .txts li{padding-bottom: 6px;}
+.tigg .txts li strong{display: inline-block; color: #333;padding-bottom: 2px;}
+.tigg .txts li span{display: inline-block;color: #5f5f5f;line-height: 20px;}
+
+.center2{width: 1200px;margin: 0 auto;}

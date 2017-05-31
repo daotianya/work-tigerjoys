@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<title>社区首页 - 蓝蜜蜂</title>
+<link rel="stylesheet" href="http://bluebee.b0.upaiyun.com/app/community/community.css" />
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+<script src="http://bluebee.b0.upaiyun.com/static/js/iscroll.4.2.5.js"></script>
+<script src="http://bluebee.b0.upaiyun.com/app/news/js/scroll.js"></script>
+</head>
+<body>
+<div class="head">
+	<a href="javascript:window.history.back();" class="back"></a>
+	蜂蜜柚子茶
+</div>
+<div id="wrapper">
+	<div id="scroller">
+		<div id="pullDown">
+			<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+		</div>
+		<ul class="tea">
+			<li>
+			    <a class="space" href="">
+					<img src="http://bluebee.b0.upaiyun.com/app/news/images/duanzi_03.jpg" />
+					<div class="bott">
+					   <h4>找工作如何防骗</h4>
+					   <span class="live">直播时间：13：00</span>
+					</div>
+				</a>	
+			</li>
+			<li>
+				<a class="space" href="">
+					<img src="http://bluebee.b0.upaiyun.com/app/news/images/duanzi_03.jpg" />
+					<div class="bott">
+					   <h4>北漂的日子</h4>
+					   <span class="time">2016-01-11</span>
+					   <span class="toke">4667人收听</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a class="space" href="">
+					<img src="http://bluebee.b0.upaiyun.com/app/news/images/duanzi_03.jpg" />
+					<div class="bott">
+					   <h4>北漂的日子</h4>
+					   <span class="time">2016-01-01</span>
+					   <span class="toke">5467人收听</span>
+					</div>
+				</a>
+			</li>				
+		</ul>
+		<div id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+		</div>
+	</div>
+</div>
+<script src="http://bluebee.b0.upaiyun.com/static/js/zoom.js"></script>
+<script type="text/javascript">
+
+function pullDownAction () {
+	window.location.reload();
+}
+function pullUpAction () {
+	if(generatedCount == 1) return;
+	generatedCount = 1;
+	//$.ajax({
+		
+	//});
+}
+</script>
+
+</body>
+</html>

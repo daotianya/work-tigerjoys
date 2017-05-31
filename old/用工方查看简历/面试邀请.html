@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<title>面试邀请 - 蓝蜜蜂</title>
+<link type="text/css" rel="stylesheet" href="http://bluebee.b0.upaiyun.com/static/css/comm.css" />
+<link type="text/css" rel="stylesheet" href="css/zhaopin.css" />
+<link type="text/css" rel="stylesheet" href="css/mobiscroll.css" />
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+<script src="js/mobiscroll.js"></script>
+</head>
+
+<body>
+<div class="head">
+	<a href="javascript:window.target.clickOnTarget('goback','','');" class="back"></a>
+	面试邀请
+</div>
+<div class="yaoqing">
+	<div class="time">
+		<input value="12月23日 10:49" class="date" readonly="readonly" name="appDateTime" id="appDateTime" type="text" />
+		<div class="txt">面试时间</div>
+		<div class="info" id="date_show">12月23日 10:49</div>
+		<span class="arrow">&gt;</span>
+	</div>
+	<div class="time bing">
+		<div class="txt">联系人</div>
+		<div class="info"><input type="text" value="王先生" name="username" maxlength="10" /></div>
+	</div>
+	<div class="time">
+		<div class="txt">联系电话</div>
+		<div class="info"><input type="text" value="13910201038" value="phone" maxlength="20" /></div>
+	</div>
+	<div class="time bing">
+		<div class="txt" style="width:80px;">面试邀请说明</div>
+		<div class="info" style="margin-left:80px;">&nbsp;</div>
+	</div>
+	<div class="time content">
+		<textarea id="memo">请填写10-200字内</textarea>
+	</div>
+	<div class="btn_group">
+		<a href="" class="cancel">取消</a>
+		<a href="" class="send">发送</a>
+	</div>
+</div>
+<div class="load" id="loading" style="display:none;">
+	<div class="mastover"></div>
+	<div class="animate"></div>
+</div>
+<script src="http://bluebee.b0.upaiyun.com/static/js/zoom.js"></script>
+<script type="text/javascript">
+$(function(){
+	var currYear = (new Date()).getFullYear();	
+	var opt={};
+	opt.datetime = {preset : 'datetime2'};
+	opt.default = {
+		theme: 'android-ics light', //皮肤样式
+	    display: 'a', //显示方式 
+	    mode: 'scroller', //日期选择模式
+		dateOrder : 'mmdd',
+		timeWheels : 'HHii',
+		dateFormat: 'mm月dd日',
+		lang: 'zh',
+		showNow: true,
+		nowText: "今天",
+		width:'60'
+	};
+
+	var optDateTime = $.extend(opt['datetime'], opt['default']);
+	$("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
+	$("#appDateTime").change(function(){
+		$('#date_show').html(this.value);
+	});
+
+	$('#memo').focus(function(){
+		var _this = $(this);
+		_this.addClass('on');
+		if(_this.val() == '请填写10-200字内') {
+			_this.val('');
+		}
+	}).blur(function(){
+		var _this = $(this);
+		if(_this.val() == '') {
+			_this.removeClass('on');
+			_this.val('请填写10-200字内');
+		}
+	});
+});
+</script>
+</body>
+</html>

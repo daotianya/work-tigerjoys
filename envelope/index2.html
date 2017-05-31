@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- 页面描述 -->
+		<meta name="description" content=""/>
+		<!-- 页面关键词 -->
+		<meta name="keywords" content=""/> 
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    	<meta http-equiv="Pragma" content="no-cache">
+    	<meta http-equiv="Cache-Control" content="no-cache">
+    	<meta http-equiv="Expires" content="0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../media/web/letter/css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../media/web/letter/css/style.css"/>
+		<script src="../media/web/letter/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../media/web/letter/js/zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../media/web/letter/js/jquery.tmpl.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		
+	</head>
+	<body>
+		<!--1.开始页-->
+		<div id="index" style="background-image: url(../media/web/letter/img/indexBG.jpg);">
+			<div class="innerWraper starMove" style="background-image:  url(../media/web/letter/img/midground.png);">  <!--盛放飘动的星星-->
+				<img src="../media/web/letter/img/moon.png" class="moon swing"/>  <!--月亮-->
+				<h2 id="title"></h2>
+				<a href="javascript:;" class="startBtn">开始写信</a>
+				<div class="ibottom" style="background-image: url(../media/web/letter/img/logo.png);">蓝蜜蜂|出品</div>
+			</div>
+			
+		</div>
+		<!--2.写信页-->
+		<div id="envelope" class="clear">
+			<div class="eWraper clear">
+				<div>
+					<span>To:</span><input type="text" name="" id="receive1" value="" placeholder="填写收件人"/>
+				</div>
+				<textarea name="" placeholder="填写内容" id="aa"></textarea>
+				<div class="fr">
+					<span>From:</span><input type="text" name="" id="send1" value="" placeholder="填写收件人"/>
+				</div>
+			</div>
+			
+			<div class="selects">
+				<a href="javascript:;" id="ePaper">选择信纸</a><span></span>
+				<a href="javascript:;" id="eCon">选择内容</a><span></span>
+			</div>
+			<a href="javascript:;" id="finish">点击生成</a>
+			
+		</div>
+		
+		<!--3.结果页-->
+		<div id="result">
+			<div class="rCon">
+				<p class="receive2"></p>
+				<p class="resultText"></p>
+				<p class="send2"></p>
+			</div>
+			<div class="rbottom">
+				<div class="btnGroup">
+					<a href="javascript:;" class="shareBtn">点击分享</a>
+					<a href="javascript:;" class="replay">再写一封</a>
+				</div>
+				<div class="desc">
+					<img src="../media/web/letter/img/wxpublic.png"/>
+					<h3>长按二维码关注<br />玩更多精彩游戏！</h3>
+					<span></span>
+				</div>
+			</div>
+			<!--遮罩层1-->
+			<div class="mask"></div>
+			<div class="pop1">
+				<p>请点击右上角<br />分享到朋友圈<br />或发送给好友/群</p>
+				<img src="../media/web/letter/img/arrow.png" class="move"/>
+			</div>
+		</div>
+		
+		<!--4.选择内容页-->
+		<div id="selectContent">
+			<a href="javascript:;">取消</a>
+			<a href="javascript:;">确定</a>
+		</div>
+		
+		<script type="text/x-jquery-tmpl" id="boxs1"> 
+		{{each(i,con) sCont}}
+			<div class="sBox">${con}</div>
+		{{/each}}	
+		</script>
+		
+		<!--5.选择信纸页-->
+		<div id="selectPaper">
+			<ul class="clear"></ul>
+			<a href="javascript:;">取消</a>
+			<a href="javascript:;">确定</a>
+		</div>
+		
+		<script type="text/x-jquery-tmpl" id="boxs2"> 
+		{{each(i,paper) sPaper}}
+			<li><img src=""/></li>
+		{{/each}}	
+		</script>
+		
+		<!--6.微信分享成功后弹窗-->
+
+		<div id="appMask" style="height: 100%;">
+			<div class="mask"></div>
+			<div class="pop2">
+				<img src="../media/web/letter/img/close.png" class="close"/>
+				<p>求职招聘就上蓝蜜蜂</p>
+				<img src="../media/web/letter/img/app.png" alt="" class="app"/>
+				<p>长按二维码立刻下载</p>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+					var json1;
+					json1={'sCont':[],'sPaper':[]}
+				
+					var letter;
+					var cdn;
+		    		$.ajax({
+					url : "http://bluebee.chenmenghan.cn/activity/letters/load",
+					type : "get",
+					dataType : "jsonp",
+		           	jsonp: "callback",
+					async: true, 
+					
+					success: function(data){
+						var cdn=data.cdn;
+						letter=data.letter;
+						$("#title").html(letter.title);
+						
+						for (var i = 0; i < letter.letterBackgroudMd5.length; i++) {
+							
+							letter.letterBackgroudMd5[i]=cdn+letter.id+"/"+letter.letterBackgroudMd5[i];
+							json1.sPaper= letter.letterBackgroudMd5;	
+						}
+						
+						json1.sCont=letter.letterContent;
+						console.log(json1);
+						document.title=letter.shareTitle;
+						
+					},
+					
+					error : function(XMLHttpRequest, textStatus, errorThrown){
+						console.log(errorThrown);  //404   500以上服务器错误
+					},
+					complete:function(){
+						//动态添加数据
+						$( "#boxs1" ).tmpl( json1 ).appendTo("#selectContent");
+						$( "#boxs2" ).tmpl( json1 ).appendTo("#selectPaper ul");
+						
+						//5.选择内容页
+						$('.sBox').click(function(){
+							$(this).css({'borderColor':'#3b9ece','backgroundImage':'url(../media/web/letter/img/ok2.png)'}).addClass('shadow').siblings('.sBox').css({'borderColor':'#666','backgroundImage':'url()'}).removeClass('shadow');
+							//将选中的内容赋给textarea
+							$('textarea').val($(this).html())
+							
+						})
+						$('#selectContent a:nth-of-type(2)').click(function(){
+							$('#envelope').css({'display':'block'});
+							$('#selectContent').css({'display':'none'});
+							$('#eCon').css('color','#3B9ECE').next('span').addClass('okBG');  //写信页“选择内容”后面对勾出现
+							
+						})
+						$('#selectContent a:nth-of-type(1)').click(function(){
+							$('#envelope').css({'display':'block'});
+							$('#selectContent').css({'display':'none'});
+							//$('#eCon').css('color','#3B9ECE').next('span').addClass('okBG');  //写信页“选择内容”后面对勾出现
+							if($('textarea').val()==''){
+								$('textarea').val('');
+							}
+							$('.sBox').css({'borderColor':'#999','backgroundImage':'url()'}).removeClass('shadow');
+							
+						})
+						//6.选择信纸页
+						var sPager=document.getElementById("selectPaper");
+						var imgList=sPager.getElementsByTagName('li');
+						var index=null;
+						var i=null;		
+						for (var i = 0; i < imgList.length; i++) {
+							imgList[i].setAttribute("index",i);    //给信纸li添加索引
+							index=imgList[i].getAttribute('index');
+							imgList[i].children[0].setAttribute('src',json1.sPaper[i]);
+							
+							imgList[i].onclick=function(){
+								i=this.getAttribute('index');
+								$('#result').css('background-image','url('+json1.sPaper[i]+')');   //选择信纸后随即改变结果页和写信页的背景
+								$('#envelope').css('background-image','url('+json1.sPaper[i]+')');
+								
+							}
+						}
+						$('#selectPaper li').click(function(){
+							$(this).append('<span></span>').addClass('shadow').siblings('li').removeClass('shadow').children('span').remove();  //信纸选中状态
+							
+						})
+						$('#selectPaper a:nth-of-type(2)').click(function(){
+							$('#envelope').css({'display':'block'});
+							$('#selectPaper').css({'display':'none'});
+							$('#ePaper').css('color','#3B9ECE').next('span').addClass('okBG');  //写信页“选择信封”后面对勾出现
+							
+						})
+						$('#selectPaper a:nth-of-type(1)').click(function(){
+							$('#envelope').css({'display':'block'});
+							$('#selectPaper').css({'display':'none'});
+							//$('#ePaper').css('color','#3B9ECE').next('span').addClass('okBG');  //写信页“选择信封”后面对勾出现
+							$('#result').css('background-image','url()');   //选择信纸后随即改变结果页和写信页的背景
+							$('#envelope').css('background-image','url()');
+							$('#selectPaper li').removeClass('shadow').children('span').remove()
+						})
+						//选择信纸结束
+						//微信config
+						wx.config({
+						    debug: false,
+						 	appId:"<%=request.getAttribute("appId")%>",
+				            timestamp: "<%=request.getAttribute("timestamp") %>",
+				            nonceStr: "<%=request.getAttribute("nonceStr") %>",
+				            signature:"<%=request.getAttribute("signature") %>",
+						    jsApiList: [
+						        // 所有要调用的 API 都要加到这个列表中
+						        'onMenuShareAppMessage',
+						        'onMenuShareTimeline'
+						    ]
+						});
+						var share_title=""+letter.shareTitle+"";
+				        var share_desc=""+letter.shareContent+"";
+				        var share_image=""+cdn+letter.id+"/"+letter.shareIconMd5+"";
+				        var share_link="http://bluebee.chenmenghan.cn/activity/letters/share";
+				        wx.ready(function () {
+				
+						   //检查设备是否能调用
+						   wx.checkJsApi({
+						       jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'], 
+						       success: function(res) {}
+						   });
+					
+					        // 在这里调用 API
+					        wx.onMenuShareAppMessage({
+					            title: share_title, // 分享标题
+					            desc: share_desc, // 分享描述
+					            link: share_link, // 分享链接
+					            imgUrl: share_image, // 分享图标
+					            type: '', // 分享类型,music、video或link，不填默认为link
+					            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					            success: function () {
+					                    // 用户确认分享后执行的回调函数 显示app二维码
+					                    show();
+							    },
+					            cancel: function () {
+					                    // 用户取消分享后执行的回调函数，
+					                    show();
+					            }
+					        });
+					
+					        wx.onMenuShareTimeline({
+					            title: share_title, // 分享标题
+					            link: share_link, // 分享链接
+					            imgUrl: share_image, // 分享图标
+					            success: function () {
+					                    // 用户确认分享后执行的回调函数
+					                    show();
+								},
+					            cancel: function () {
+					                    // 用户取消分享后执行的回调函数
+					                    show();
+								}
+					        });
+				    	});	
+					}
+				});
+				//1.首页-->写信页跳转
+				$('.startBtn').click(function(){
+					$("#index").css({'display':'none'});
+					$("#envelope").css({'display':'block'});
+				})
+				
+				//2.写信页-->结果页  并将写的内容赋给结果页
+				$('#finish').click(function(){
+					
+						//写信内容赋给结果页
+						$('.receive2').html($('#receive1').val()+"：");
+						$('.resultText').html($('textarea').val());
+						$('.send2').html($('#send1').val());
+						//写完信内容清空
+						$('#receive1').val('');
+						$('textarea').val('');
+						$('#send1').val('');
+						
+						$('#envelope').css({'display':'none'});
+						$('#result').css({'display':'block'});
+				})
+				
+				$('#eCon').click(function(){
+					//下方“选择内容”页面跳转
+					$('#selectContent').css({'display':'block'});
+					$('#envelope').css({'display':'none'});
+				})
+				$('#ePaper').click(function(){
+					//下方“选择信纸”页面跳转
+					$('#selectPaper').css({'display':'block'});
+					$('#envelope').css({'display':'none'});
+				})
+				
+				//3.遮罩层
+		    	$('.shareBtn').click(function(){
+		    		$('.mask,.pop1').css('display','block');
+		    		
+		    		var w=-Math.round($('.pop1 p').innerWidth()/2)+'px';  //控制遮罩内文字居中
+		    		$('.pop1 p').css('margin-left',w);
+		    		
+		    		setTimeout(function(){
+		    			$('.mask,.pop1,#appMask').css('display','none');
+		    		},3000)
+		    	})
+		    	$('.mask').click(function(){
+		    		$('.mask,.pop1').css('display','none');
+		    	})
+				//遮罩层结束
+				
+				//4.再玩一次
+				$('.replay').click(function(){
+					$('#envelope').css('display','block');
+					$('#result').css('display','none');
+					$('.selects span').removeClass('okBG').siblings('a').css({'color':'#666'});  //去掉写信页下方“选择信封，选择内容”后面对勾
+					$('.sBox').css({'borderColor':'#666','backgroundImage':'url(img/ok.png)'}).removeClass('shadow')   //在写一封，’选择内容页‘和’选择信纸页‘恢复没有选中时样式
+					$('#selectPaper li').removeClass('shadow').children('span').remove();
+					$('#envelope').css('background-image','url()');  //写信页背景恢复为无
+					
+				});
+				//分享后弹窗--》页面跳转     微信分享成功后回调函数
+				function fade(){
+					$('#appMask,.mask').css('display','none');
+					$('#result').css('display','block');
+				}
+				$('.close,.mask').click(function(){
+					fade();
+				})
+				
+				function show(){
+					$('#appMask,.mask').css('display','block');
+					$('#result').css('display','none');
+				}
+			});
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    	<meta http-equiv="Pragma" content="no-cache">
+    	<meta http-equiv="Cache-Control" content="no-cache">
+    	<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title></title>
+		<script>
+	        (function (doc, win) {
+	          var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	              var clientWidth = docEl.clientWidth;
+	              if (!clientWidth) return;
+	              docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+	            };
+	
+	          if (!doc.addEventListener) return;
+	          win.addEventListener(resizeEvt, recalc, false);
+	          doc.addEventListener('DOMContentLoaded', recalc, false);
+	        })(document, window);
+		</script>
+		<style type="text/css">
+			html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+			dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+			a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+			strong, sub, sup, tt, var, legend, fieldset {
+			    margin: 0;
+			    padding: 0;
+			    font-family: "Microsoft YaHei", "微软雅黑",arial,"arial black", Georgia, "Times New Roman",STXihei, "华文细黑",serif;
+			}
+			article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+			    display: block;
+			}
+			li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+			img{border:none;vertical-align:top;width: 100%;height: auto;width: auto\9;}
+			.clear{zoom:1;}
+			.clear:after{content:"";display:block;clear:both;}
+			.fl{float:left;}
+			.fr{float:right;}
+			
+			/*====正体====*/
+			.active_wrapper{width: 18rem;height: 30.75rem;position: relative;background: #f63265;}
+			.active_con{width: 100%;background: #f63265;}
+			.active_con ul li{height: 2.2rem;border-bottom: 1px solid #ee6689;width: 17.55rem;margin-left: 0.45rem;}
+			.active_con ul li p{float: left;font-size: 0.8rem;color: #fff;line-height:2.2rem;}
+			.active_con ul li a{float: right;display:block;text-align: center; font-size: 0.75rem;color: #fde138;width: 2.2rem;height:1.05rem;line-height:1.05rem;margin-top: 0.6rem;border: 1px solid #FDE138;border-radius: 0.2rem;-webkit-border-radius: 0.2rem;margin-right: 0.5rem;}
+			.color_text{color: #FDE138;}
+			.active_text{padding: 0.45rem 0.45rem;}
+			.active_text h2{font-size: 0.75rem;color: #FFFFFF;font-weight: normal;padding-bottom: 0.4rem;padding-top: 0.2rem;}
+			.active_text p{font-size: 0.65rem;color: #fff;line-height: 1.1rem;}
+			.back{position: absolute;top: 0.8rem;left:0.6rem;height: 1.025rem;width: 0.575rem;}
+		</style>
+	</head>
+	<body>
+		<div class="active_wrapper">
+			<a href="#" class="back"><img src='img/backImg.png'/></a>
+			<img src="img/active_head2.jpg"/>
+			<div class="active_con">
+				<ul>
+					<li class="clear">
+						<p>充<span>30</span>返<span class="color_text">18</span>元现金券</p>
+						<a href="#">充值</a>
+					</li>
+					<li class="clear">
+						<p>充<span>50</span>返<span class="color_text">28</span>元现金券</p>
+						<a href="#">充值</a>
+					</li>
+					<li class="clear">
+						<p>充<span>100</span>返<span class="color_text">68</span>元现金券</p>
+						<a href="#">充值</a>
+					</li>
+					<li class="clear">
+						<p>充<span>300</span>返<span class="color_text">218</span>元现金券</p>
+						<a href="#">充值</a>
+					</li>
+				</ul>
+				<div class="active_text">
+					<h2>活动规则</h2>
+					<p>1、活动时间：12月15日-1月31日</p>
+					<p>2、单次充值满30元，即可获得现金券奖励，充值金额越高，获得的奖励越多</p>
+					<p>3、充值奖励只能在蓝蜜蜂夺宝商城消费</p>
+					<p>4、活动最终解释权归蓝蜜蜂所有。</p>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

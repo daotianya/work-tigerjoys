@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <title></title>
+    <script src='js/jquery-1.8.3.min.js'></script>
+    <script src="js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <style>
+    	#bg{background-color:#000;position:absolute;z-index:99;left:0;top:0;width:100%;opacity:0.4;filter: alpha(opacity=40);-moz-opacity: 0.4;}
+       	.box{width: 12.4rem;height: 13.6rem;background: url(img/maskBox.png) no-repeat center center;background-size: contain; position: absolute;top: 50%;left: 50%;z-index: 100;margin-left: -6.2rem;margin-top: -6.8rem;}
+    	.close{position: absolute;right: 0.5rem;top: 0.5rem;width: 1rem;height: 1rem;background: url(img/close.png) no-repeat center center;background-size: contain;}
+    	.content {padding-top: 6rem;text-align: center;}
+    	.content p{font-size: 0.95rem;color: #333;padding-bottom: 0.8rem;}
+    	.content a{width:10rem;height: 1.75rem;font-size: 0.7rem;display: block;line-height: 1.75rem;margin: 0 auto;}
+    	.content a:nth-of-type(1){background: #fe612a;color: #fff;margin-bottom: 0.3rem;}
+    	.content a:nth-of-type(2){background: #eee;color: #999;}
+    </style>
+</head>
+<body>
+<div class="popMask">
+	<div id="bg"></div>
+	<div class="box">
+	    <span class="close"></span>
+	    <div class="content">
+	    	<p>注册即送免费电话1小时<br />还有金币赠送</p>
+	    	<a href="javascript:;">注册</a>
+	    	<a href="javascript:;">稍后再说</a>
+	    </div>
+	</div>
+</div>
+
+<script>
+    $(function () {
+    	 //实现滚动条无法滚动
+		var mo=function(ev){
+			var ev=ev||event;
+			ev.preventDefault();
+		};
+		
+		/***禁止滑动***/
+		function stopScroll(){
+		    document.body.style.overflow='hidden';        
+		    document.addEventListener("touchmove",mo,false);//禁止页面滑动
+		}
+		
+		/***取消滑动限制***/
+		function moveScroll(){
+		    document.body.style.overflow='';//出现滚动条
+		    document.removeEventListener("touchmove",mo,false);        
+		}
+		
+        
+        stopScroll();
+        $("#bg").css({'height': $(document).height()});
+        
+       
+    });
+</script>
+
+
+
+</body>
+</html>

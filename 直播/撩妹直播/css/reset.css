@@ -1,0 +1,26 @@
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+    margin: 0;
+    padding: 0;
+    font-family:"微软雅黑",arial,"arial black";
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+    display: block;
+}
+table{border-collapse:collapse;} 
+Textarea{resize:none;overflow:auto;outline:none;}
+li{list-style:none;}
+a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+img{border:none;vertical-align:top;height: auto;max-width: 100%;}
+input:focus {
+    -webkit-appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.clear{zoom:1;}
+.clear:after{content:"";display:block;clear:both;}
+.fl{float:left;}
+.fr{float:right;}

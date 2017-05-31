@@ -1,0 +1,11 @@
+function is_iPad(){ 
+	var ua = navigator.userAgent.toLowerCase(); 
+	if(ua.match(/android/i)=="android") { 
+		return true; 
+		alert(ua)
+	} else { 
+		return false;
+	} 
+}
+		
+is_iPad();

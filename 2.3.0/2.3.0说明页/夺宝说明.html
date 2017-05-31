@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    
+		<meta http-equiv="Pragma" content="no-cache">
+    
+		<meta http-equiv="Cache-Control" content="no-cache">
+    
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>短视频点赞</title>
+		<style type="text/css">
+			html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+			dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+			a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+			strong, sub, sup, tt, var, legend, fieldset {
+			    margin: 0;
+			    padding: 0;
+			    font-family: arial,"微软雅黑";
+			}
+			li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+			
+			.trea_help{width: 18rem;height:30.75rem;}
+			
+			.tHelpCon{width: 15rem;margin: 0 auto;padding-top: 1.5rem;}
+			.tHelpCon h1{font-size: 0.75rem;color: #333;padding-bottom: 0.35rem;}  /*30px*/
+			.tHelpCon p{color: #666;font-size: 0.6rem;padding-bottom: 0.15rem;line-height: 0.9rem;}
+			.tHelpCon hgroup{padding-bottom: 0.35rem;}
+			
+			.tHelpNav{width: 18rem;height: 2.4rem;background: #1a95fc;color: #fff;font-size: 0.95rem;text-align: center;line-height: 2.4rem;}
+			.tHelpNav a{display: inline-block;}
+			.backBtn img{width: 0.6rem;height: auto;position: absolute;top: 0.65rem;left: 1rem;}
+		</style>
+		<script>
+	        (function (doc, win) {
+	          var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	              var clientWidth = docEl.clientWidth;
+	              if (!clientWidth) return;
+	              docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+	            };
+	
+	          if (!doc.addEventListener) return;
+	          win.addEventListener(resizeEvt, recalc, false);
+	          doc.addEventListener('DOMContentLoaded', recalc, false);
+	        })(document, window);
+	</script>
+	</head>
+	<body style="background: #fafafa;">
+		<div class="trea_help">
+			<nav class="tHelpNav">
+				<a href="javascript:;" class="backBtn"><img src="back.png"/></a>
+				<span>夺宝说明</span>
+			</nav>
+			<div class="tHelpCon">
+				<h1>1、什么是一元夺宝?</h1>
+				<hgroup>
+					<p>一元夺宝是蓝蜜蜂推出的全新平台业务，旨在增加用户购买付费商品的趣味性。每个用户只需1元就有机会获得心仪的产品。</p>
+				</hgroup>
+				<h1>2、怎样参加一元夺宝?</h1>
+				<hgroup>
+					<p>用户登录或者注册蓝蜜蜂账号，就可以参加一元夺宝了。</p>
+					<p>参加方式：</p>
+					<p>选择自己喜欢的商品，选择要参与的人次并支付；每人次需要花费一元，获得一个夺宝号码，然后开始夺宝。</p>
+				</hgroup>
+				<h1>3、幸运号码的计算方法是什么?</h1>
+				<hgroup>
+					<p>(1)、商品的最后一个号码分配完毕后，将公示该分配时间点该商品的最后100个参与用户的ID；</p>
+					<p>(2)、将这100个ID的数值进行求和(得出数值A)；</p>
+					<p>(3)、从 1000000-9999999 随机去一个数B，幸运号码公式为：(A+B)%商品总份数+ 100000001 ，得出最终幸运号码，拥有该幸运号码者，直接获得该商品。</p>
+					<p>(4)、用户分配号码在【10000001，10000000+商品总人次】区间内随机产生。</p>
+				</hgroup>
+				<h1>4、怎么确定是否夺宝成功?</h1>
+				<hgroup>
+					<p>夺宝成功后我们会电话跟您确认，您也可以在我的夺宝记录查看是否夺宝成功。</p>
+				</hgroup>
+				<h1>5、网上支付未及时到帐怎么办?</h1>
+				<hgroup>
+					<p>网上支付未及时到帐可能有以下几个原因造成：</p>
+					<p>第一，由于网速或者支付接口等问题，支付数据没有及时传送到支付系统造成的；</p>
+					<p>第二，网速过慢，数据传输超时使银行后台支付信息不能成功对接，导致银行交易成功而支付后台显示失败；</p>
+					<p>如果支付过程问题遇到问题，请与我们联系。</p>
+				</hgroup>
+				<h1>6、收货地址怎么填写</h1>
+				<hgroup>
+					<p>　首先当您中奖了系统会在“夺宝记录”页面提醒您填写收货地址，您填写了收货地址之后，我们的工作人员会打电话跟您确认地址，确认完后就会按照您留下的联系方式和地址给您寄送快递。(所以，地址一定要认真填写哦)。</p>
+				</hgroup>
+				<h1>7、多久能收到货</h1>
+				<hgroup>
+					<p>在收到您的地址信息后，蓝蜜蜂的工作人员会马不停蹄的为您打包发送，一般7个工作日内给您发货，希望收到宝贝后能帮蓝蜜蜂多多宣传哦。</p>
+				</hgroup>
+				<h1>8、 夺宝获得商品如何保修</h1>
+				<hgroup>
+					<p>一元夺宝所有商品均从正规渠道采购，100%正品，可享受厂家所提供的全国联保服务。售后标准均依照该商品的售后标准进行。(如产品遇到质量问题，建议第一时间联系该产品的官方指定售后维修点；若您遇到无法自行处理的，可联系蓝蜜蜂进行协助处理)。</p>
+				</hgroup>
+			</div>
+		</div>
+	</body>
+</html>
+

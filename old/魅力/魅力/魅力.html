@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<link rel="prerender" href="http://bluebee.b0.upaiyun.com/activity/meili/back.jpg" />
+<link rel="prerender" href="http://bluebee.b0.upaiyun.com/activity/meili/bj.jpg" />
+<title>想知道你的魅力吗？ - 蓝蜜蜂</title>
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,em,img,small,strong,sub,sup,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{-moz-user-select: none;–webkit-user-select:none;background-color:#f1f2f7;font-family: "Microsoft YaHei", "SimSun", "Arial Narrow", HELVETICA;font-size:12px;}
+ol,ul{list-style:none}
+img{border:none}
+a:active,a:hover{outline:0 none}
+a,a:hover{text-decoration:none}:focus{outline:0 none}
+.bg{width:100%;}
+
+#page1 .btngroup{position: absolute;top: 84%;width: 100%;height: 100px;z-index: 10;background: url('http://bluebee.b0.upaiyun.com/activity/meili/btn.png') no-repeat 61%;background-size: 220px 61px;}
+
+#page1 .hand{width: 87px;height: 106px;display: block;position: absolute;left: 25px;top: -11px;z-index: 12;background: url('http://bluebee.b0.upaiyun.com/img/weixin/miyue/hand.png') no-repeat 50%;background-size: 80px 96px;}
+#page1 .roate{animation:myhand 0.5s infinite;-webkit-animation:myhand 0.5s infinite;}
+@-webkit-keyframes myhand {
+0% {-moz-transform:rotate(0);-webkit-transform:rotate(0);-o-transform:rotate(0);}
+12% {-moz-transform:rotate(-10deg);-webkit-transform:rotate(-10deg);-o-transform:rotate(-10deg);}
+25% {-moz-transform:rotate(-20deg);-webkit-transform:rotate(-20deg);-o-transform:rotate(-20deg);}
+37% {-moz-transform:rotate(-10deg);-webkit-transform:rotate(-10deg);-o-transform:rotate(-10deg);}
+50% {-moz-transform:rotate(0);-webkit-transform:rotate(0);-o-transform:rotate(0);}
+62% {-moz-transform:rotate(10deg);-webkit-transform:rotate(10deg);-o-transform:rotate(10deg);}
+75% {-moz-transform:rotate(20deg);-webkit-transform:rotate(20deg);-o-transform:rotate(20deg);}
+87% {-moz-transform:rotate(10deg);-webkit-transform:rotate(10deg);-o-transform:rotate(10deg);}
+}
+
+#page1 a.btn{background:url('http://bluebee.b0.upaiyun.com/img/weixin/miyue/word.png') no-repeat 50%;background-size:56px 25px;width:140px;height:28px;left:24%;top:36px;z-index:12;position:absolute;display:block;}
+#page1 a.def{animation:mybtn 0.3s infinite alternate;-webkit-animation:mybtn 0.3s infinite alternate;}
+@-webkit-keyframes mybtn {
+0% {-moz-transform:scale(1);-webkit-transform:scale(1);-o-transform:scale(1);}
+25% {-moz-transform:scale(1.05);-webkit-transform:scale(1.05);-o-transform:scale(1.05);}
+50% {-moz-transform:scale(1.1);-webkit-transform:scale(1.1);-o-transform:scale(1.1);}
+75% {-moz-transform:scale(1.15);-webkit-transform:scale(1.15);-o-transform:scale(1.15);} 
+100% {-moz-transform:scale(1.2);-webkit-transform:scale(1.2);-o-transform:scale(1.2);}
+}
+
+#page2 .starts{position:absolute;top:261px;left:140px;width:100px; height:16px; }
+#page2 .st{display:inline-block;width:16px;height:16px;overflow:hidden;vertical-align:middle;
+	background:url(http://bluebee.b0.upaiyun.com/activity/caiyun/xing.png) repeat-x 0 0px;
+	background-size: 100%;}
+
+#page2 .code1{position: absolute;top: 488px;left: 142px;width: 70px; height: 70px;}
+#page2 .code2{position: absolute;top: 488px;left: 223px;width: 70px; height: 70px;}
+#page2 .desc{width:88%;position:absolute;left:6%;top: 282px;line-height: 20px;font-size: 12px;letter-spacing: 1px;font-family: "Microsoft YaHei", "SimSun", "Arial Narrow", HELVETICA;}
+</style>
+</head>
+
+<body>
+<div id="page1">
+	<img src="http://bluebee.b0.upaiyun.com/activity/meili/bj.jpg" class="bg" />
+	<div class="btngroup">
+		<span class="hand"></span>
+		<a href="javascript:void(0);" id="btn" class="btn def"></a>
+	</div>
+</div>
+<div id="page2" style="display:none;">
+	<div id="starts" class="starts">
+		<span class="st"></span>
+	</div>
+	<img id="bg" class="bg" src="http://bluebee.b0.upaiyun.com/activity/meili/back.jpg"/>
+	<div class="desc" id="desc">稳重和乐於照顾别人的特质，总是散发让人安心和依赖的魅力加上你的随和愉悦特质，更是无尽的魅力泉源。</div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//禁用右键
+	$("img").bind("contextmenu", function(e){ return false; });
+	//禁止拖拽
+	$("img").bind("dragstart", function(e){ return false; });
+});
+
+wx.config({
+      debug: false,
+      appId: '${appid}',
+      timestamp: ${timestamp},
+      nonceStr: '${nonceStr}',
+      signature: '${signature}',
+      jsApiList: [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage'
+      ]
+});
+ 
+wx.ready(function(){
+  	wx.checkJsApi({
+	    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'], 
+	    success: function(res) {
+    	}
+	});
+  	wx.onMenuShareAppMessage({
+  		title: '想知道你的魅力吗？',
+		desc: '我的魅力竟然是这样！你也来试试吧！',
+  	    link: 'http://bluebee.lanmifeng.com/weixin/meili',
+  	    imgUrl: 'http://bluebee.b0.upaiyun.com/activity/meili/icon.jpg',
+  	    success: function () { 
+  	        //alert('已分享');
+  	    },
+  	    cancel: function () { 
+  	        //alert('已取消');
+  	    }
+  	});
+  	wx.onMenuShareTimeline({
+  		title: '想知道你的魅力吗？',
+		desc: '我的魅力竟然是这样！你也来试试吧！',
+  		link: 'http://bluebee.lanmifeng.com/weixin/meili',
+  	    imgUrl: 'http://bluebee.b0.upaiyun.com/activity/meili/icon.jpg',
+  	    success: function () { 
+  	        //alert('已分享');
+  	    },
+  	    cancel: function () { 
+  	        //alert('已取消');
+  	    }
+  	});
+	wx.error(function(res){
+	//alert(res);
+	});
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	var list = [
+{s:5,d:'你的魅力是充满神秘感的，看着让人觉得非常性感。是非常知性的人，擅长把握对方的感情线，对自己的东西有着强烈的占有欲，喜欢征服自己没有的东西。这样的性格让许多人感觉到可怕，同时也被这样的魅力深深吸引，迷恋。'},
+{s:3,d:'你天生就特别的霸气，个性十足，虽然永远都带有一些孩子气，但也算有点率真可爱吧。能够凭借着自己的才华，装扮入时的个性，旁人几乎都会被你那独特的魅力所折服。'},
+{s:5,d:'你热情豪气，处理事物举止得当，善于观察，再加上乐观的性格让和他在一起的人都会感觉十分舒服。特别是在恋爱方面，对方完全是一种享受，可以说是挺有人格魅力的人。'},
+{s:5,d:'你为人特别的开朗活泼，不仅仅喜欢冒险，还喜欢寻求刺激。也正是因为你时刻散发出的活力，给人一种青春洋溢之感，身边的异性自然也就多了，人格魅力指数暴增。'},
+{s:4,d:'你体贴、善良，而且异常的顾家，是个以家庭为重心的人。并且是最温柔、最深情的。这种安定感，不是一般人所能给予的，自然会有不少的异性被他吸引。'},
+{s:3,d:'你具有明星般魅力，无论是学识、修养、气质，皆令异性为你迷倒，可是你不甘寂寞的个性，却令不少人却步，从不满足于现状的你，不断去追求更高层次。'},
+{s:4,d:'稳重和乐於照顾别人的特质，总是散发让人安心和依赖的魅力加上你的随和愉悦特质，更是无尽的魅力泉源。'},
+{s:3,d:'你的人道精神和艺术品味丰富创意，使你有着略带神秘的特质以致魅力无限。同时，你的童稚之美和慧巧的生活态度让人不由得的喜欢你。'}
+
+	];
+
+	$('#btn').one('click',function(){
+		$(this).removeClass('def').prev().addClass('roate');
+		setTimeout(function(){
+			var i = (~~(Math.random()*1000))%8;
+			var starts = $('#starts');
+			starts.empty();
+
+			$('#desc').html(list[i].d);
+			for(var x=0;x<list[i].s;x++){
+				starts.append('<span class="st"></span>');
+			}
+			$('#page1').hide();
+			$('#page2').show();
+			
+			wx.onMenuShareAppMessage({
+			    title: '想知道你的魅力吗？',
+			    desc: '我的魅力竟然是这样！你也来试试吧！',
+			    link: 'http://bluebee.lanmifeng.com/weixin/meili',
+			    imgUrl: 'http://bluebee.b0.upaiyun.com/activity/meili/icon.jpg',
+			    success: function () { 
+			        //alert('已分享');
+			    },
+			    cancel: function () { 
+			        //alert('已取消');
+			    }
+			});
+			wx.onMenuShareTimeline({
+				title: '想知道你的魅力吗？',
+			    desc: '我的魅力竟然是这样！你也来试试吧！',
+				link: 'http://bluebee.lanmifeng.com/weixin/meili',
+			    imgUrl: 'http://bluebee.b0.upaiyun.com/activity/meili/icon.jpg',
+			    success: function () { 
+			        //alert('已分享');
+			    },
+			    cancel: function () { 
+			        //alert('已取消');
+			    }
+			});
+
+		},2000);
+	});
+});
+</script>
+<script src="http://bluebee.b0.upaiyun.com/static/js/zoom.js"></script>
+#parse("information/bdjs.html")
+</body>
+</html>

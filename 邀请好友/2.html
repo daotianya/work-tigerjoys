@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <title></title>
+    <script src='js/jquery-1.8.3.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <style>
+    	/*样式重置*/
+    	html, body,div, h1, h2, h3, h4, h5, h6, p,a,img,span
+		{
+		    margin: 0;
+		    padding: 0;
+		    font-family: arial,"微软雅黑";
+		}
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+		    display: block;
+		}
+		
+		a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		img{border:none;vertical-align:top; max-width: 100%;height: auto;width: auto\9;}
+		
+		.clear{zoom:1;}
+		.clear:after{content:"";display:block;clear:both;}
+		.fl{float:left;}
+		.fr{float:right;}
+		
+		#redEnvelope{height: 30.75rem;width: 18rem;}
+		#redEnvelope a{width: 11.8rem;height:4.8rem; margin: 0 auto;display: block;padding: 12.975rem 0;}
+    </style>
+    
+    <script>
+//  控制页面放缩
+    (function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth) return;
+				docEl.style.fontSize = 20 * (clientWidth / 360) + 'px';
+			};
+	
+		if (!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+</head>
+<body>
+	<div id="redEnvelope">
+		<a href="javascript:;"><img src="2.png"/></a>
+	</div>
+	
+</body>
+</html>

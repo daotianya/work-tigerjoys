@@ -1,0 +1,99 @@
+@charset "utf-8";
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,em,img,small,strong,sub,sup,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{-moz-user-select: none;–webkit-user-select:none;background-color:#f1f2f7;font-family: "Microsoft YaHei", "SimSun", "Arial Narrow", HELVETICA;font-size:12px;}
+ol,ul{list-style:none}
+img{border:none}
+section{background:#fff;margin-bottom:15px;border-bottom:1px solid #ddd;}
+.breakall{overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;}
+
+a.link{text-decoration:none;color:#1a95fc;font-size:12px;}
+a.link:hover{color:#f72880;}
+a.link:active{color:#999;}
+
+a.tit{text-decoration:none;color:#333;display:block;padding:10px;height:70px;overflow:hidden;}
+a.tit:active{background:#ddd;}
+a.tit:visited{color:#999;}
+a.tit:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+
+header.rq{font-size:12px;background:#e2f0fa;height:26px;line-height:26px;color:#1a95fc;padding-left:10px;}
+
+.head{background:#189afe;text-align:center;overflow:hidden;color:#fff;font-size:15px;font-weight:bold;height:42px;line-height:42px;position: fixed;z-index:1000;width:100%;}
+.head .back{text-decoration:none;display:block;cursor:pointer;width:36px;height:36px;float:left;position: relative;position: absolute;overflow: hidden;left: 0;top: 2px;}
+.head .back:before, .head .back:after {content: '';position: absolute;height: 2px;width: 31%;top: 50%;left: 10%;margin-top: -1px;background: #fff;}
+.head .back:before{left: 32%;top: 62%;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);}
+.head .back:after{left: 32%;top: 43%;-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-ms-transform: rotate(-45deg);-o-transform: rotate(-45deg);transform: rotate(-45deg);}
+
+.list li{border-bottom:1px solid #ddd;}
+.list .img{float:left;width:100px;line-height:70px;}
+.list .img img{width:100px;height:70px;vertical-align: middle;}
+.list .itro{margin-left:115px;line-height:20px;}
+.list .itro h3{font-size:14px;padding-top:3px;}
+.list .itro p{font-size:10px;margin-top:5px;height:40px;display: -webkit-box;text-overflow: ellipsis;-webkit-line-clamp:2;overflow : hidden;-webkit-box-orient: vertical;}
+.btm{height:30px;line-height:30px;padding:0 10px;text-align:right;}
+
+.piclist{overflow:hidden;clear:both;zoom:1;overflow:hidden;padding:10px 0 10px 10px;}
+.piclist:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.piclist li{float:left;width:30%;padding-right:10px;}
+.piclist li img{width:100%;}
+
+.atlas{padding:10px 10px 10px;border:1px solid #ddd;}
+.atlas p{font-size:16px;font-weight:bold;height:40px;line-height:40px;}
+.atlas p span{float:right;background:url('http://bluebee.b0.upaiyun.com/app/news/images/pic.jpg') no-repeat left center;background-size:26px 25px;display:inline-block;font-size:20px;color:#999;padding-left:29px;font-weight:normal;}
+
+.atlas ul{overflow:hidden;zoom:1;clear:both;}
+.atlas li{float:left;overflow:hidden;width:37.7%;}
+.atlas li img{width:100%;}
+.atlas li.top{margin-bottom:5px;}
+.atlas li.big{width:58.7%;margin-right:10px;}
+
+.story li{line-height:20px;border-bottom:1px solid #ddd;padding:10px 10px 5px;}
+.story h3{font-size:14px;}
+.story p{font-size:10px;margin-top:5px;height:40px;display: -webkit-box;text-overflow: ellipsis;-webkit-line-clamp:2;overflow : hidden;-webkit-box-orient: vertical;}
+
+.episode{padding:5px 10px;border-bottom:1px solid #ddd;}
+.episode p{line-height:20px;font-size:10px;margin-top:5px;height:60px;display: -webkit-box;text-overflow: ellipsis;-webkit-line-clamp:3;overflow:hidden;-webkit-box-orient:vertical;}
+
+/**
+ * 下拉样式 Pull down styles
+*/
+#wrapper {position:absolute; z-index:1;top:42px; bottom:0;left:0;width:100%;background:#f1f2f7;overflow:auto;}
+#scroller {position:relative;/*	-webkit-touch-callout:none;*/-webkit-tap-highlight-color:rgba(0,0,0,0);width:100%;padding:0;}
+.main{position: relative;padding: 0;margin: 0;width: 100%;}
+.main .item{}
+
+#pullDown, #pullUp {background:#fff;height:40px;line-height:40px;padding:5px 10px;border-bottom:1px solid #ccc;font-weight:bold;font-size:14px;color:#888;}
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {display:block; float:left;width:40px; height:40px;background:url("http://bluebee.b0.upaiyun.com/app/news/images/pull-icon@2x.png") 0 0 no-repeat;-webkit-background-size:40px 80px; background-size:40px 80px;-webkit-transition-property:-webkit-transform;-webkit-transition-duration:250ms;}
+#pullDown .pullDownIcon {-webkit-transform:rotate(0deg) translateZ(0);}
+#pullUp .pullUpIcon  {-webkit-transform:rotate(-180deg) translateZ(0);}
+#pullDown.flip .pullDownIcon {-webkit-transform:rotate(-180deg) translateZ(0);}
+#pullUp.flip .pullUpIcon {-webkit-transform:rotate(0deg) translateZ(0);}
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {background-position:0 100%;-webkit-transform:rotate(0deg) translateZ(0);-webkit-transition-duration:0ms;-webkit-animation-name:loading;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-timing-function:linear;}
+@-webkit-keyframes loading {from { -webkit-transform:rotate(0deg) translateZ(0); }to { -webkit-transform:rotate(360deg) translateZ(0);}}
+
+/*------------- S 以下css主要是仿IOS滚动条样式(可选样式)  -------------*/		
+/**
+ * Horizontal Scrollbar
+ */
+.myScrollbarH {position:absolute;z-index:100;height:7px;bottom:1px;left:2px;right:7px}
+.myScrollbarH > div {height:100%;}
+.myScrollbarV {position:absolute;z-index:100;width:7px;bottom:7px;top:2px;right:1px}
+.myScrollbarV > div {width:100%;}
+.myScrollbarH > div,.myScrollbarV > div {position:absolute;z-index:100;/* The following is probably what you want to customize */-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;border-width:3px;-webkit-border-image:url("http://bluebee.b0.upaiyun.com/app/news/images/scrollbar.png") 6 6 6 6;-moz-border-image:url("http://bluebee.b0.upaiyun.com/app/news/images/scrollbar.png") 6 6 6 6;-o-border-image:url("http://bluebee.b0.upaiyun.com/app/news/images/scrollbar.png") 6 6 6 6;border-image:url("http://bluebee.b0.upaiyun.com/app/news/images/scrollbar.png") 6 6 6 6;}
+/*------------- E 以上css主要是仿IOS滚动条样式  -------------*/
+
+
+.duanzi{margin-bottom: 0;border-bottom: none;}
+.duanzi ul{line-height:20px;font-size:12px;background:#f1f2f7;}
+.duanzi li{padding:10px;border-bottom:1px solid #ddd;text-indent: 24px;background:#fff;margin-bottom:10px;}
+.duanzi li img{width:100%;margin:5px 0;}
+
+.meinv{background:#f1f2f7;line-height:20px;}
+.meinv li{padding:5px 10px 10px;border-bottom:1px solid #ddd;}
+.meinv h3{font-size:14px;padding-top:3px;margin-bottom:5px;font-size:12px;font-weight:normal;}
+.meinv img{width:100%;}
+
+.info{padding:52px 10px 10px;}
+.info h1{font-size:14px;color:#333;margin-bottom:10px;}
+.info .tit-bar{font-size:10px;color:#666;margin-bottom:10px;}
+.info .content{height:20px;line-height:20px;color:#333;font-size:14px;}
+.info .content img{width:100%;}

@@ -1,0 +1,16 @@
+function ChangeWidth(eve){
+			var len = 0;
+			var CommuntTimer = null;
+			CommuntTimer = setInterval(function() {
+			len+= 0.1;
+			eve.data.element.width(len + '%');
+			if (len >= eve.data.endW) {
+				clearInterval(CommuntTimer);
+			}
+			}, 10)
+}
+
+
+//µ÷ÓÃ
+$("#nintyfifth").on("myFun", {'element':$("#nintyfifth"),'endW':nintyfifthW}, ChangeWidth);
+$("#nintyfifth").trigger('myFun');

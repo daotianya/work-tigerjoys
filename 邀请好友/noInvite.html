@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari-->
+		<!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式-->
+		<!-- 可选default、black、black-translucent -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png" />
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>邀请好友</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#myInvWraper{width: 18rem;height: 30.75rem;}
+			header{height: 2.4rem;width: 18rem;background: #1a95fc;color: #fff;font-size: 0.95rem;text-align: center;line-height: 2.4rem;}
+			header a{display: inline-block;}
+			.backBtn img{width: 0.6rem;height: auto;position: absolute;top: 0.65rem;left: 1rem;}
+			.myInvTop{width: 18rem;height: 1.5rem;background: #eee;padding: 0 0.6rem;box-sizing: border-box;-webkit-box-sizing: border-box;line-height: 1.5rem;}
+			.myInvTop p{font-size: 0.65rem;color: #666;}
+			.myInvTop p span{color: #f04869;}
+			.myInvTop p:nth-of-type(1){float: left;}
+			.myInvTop p:nth-of-type(2){float: right;}
+			
+			
+			/*新添加*/
+			.noBG{width: 18rem;text-align: center;padding-top: 2.9rem;}
+			.noBG img{width: 5rem;padding-bottom: 1rem;}
+			.noBG figcaption{font-size: 0.75rem;color: #666;}
+			.InvBtn{display: block;width: 16.8rem;height: 2rem;color: #fff;font-size: 0.9rem;text-align: center;line-height: 2rem;margin: 0 auto;background: #2ba7ee;margin-top:5rem;}
+ 		</style>
+		
+	</head>
+
+	<body>
+		<div id="myInvWraper">
+			<header>
+				<a href="javascript:;" class="backBtn"><img src="img/back.png" /></a>
+				<span>我的邀请</span>
+			</header>
+			<div class="myInvTop clear">
+				<p>您已成功邀请好友<span>10</span>人</p>
+				<p>累计<span>1000</span>金币</p>
+			</div>
+			
+			<!--新添加-->
+			<div class="noBG">
+				<figure>
+					<img src="img/cry.png"/>
+					<figcaption>等啥捏，邀请好友呗！</figcaption>
+				</figure>
+			</div>
+			
+			<a href="javascript:;" class="InvBtn">邀请好友</a>   <!--注意类名有改-->
+		</div>
+	</body>
+
+</html>

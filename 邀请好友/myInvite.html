@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari-->
+		<!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式-->
+		<!-- 可选default、black、black-translucent -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png" />
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<title>邀请好友</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#myInvWraper{width: 18rem;height: 30.75rem;}
+			header{height: 2.4rem;width: 18rem;background: #1a95fc;color: #fff;font-size: 0.95rem;text-align: center;line-height: 2.4rem;}
+			header a{display: inline-block;}
+			.backBtn img{width: 0.6rem;height: auto;position: absolute;top: 0.65rem;left: 1rem;}
+			.myInvTop{width: 18rem;height: 1.5rem;background: #eee;padding: 0 0.6rem;box-sizing: border-box;-webkit-box-sizing: border-box;line-height: 1.5rem;}
+			.myInvTop p{font-size: 0.65rem;color: #666;}
+			.myInvTop p span{color: #f04869;}
+			.myInvTop p:nth-of-type(1){float: left;}
+			.myInvTop p:nth-of-type(2){float: right;}
+			.hbBG{width: 18rem;height: 10.75rem;background: url(img/hb.png) no-repeat center center;background-size: contain;}
+			.hbBG p{text-align: center;line-height: 10.75rem;font-size: 0.75rem;color: #ff0000;}
+			.myInvScroll{width: 16.8rem;height: 9.75rem;border: 1px solid #c9c9c9;box-sizing: border-box;-webkit-box-sizing: border-box;padding: 0 0.75rem;margin: 0 auto;overflow: hidden;}
+			.myInvScroll li{padding-top: 0.45rem;}
+			.myInvScroll li span{font-size: 0.65rem;color: #333;width: 49%;display: inline-block;}
+			.myInvScroll li span:nth-last-of-type(1){text-align: right;}
+			.myInvBtn{display: block;width: 16.8rem;height: 2rem;color: #fff;font-size: 0.9rem;text-align: center;line-height: 2rem;margin: 0 auto;background: #2ba7ee;margin-top: 1rem;}
+			hgroup{width: 16.8rem;margin: 0 auto;padding: 1rem 0 0.25rem 0;}
+			hgroup h3{font-size: 0.75rem;color: #f03e62;font-weight: normal;float: left;width: 50%;}
+			hgroup h3:nth-of-type(1){text-indent: 0.75rem;}
+			hgroup h3:nth-last-of-type(1){text-align: right;}
+			
+			
+		</style>
+		<script type="text/javascript">
+			// JavaScript Document
+			(function($){
+				$.fn.myScroll = function(options){
+				//默认配置
+				var defaults = {
+					speed:40,  //滚动速度,值越大速度越慢
+					rowHeight:100 //每行的高度
+				};
+				
+				var opts = $.extend({}, defaults, options),intId = [];
+				
+				function marquee(obj, step){
+				
+					obj.find("ul").animate({
+						marginTop: '-=1'
+					},0,function(){
+							var s = Math.abs(parseInt($(this).css("margin-top")));
+							if(s >= step){
+								$(this).find("li").slice(0, 1).appendTo($(this));
+								$(this).css("margin-top", 0);
+							}
+						});
+					}
+					
+					this.each(function(i){
+						var sh = opts["rowHeight"],speed = opts["speed"],_this = $(this);
+						intId[i] = setInterval(function(){
+							if(_this.find("ul").height()<=_this.height()){
+								clearInterval(intId[i]);
+							}else{
+								marquee(_this, sh);
+							}
+						}, speed);
+			
+//						_this.hover(function(){
+//							clearInterval(intId[i]);
+//						},function(){
+//							intId[i] = setInterval(function(){
+//								if(_this.find("ul").height()<=_this.height()){
+//									clearInterval(intId[i]);
+//								}else{
+//									marquee(_this, sh);
+//								}
+//							}, speed);
+//						});
+					
+					});
+			
+				}
+			
+			})(jQuery);
+			$(function(){
+				$('.myInvScroll').myScroll({
+					speed: 40, //数值越大，速度越慢
+					rowHeight:100 //li的高度
+				});
+				
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="myInvWraper">
+			<header>
+				<a href="javascript:;" class="backBtn"><img src="img/back.png" /></a>
+				<span>我的邀请</span>
+			</header>
+			<div class="myInvTop clear">
+				<p>您已成功邀请好友<span>10</span>人</p>
+				<p>累计<span>1000</span>金币</p>
+			</div>
+			<div class="hbBG">
+				<p>$1000金币</p>
+			</div>
+			<hgroup class="clear">
+				<h3>用户名</h3>
+				<h3>奖励金币</h3>
+			</hgroup>
+			<div class="myInvScroll">
+				
+				<ul>
+					<li>
+						<span>人名1</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名1</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名1</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名1</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名1</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名1</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名5</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名5</span>
+						<span>500</span>
+					</li>
+					<li>
+						<span>人名5</span>
+						<span>500</span>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:;" class="myInvBtn">继续邀请</a>
+		</div>
+	</body>
+
+</html>

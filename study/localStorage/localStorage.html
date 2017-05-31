@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>本地存储</title>
+		<script src="jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			if(window.localStorage){
+				alert('This browser supports localStorage');
+			}else{
+				alert('This browser does NOT support localStorage');
+			}
+			
+			
+			//四个方法：
+			//注：需要注意的是，HTML5本地存储只能存字符串，任何格式存储的时候都会被自动转为字符串，所以读取的时候，需要自己进行类型的转换。这也就是上一段代码中parseInt必须要使用的原因。
+		    //另外，在iPhone/iPad上有时设置setItem()时会出现诡异的QUOTA_EXCEEDED_ERR错误，这时一般在setItem之前，先removeItem()就ok了。
+			localStorage.setItem('keyName','value');  //设置本地存储   以字符串形式存储，所以获取时注意取得的值的格式
+			localStorage.getItem('keyName');   //获取设置的值
+			localStorage.removeItem('keyName')  //删除某个存储
+			localStorage.clear()  //清除全部
+			
+			
+			
+			//一个storage事件  当存储的值发生变化时触发
+			if(window.addEventListener){
+				window.addEventListener("storage",handle_storage,false);
+			}else if(window.attachEvent){
+				window.attachEvent("onstorage",handle_storage);
+			}
+			
+			function handle_storage(ev){
+				var ev=ev||event;
+				console.log(ev.key);
+				console.log(ev.newValue);
+				console.log(ev.oldValue);
+				console.log(ev.storageArea);
+				console.log(ev.url);
+			}
+		</script>
+	</body>
+</html>

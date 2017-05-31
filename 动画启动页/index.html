@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- 页面描述 -->
+		<meta name="description" content=""/>
+		<!-- 页面关键词 -->
+		<meta name="keywords" content=""/> 
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<!--禁止拨打电话-->
+		<meta name="format-detection" content="telephone=no, email=no, adress=no">
+		<!--可隐藏地址栏，仅针对ios的safari--><!-- ios7.0版本以后，safari上已看不到效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式--> <!-- 可选default、black、black-translucent -->    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--优先使用 IE 最新版本和 Chrome-->
+		<meta http-equiv-“X-UA-Compatible” content=”IE=edge,chrome=1”/>
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- UC强制全屏 --> 
+		<meta name="full-screen" content="yes">
+		<!-- UC应用模式 --> 
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="css/reset.css"/>-->
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/zoom.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*reset*/
+			html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+			dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+			a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+			strong, sub, sup, tt, var, legend, fieldset {
+			    margin: 0;
+			    padding: 0;
+			    font-family: arial,"微软雅黑";
+			}
+			article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+			    display: block;
+			}
+			table{border-collapse:collapse;} 
+			Textarea{resize:none;overflow:auto;outline:none;}
+			li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+			img{border:none;vertical-align:top; max-width: 100%;height: auto;width: auto\9;}
+			input[type=search] {
+			    -webkit-appearance: none;
+			    outline: none;
+			}
+			input[type="search"]::-webkit-search-decoration, 
+			input[type="search"]::-webkit-search-cancel-button {
+			    display: none;
+			}
+			.clear{zoom:1;}
+			.clear:after{content:"";display:block;clear:both;}
+			.fl{float:left;}
+			.fr{float:right;}
+			/*主内容*/
+			.iWrapper{position: absolute;height: 100%;width:100%;background: #1a95fc;overflow: hidden;}
+			
+			
+			li{position: absolute;-webkit-transition: cubic-bezier(0.600, -0.280, 0.735, 0.045);transition:cubic-bezier(0.600, -0.280, 0.735, 0.045);opacity: 0; }
+			li:nth-of-type(1){width:25%;bottom: -10%;left: 2%;z-index: 3;animation: 2s move1 forwards;-webkit-animation: 2s move1 forwards;}
+			li:nth-of-type(2){width:30%;bottom: -2%;left: 12%;z-index: 1;animation: 2s move2 0.2s forwards;-webkit-animation: 2s move2 0.2s forwards;}
+			
+			li:nth-of-type(3){width:32%;height:40%;bottom: -7%;left: 37%;z-index: 0;animation: 2s move3 0.4s forwards;-webkit-animation: 2s move3 0.4s forwards;background: url(img/3.png) no-repeat center center;background-size:contain ;}
+			.eye1{width: 40%;height: 12%;background: url(img/eye.png) no-repeat center center;background-size: contain;position: absolute;left: 26%;top: 26%;}
+			.circle1{width: 8px;height: 8px;border-radius: 100%;background: #fe22f1;position: absolute;left: 12%;top: 4px;animation: 2s eye1 2s linear 2;-webkit-animation: 2s eye1 2s linear 2;}
+			
+			li:nth-of-type(4){width:27%;height:15%;bottom: -2%;left: 35%;z-index: 5;animation: 2s move4 0.6s forwards;-webkit-animation: 2s move4 0.6s forwards;background: url(img/4.png) no-repeat center center;background-size:contain ;}
+			.eye2{width: 50%;height: 24%;background: url(img/eye.png) no-repeat center center;background-size: contain;position: absolute;left: 26%;top: 34%;}
+			.circle2{width: 8px;height: 8px;border-radius: 100%;background: #fe22f1;position: absolute;left: 40%;top: 2px;animation: 2s eye2 2s linear 2;-webkit-animation: 2s eye2 2s linear 2;}
+			
+			li:nth-of-type(5){width:30%;bottom: -7%;left: 62%;z-index: 2;animation: 2s move5 0.8s forwards;-webkit-animation: 2s move5 0.8s forwards;}
+			li:nth-of-type(6){width:25%;bottom: -2%;right:0;z-index: 4;animation: 2s move6 1s forwards;-webkit-animation: 2s move6 1s forwards;}
+			/*动画1*/
+			@keyframes move1{
+				from{bottom: -30%;opacity: 0;}
+				50%{bottom: -5%;}
+				to{bottom: -10%;opacity: 1;}
+			}
+			@-webkit-keyframes move1{
+				from{bottom: -30%;opacity: 0;}
+				50%{bottom: -5%;}
+				to{bottom: -10%;opacity: 1;}
+			}
+			/*动画2*/
+			@keyframes move2{
+				from{bottom: -34%;opacity: 0;}
+				50%{bottom: -1%;}
+				to{bottom: -2%;opacity: 1;}
+			}
+			@-webkit-keyframes move2{
+				from{bottom: -34%;opacity: 0;}
+				50%{bottom: -1%;}
+				to{bottom: -2%;opacity: 1;}
+			}
+			/*动画3*/
+			@keyframes move3{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -4%;}
+				to{bottom: -7%;opacity: 1;}
+			}
+			@-webkit-keyframes move3{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -4%;}
+				to{bottom: -7%;opacity: 1;}
+			}
+			/*动画4*/
+			@keyframes move4{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -1%;}
+				to{bottom: -2%;opacity: 1;}
+			}
+			@-webkit-keyframes move4{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -1%;}
+				to{bottom: -2%;opacity: 1;}
+			}
+			/*动画5*/
+			@keyframes move5{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -4%;}
+				to{bottom: -7%;opacity: 1;}
+			}
+			@-webkit-keyframes move5{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -1%;}
+				to{bottom: -7%;opacity: 1;}
+			}
+			/*动画6*/
+			@keyframes move6{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -4%;}
+				to{bottom: -2%;opacity: 1;}
+			}
+			@-webkit-keyframes move6{
+				from{bottom: -40%;opacity: 0;}
+				50%{bottom: -1%;}
+				to{bottom: -2%;opacity: 1;}
+			}
+			/*眼睛动画1*/
+			@keyframes eye1{
+				from{left: 12%;}
+				50%{left: 75%;}
+				to{left: 12%;}
+			}
+			@-webkit-keyframes eye1{
+				from{left: 12%;}
+				50%{left: 50%;}
+				to{left: 12%;}
+			}
+			/*眼睛动画2*/
+			@keyframes eye2{
+				from{left: 40%;}
+				20%{left: 23%;}
+				40%{left: 40%;}
+				80%{left: 56%;}
+				to{left: 40%;}
+			}
+			@-webkit-keyframes eye2{
+				from{left: 40%;}
+				20%{left: 23%;}
+				40%{left: 40%;}
+				80%{left: 56%;}
+				to{left: 40%;}
+			}
+			.back{position: absolute;top: 10px;left: 10px;width: 25px;height:25px;background: url(img/back.png) no-repeat center center;background-size:contain;z-index: 10;}
+			.iText{width: 80%;position: absolute;top: 10%;left: 50%;margin-left: -40%;z-index: 10;}
+		</style>
+		
+		
+	</head>
+	<body>
+		<div class="iWrapper">
+			<a href="javascript:window.target.clickOnTarget('goback','','');" class="back"></a>
+			<div class="iText"><img src="img/text2.png"/></div>
+			<ul>
+				<li><img src="img/1.png"/></li>
+				<li><img src="img/2.png"/></li>
+				<li>
+					<div class="eye1">
+						<div class="circle1"></div>
+					</div>
+				</li>
+				<li>
+					<div class="eye2">
+						<div class="circle2"></div>
+					</div>
+				</li>
+				<li><img src="img/5.png"/></li>
+				<li><img src="img/6.png"/></li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="msapplication-tap-highlight" content="no">
+		<title>tigerData</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/highcharts.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.tmpl.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.animateNumber.min.js" type="text/javascript" charset="utf-8"></script><!--数字累加-->
+		<script src="js/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/main1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--loading-->
+		<div class="loading">
+			<figure>
+				<img src="images/load.gif"/>
+				<figcaption>玩命加载中...</figcaption>
+			</figure>
+		</div>
+		<!--主导航-->
+		<nav class="clear">
+			<div class="navLogo"><img src="images/logo2.png" /></div>
+			<ul class="clear">
+				<li class="active"><a href="index.html">用户属性</a></li>
+				<li><a href="LaborAttr.html">用工分析</a></li>
+				<li><a href="userDistribution.html">用户分布</a></li>
+				<li><a href="#">系统管理</a></li>
+			</ul>
+			<div>
+				<span><img src="images/person.png"/><a href="javascript:;" class="user">haiwenqi</a></span>
+				<a href="javascript:;">退出</a>
+			</div>
+		</nav>
+		<!--主导航结束-->
+		<div class="indexWraper">
+			<div class="iSubNav">
+				<ul class="clear">
+					<li class="iactive basicAttrL"><a href="#">基本属性</a></li>
+					<li class="MTL"><a href="#">终端属性</a></li>
+				</ul>
+			</div>
+			
+			<!--基本属性开始-->
+			<div id="basicAttr">
+				
+				<!--第一个模块 性别比例，年龄分布-->
+				<div id="iModule1" class="clear">
+					<p class="dataTime">数据最后更新于<span></span></p>
+					<div style="width: 1280px;margin: 0 auto;" class="clear">
+						<div id="sex" style="width:640px; height: 400px;float: left;"></div>
+						<!--性别比例-->
+						<div id="age">
+							<header>年龄分布</header>
+							<ul></ul>
+							<script type="text/x-jquery-tmpl" id="agelist">
+								{{each agelist}}
+									<li>
+										<hgroup class="clear">
+											<h2 class="fl"></h2>
+											<p class="fr"></p>
+										</hgroup>
+										<div class="ageTotal">
+											<div></div>
+										</div>
+									</li>
+								{{/each}}
+							</script>
+						</div>
+					</div>
+				</div>
+				<!--第二个模块--学历分布-->
+				<div id="iModule2">
+					<p class="dataTime">数据最后更新于<span></span></p>
+					<div id="education">
+						<header>学历分布</header>
+						<ul class="clear"></ul>
+						<script type="text/x-jquery-tmpl" id="educationlist">
+							{{each educationlist}}
+								<li>
+									<div class="traget"></div>
+									<p></p>
+								</li>
+							{{/each}}
+						</script>
+						
+					</div>
+				</div>
+				<!--第三个模块--休闲娱乐指数-->
+				<div id="iModule3">
+					<p class="dataTime"><span></span></p>
+					<div id="entertainment">
+						<h2>休闲娱乐指数</h2>
+						<h3>根据用户平时娱乐行为制定的指数</h3>
+						<ul class="clear">
+							<li class="shoppingWraper">
+								<div class="fl">
+									<p>购物</p>
+									<p class="shoppingNum"></p>
+								</div>
+								<div id="shopping" style="min-width:250px; height: 200px; max-width:250px;float: right;"></div>
+							</li>
+							<li class="parkWraper">
+								<div class="fr">
+									<p>逛公园</p>
+									<p class="parkNum"></p>
+								</div>
+								<div id="park" style="min-width:250px; height: 200px; max-width:250px;float: left;"></div>
+							</li>
+							<li class="movieWraper">
+								<div class="fl">
+									<p>看电影</p>
+									<p class="movieNum"></p>
+								</div>
+								<div id="movie" style="min-width:250px; height: 200px; max-width:250px;float: right;"></div>
+							</li>
+							<li class="travelWraper">
+								<div class="fr">
+									<p>旅行</p>
+									<p class="travelNum"></p>
+								</div>
+								<div id="travel" style="min-width:250px; height: 200px; max-width:250px;float: left;"></div>
+							</li>
+							<li class="eatWraper">
+								<div class="fl">
+									<p>吃大餐</p>
+									<p class="eatNum"></p>
+								</div>
+								<div id="eat" style="min-width:250px; height: 200px; max-width:250px;float: right;"></div>
+							</li>
+							<li class="singWraper">
+								<div class="fr">
+									<p>K歌</p>
+									<p class="singNum"></p>
+								</div>
+								<div id="sing" style="min-width:250px; height: 200px; max-width:250px;float: left;"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<!--终端属性-->
+			<div id="MTAttr">
+				<!--终端属性第一模块--活跃手机占有率，手机操作系统占比-->
+				<div id="mtModule1">
+					<p class="dataTime">数据最后更新于<span></span></p>
+					<!--手机占有率-->
+					<div class="clear" style="width: 1280px;margin: 0 auto;">
+						<div id="phonemodel" class="fl">
+							<header style="text-align: left;">活跃手机占有率排名</header>
+							<div class="phoneTitle clear">
+								<span class="fl" style="margin-right: 5%;">排名</span>
+								<span class="fl">手机名称</span>
+								<span class="fr">占有率</span>
+							</div>
+							<ul></ul>
+							<script type="text/x-jquery-tmpl" id="phonemodellist">
+								{{each phonemodellist}}
+									<li class="clear">
+										<div class="RankNum fl" style="background: #ccc;"></div>
+										<div class="phoneName fl">
+											<p class="fl"></p>
+											<p class="fr"></p>
+										</div>
+									</li>
+								{{/each}}
+							</script>
+							
+						</div>
+						<!--操作系统占比-->
+						<div id="OS" style="width:640px;height:500px" class="fr"></div>
+					</div>
+				</div>
+				<!--终端属性第二模块--活跃用户分辨率-->
+				<div id="mtModule2">
+					<p class="dataTime">数据最后更新于<span></span></p>
+					<div id="dpi" style="width:1280px;height:400px;margin: 0 auto;"></div>
+				</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			$('.MTL').click(function(){
+				$('#basicAttr').css('left','-100%');
+				$('#MTAttr').css('left','0');
+				$('.basicAttrL').removeClass('iactive')
+				$(this).addClass('iactive');
+			})
+			$('.basicAttrL').click(function(){
+				$('#basicAttr').css('left','0');
+				$('#MTAttr').css('left','100%');
+				$('.MTL').removeClass('iactive')
+				$(this).addClass('iactive');
+			})
+			$(".shoppingWraper p:first,.parkWraper p:first,.movieWraper p:first,.travelWraper p:first,.eatWraper p:first,.singWraper p:first").css({'margin-top':'60px'})
+		</script>
+	</body>
+
+</html>

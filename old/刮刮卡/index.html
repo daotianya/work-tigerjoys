@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<title>刮刮卡 - 蓝蜜蜂</title>
+<style type="text/css">
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,em,img,small,strong,sub,sup,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{-moz-user-select: none;–webkit-user-select:none;font-family: "Microsoft YaHei", "SimSun", "Arial Narrow", HELVETICA;font-size:12px;}
+ol,ul{list-style:none}
+img{border:none}
+.main{height:573px;background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/bg.png') no-repeat center;background-size:auto 573px;}
+.rule{height:30px;position:absolute;cursor:pointer;right:0px;top:10px;width:36px;background: linear-gradient(left,#FF9E35,#FFC50F);background: -moz-linear-gradient(left,#FF9E35, #FFC50F);background: -webkit-linear-gradient(left,#FF9E35,#FFC50F);background: -o-linear-gradient(left,#FF9E35,#FFC50F);background: -ms-linear-gradient(left,#FF9E35,#FFC50F);color:#fff;font-weight:bold;font-size:12px;line-height:30px;overflow:hidden;}
+.rule span{width:50px;position:absolute;display:block;height:22px;background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/back_03.png') no-repeat right 10px top 5px;margin-top:4px;line-height:22px;background-size:12px;padding:0 30px 0 5px;}
+.rule span i{font-style:normal;cursor:pointer;}
+.rule span.on{width:0px;}
+.rule span.on i{display:none;}
+
+.mypoint{line-height:25px;font-weight:bold;position: absolute;width: 92px;height: 25px;top: 285px;left: 108px;background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/gold_03.png') no-repeat;background-size:24px 24px;color:#fff;padding-left:30px;font-size:12px;}
+.mypoint i{font-style:normal;color:#FFEE4D;margin-left:6px;}
+
+.cc{background: #ccc;position: absolute;top: 354px;left: 23px;z-index:10;}
+.cc span{position:absolute;}
+
+.img{background: #ccc;position: absolute;top: 354px;left: 23px;z-index:9;display:none;}
+
+.dialog{position:absolute;top:100px;left:6%;border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;background:#fff;width:88%;overflow:hidden;z-index:9999;}
+.dialog .title{height:35px;color:#fff;font-size:14px;line-height:35px;background:#FF4149;padding-left:15px;}
+.dialog .title .close{width:25px;height:25px;background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/close1_03.png') no-repeat;background-size:22px 22px;display:block;position:absolute;right:3px;top:7px;cursor:pointer;}
+.dialog .title2{height:26px;color:#fff;font-size:14px;line-height:35px;background:#fff;padding-left:15px;}
+.dialog .title2 .close{width:25px;height:25px;background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/close_03.png') no-repeat;background-size:22px 22px;display:block;position:absolute;right:3px;top:4px;cursor:pointer;}
+.dialog .content{padding:5px;font-size:12px;line-height:18px;}
+.dialog .content dl{overflow:hidden;margin-bottom:5px;}
+.dialog .content dt{width:20px;float:left;}
+.dialog .content dt span{display:inline-block;width:16px;height:16px;background:#FF4149;color:#fff;text-align:center;line-height:16px;border-radius: 50%;-moz-border-radius:50%;-webkit-border-radius:50%;font-family:''}
+.dialog .content dd{margin-left: 22px;}
+.dialog p{margin-bottom:8px;font-size:14px;}
+.dialog p span{color:#FF4149;}
+.dialog .tit{font-size:18px;}
+.dialog .tit span{color:#FF4149;}
+.dialog .footer{width:100%;height:45px;color:#fff;overflow:hidden;background:#64D707;line-height:45px;font-size:16px;}
+.dialog .footer a{color:#fff;text-decoration:none;display:block;}
+.dialog .footer a.fx{width:50%;float:left;background:#64D707;height:45px;text-align:center;}
+.dialog .footer a.jx{width:49.5%;float:right;background:#FF4149;height:45px;text-align:center;}
+.dialog .footer a.zjx{width:100%;background:#FF4149;height:45px;text-align:center;}
+
+
+#overmask{display:none;position:absolute;height:100%;width:100%;background:#000;opacity: 0.5; -moz-opacity: 0.5; -webkit-opacity: 0.5; -khtml-opacity: 0.5;filter:alpha(opacity=50);z-index:9998;top: 0;left: 0;}
+
+.jihui{position:absolute;top:510px;left:0;height:50px;width:100%;}
+.jihui a{background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/icon1_03.png') no-repeat;width:50px;height:50px;background-size:48px 48px;position:absolute;right:10px;top:1px;}
+.jihui .num{background:url('http://bluebee.b0.upaiyun.com/activity/guaguaka/icon_03.png') no-repeat;width:180px;height:30px;display:inline-block;text-align:center;background-size:180px 30px;margin-top: 8px;margin-left: 54px;color:#fff;line-height:30px;}
+</style>
+</head>
+
+<body onselectstart="return false;">
+<div class="rule"><span class="on"><i>兑换规则</i></span></div>
+<div class="jihui">
+	<a class="duijian" href="javascript:window.target.clickOnTarget('mall_main','');"></a>
+	<div class="num">您还有<span id="sz">10</span>次刮奖机会</div>
+</div>
+<div class="main">
+	<canvas id="huabu" class="cc" width="273" height="132"></canvas>
+	<img src="http://bluebee.b0.upaiyun.com/activity/guaguaka/1_03.png" class="img" width="273" height="132" />
+</div>
+<div class="mypoint">我的金币<i id="myGold">200</i></div>
+<div id="rule_desc" class="dialog" style="height:230px;top:22%;display:none;">
+	<div class="title">活动规则<span class="close"></span></div>
+	<div class="content">
+		<dl>
+			<dt><span>1</span></dt>
+			<dd>本次活动的时间为2015.10.07-2015.10.31，检验手气的时刻到了！</dd>
+		</dl>
+		<dl>
+			<dt><span>2</span></dt>
+			<dd>活动期间，每位用户有10次刮奖的机会，且为免费刮奖。</dd>
+		</dl>
+		<dl>
+			<dt><span>3</span></dt>
+			<dd>不允许通过其他手段非法获取金币，一经查证取消抽奖资格。</dd>
+		</dl>
+		<dl>
+			<dt><span>4</span></dt>
+			<dd>本次活动涉及到金币奖励，因此只有注册用户可以参与刮奖。</dd>
+		</dl>
+		<dl>
+			<dt><span>5</span></dt>
+			<dd>刮刮乐的最终解释权归蓝蜜蜂所有。</dd>
+		</dl>
+	</div>
+</div>
+<div id="ok" class="dialog" style="height:160px;top:22%;display:none;">
+	<div class="title2"><span class="close"></span></div>
+	<div class="content" style="text-align:center;">
+		<p class="tit">恭喜您获得<span id="hdjb">50金币</span></p>
+		<p>您可真是<font id="chenwei">刮奖达人</font>啊</p>
+	</div>
+	<div class="footer">
+		<a href="javascript:void(0);" onclick="share();" class="fx">立即分享</a>
+		<a href="javascript:void(0);" class="jx">继续刮奖</a>
+	</div>
+</div>
+<div id="cancel" class="dialog" style="height:160px;top:22%;display:none;">
+	<div class="title2"><span class="close"></span></div>
+	<div class="content" style="text-align:center;">
+		<p class="tit">很遗憾...您未中奖</p>
+		<p>您还有<span id="sz2">9</span>次刮奖机会</p>
+	</div>
+	<div class="footer">
+		<a href="javascript:void(0);" class="zjx">再刮一次</a>
+	</div>
+</div>
+<div id="overmask"></div>
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+<script src="http://bluebee.b0.upaiyun.com/static/js/zoom.js"></script>
+<script type="text/javascript">
+var gold = 50;
+var num = 10;
+function share(){
+	var s = "我在蓝蜜蜂--刮刮乐得到了"+gold+"金币，赶紧一起来来赚金币啦！可以兑换流量哦！\n下载地址：http://bluebee.xbash.info/api/weixin/usershare?sor=guaguaka";
+	window.target.clickOnTarget('task_invite_user',s);
+}
+function showDialog(d){
+	$('#'+d).show();
+	$('#overmask').show();
+}
+$(function(){
+	$('.rule').click(function(){
+		var f = $(this).find('span');
+		if(f.hasClass('on')) {
+			$(this).stop().animate({width:'85px'},200,function(){
+				f.removeClass('on');
+
+				setTimeout(function(){
+					$('.rule').stop().animate({width:'36px'},200,function(){
+						f.addClass('on');
+					});
+				},5000);
+			});
+		} else {
+			showDialog('rule_desc');
+		}
+	});
+
+	$('.close').click(function(){
+		$(this).parents('.dialog').hide();
+		$('#overmask').hide();
+	});
+});
+
+$(document).ready(function(){
+	var cc = $('#huabu');
+	var w = cc.width(),h = cc.height();
+	var canvas = cc.get(0);
+	var xxx = canvas.getContext('2d');
+	var offsetX = canvas.offsetLeft,offsetY = canvas.offsetTop;
+	var mousedown = false,clear=false;
+	var firstClick = false;
+
+	function layer() {
+		xxx.globalCompositeOperation = 'source-over';
+
+		xxx.fillStyle='transparent';
+		xxx.fillRect(0, 0, w, h);
+		cc.css('background','transparent');
+
+		xxx.fillStyle = '#ccc';
+        xxx.fillRect(0, 0, w, h);
+		xxx.save();
+
+		xxx.fillStyle='#888';
+		xxx.font="40px 微软雅黑";
+		xxx.textAlign = "center";
+		xxx.fillText('刮一刮',145,80,140);
+		xxx.restore();
+
+		clear = false;
+		mousedown = false;
+		firstClick = false;
+
+		xxx.globalCompositeOperation = 'destination-out';
+	}
+
+	function eventDown(e){
+		//此处需要判断剩余次数
+		if(parseInt($('#sz').html()) <= 0) return;
+
+        e.preventDefault();
+        mousedown=true;
+
+		if(!firstClick){
+			firstClick = true;
+			$('#sz').html(num-1);
+			$('#sz2').html(num-1);
+			//此处ajax请求扣除次数和积分
+			$.ajax({
+				url : 'http://www.milier.com',
+				type : 'post',
+				timeout : 10000,
+				dataType : 'json',
+				cache : false,
+				data : {},
+				success : function(json){
+					if(json.success) {
+						num = json.num;
+						$('#sz').html(num);
+						$('#sz2').html(num);
+					} else {
+						alert(json.msg);
+					}
+				},
+				error : function(){
+					//firstClick = false;
+				},
+				complete : function(){
+					
+				}
+			});
+		}
+    }
+
+	function eventUp(e){
+        e.preventDefault();
+        mousedown=false;
+    }
+
+	function eventMove(e){
+        e.preventDefault();
+        if(mousedown) {
+             if(e.changedTouches){
+                 e=e.changedTouches[e.changedTouches.length-1];
+             }
+             var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+                 y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+            with(xxx) {
+				beginPath()
+				arc(x, y-30, 26, 0, Math.PI * 2);
+                fill();
+            }
+			if(!clear) sss();
+        }
+    }
+
+	function sss(){
+		var data=xxx.getImageData(0,0,w,h).data;
+		for(var i=0,j=0;i<data.length;i+=4){
+			if(data[i] && data[i+1] && data[i+2] && data[i+3]){
+				j++;
+			}
+		}
+		if(j<w*h*0.61){
+			xxx.clearRect(0, 0, w, h);
+			//此处可以写ajax
+			clear = true;
+			if(clear) {
+				if(gold > 0) {
+					var s = '';
+					if(gold<=10) s = '刮奖小能手';
+					else if(gold <= 50) s = '刮奖达人';
+					else s = '刮奖小王子';
+					$('#myGold').html(parseInt($('#myGold').html())+gold);
+					$('#chenwei').html(s);
+					showDialog('ok');
+				} else {
+					showDialog('cancel');
+				}
+			}
+		}
+	}
+
+	layer();
+	$('.img').show();
+
+	canvas.addEventListener('touchstart', eventDown);
+    canvas.addEventListener('touchend', eventUp);
+    canvas.addEventListener('touchmove', eventMove);
+    canvas.addEventListener('mousedown', eventDown);
+    canvas.addEventListener('mouseup', eventUp);
+    canvas.addEventListener('mousemove', eventMove);
+
+	$('.jx,.zjx').click(function(){
+		window.location.reload();
+	});
+});
+</script>
+</body>
+</html>

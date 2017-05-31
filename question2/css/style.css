@@ -1,0 +1,74 @@
+/*问题测试*/
+#index,#questions,#result,#appMask,#loadingWraper{position: absolute;top: 0;left: 0;background:no-repeat center center ;background-size: contain;}
+
+/*开始页*/
+#index{display: block;height: 28.35rem;width: 18rem;}
+#index img{width: 100%;height: auto;}
+#title{font-size:1.25rem;color: #333;text-align: center;padding: 5.55rem 0 6.5rem 0;font-weight: normal;}
+#start{font-size: 1rem;color: #333;text-align: center;border: 1px solid #333;width: 10rem;height:2rem;line-height:2rem;display: block;margin: 0 auto;}
+.ibottom{position: absolute; bottom:1rem;right:1rem;background: no-repeat left center;background-size:22%;height: 1.2rem;padding-left:1.425rem;line-height: 1.4rem;color: #666;font-size: 0.75rem;}
+
+/*问题页*/
+#questions{height: 28.35rem;width: 18rem;display: none;overflow: hidden;}
+.paper{-webkit-transition: 0.5s left linear;width:15.625rem;height:22.775rem;background: no-repeat top center;background-size:100%;padding-top: 4.15rem;box-sizing: border-box;-webkit-box-sizing: border-box;position: absolute;left: 50%;margin-left:-44%;margin-top: 1.5rem;transition: 0.5s left linear;}
+dl{height:18.625rem;width:12.97rem;margin: 0 auto;}
+dt{font-size: 0.9rem;color: #666;height: 4.9rem;line-height: 1.8rem;overflow: auto;margin-bottom: 0.725rem;}
+dd{font-size: 0.85rem;border-bottom: 1px solid #eeeeee;width: 96%;text-indent: 8px;margin: 0 auto;padding: 0.725rem 0;}
+dd a{color: #666;}
+#page{position: absolute;bottom:2.5rem;right: 1.5rem;color: #666666;font-size: 0.75rem;}
+
+/*结果页*/
+#result{display: none;height: 28.35rem;width: 18rem;}
+#paper2{padding-top: 3.45rem;}
+.resultText,#paper2 h2{color: #666;width: 83%;margin: 0 auto;}
+#paper2 h2{padding-bottom: 0.75rem;font-size: 0.9rem;}
+.resultText{height: 8.4rem;width:72%;overflow: auto;font-size: 0.85rem;}
+.rbottom{width: 12rem;margin: 0 auto;margin-top: 5%;}
+.btnGroup a:nth-of-type(1),.btnGroup a:nth-of-type(2){display:inline-block;font-size: 0.75rem;width:5.5rem;height: 1.75rem;line-height: 1.75rem; text-align: center;margin-bottom: 1.25rem;}
+.btnGroup a:nth-of-type(1){color: #333333;background: #51c783;margin-right: 0.7rem;}
+.btnGroup a:nth-of-type(2){color: #FFFFFF;background: #3b9ece;}
+.desc{height: 4.5rem;}
+.desc img{width: 4.5rem;height: 4.5rem;}
+.desc span{height: 100%;vertical-align: middle;display: inline-block;}
+.desc h3{display:inline-block;color: #333;font-size: 0.7rem;vertical-align: middle;}
+
+.mask{display:none;background-color:rgba(0,0,0,0.8);position:absolute;z-index:99;left:0;top:0;width:100%;height:100%;opacity:0.8;filter: alpha(opacity=80);}
+.pop1{display: none;}
+.pop1 p{position:absolute;z-index:100;color:#fff;font-size: 1rem;top:7.4rem;left: 50%;line-height:1.6rem;text-align: center;}
+.pop1 img{width: 2.1rem;position:absolute;z-index:100;top: 4.05rem;right: 3.3rem;}
+
+/*分享成功后  弹窗*/
+#appMask{display: none;height: 28.35rem;width: 18rem;}
+.pop2{width: 12.5rem;height: 12.5rem;background: #FFFFFF;border-radius: 10px;text-align: center;box-sizing: border-box;-webkit-box-sizing: border-box;padding: 1.4rem 1.625rem;position: absolute;z-index: 100;top:5.25rem;left: 2.7rem;}
+.close{width: 1rem;height: 1rem;position: absolute;top: 0.25rem;right: 0.25rem}
+.pop2 p{font-size: 1rem;color: #333;}
+.app{width: 6.5rem;height: auto;margin: 5% auto;}
+		
+		
+/*动画*/
+@-webkit-keyframes move{
+	from{
+		-webkit-transform: translate(-5px,5px);
+		transform: translate(-5px,5px);
+	}
+	to{
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+@keyframes move{
+	from{
+		-webkit-transform: translate(-5px,5px);
+		transform: translate(-5px,5px);
+		
+	}
+	to{
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+.move{
+	-webkit-animation: .5s move infinite ;
+	animation: .5s move infinite ;
+	transform-origin: left bottom; 
+}

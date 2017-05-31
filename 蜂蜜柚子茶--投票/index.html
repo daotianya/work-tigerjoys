@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+<title>$!{video.title} - $!{group_name} - 蓝蜜蜂</title>
+<link rel="stylesheet" href="aa.css" />
+<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="js/fontSize.js" type="text/javascript" charset="utf-8"></script>-->
+<style type="text/css">
+.tl p{width:auto;}
+.part .talk{background:#fff;padding-bottom:50px;}
+.part .talk h2{font-weight: normal;padding: 5px 10px;color: #666;font-size: 12px;}
+.part .talk .talk_list{padding:0;overflow-x: hidden;overflow-y: visible;height: 300px;}
+.part .talk .talk_list li{min-height:20px;line-height:20px;border-bottom:1px solid #d9d9de;padding:4px 10px;word-wrap:break-word;word-break:break-all;}
+.part .talk .talk_list li.male span{color:#3D40E1;}
+.part .talk .talk_list li.female span{color:#E5258B}
+.part .talk .talk_list span{color:#155143}
+</style>
+</head>
+<body>
+<div class="head">
+	<a href="javascript:window.target.clickOnTarget('goback','','');" class="back"></a>
+	$!{group_name}
+</div>
+<div class="tl bm">	 
+	<div class="bott">
+	   <h4>本期内容：$!{video.title}</h4>	   
+	</div>
+	<div id="player" style="overflow:hidden;position: relative;">
+		<img src="img/1_02.jpg" />  
+		<span class="but" style="display:none;background-image:url('http://bluebee.b0.upaiyun.com/app/community/stop.png')"></span>
+		<div class="ctrl" style="display:none;">
+			<div class="left"><span class="time" id="stime">00:00</span></div>
+			<div class="dragbar">
+				<span class="bar" id="bar_1"></span>	
+				<span class="drag" id="drag"></span>	
+			</div>
+			<div class="right"><span class="time" id="ctime">$!{videoTime}</span></div>
+		</div>
+		<div class="progressbar" data-perc="0" data-hide="0" style="display:block;">
+			<div class="bar" id="bar_2"></div>
+			<div class="label"><span></span></div>
+		</div>
+		<!--<div class="load" id="loading">
+			<div class="animate"></div>
+		</div>-->
+		
+		<div class="load2" id="loading">
+			<div class="mask"></div>
+			<div class="loadingWord"><img src="waiting.gif"><p>正在努力加载中。。。</p></div>
+		</div>
+			
+	</div>
+	
+	<p class="space" style="padding-top:0;">简介：北京刚开了附加分规划法规和地方了过分美不给你丽都发给的麻烦了干嘛的等方面给地方两个模式个风格的风格的风格的风格的风格大方同意让他也具有</p>
+</div>
+<!--投票开始-->
+<div class="vote">
+	
+	<h2>在北京感觉最困难的是什么？（单选）</h2>
+	<ul>
+		<li>
+			<span>A：</span><h3>找工作很难找工作很难找工作很难找工作很难找工作很难找工作很难找工作很难找工作很难</h3>
+			<div class="clear">
+				<div class="vTotalLen"><div class="vPerLen vp1"></div></div>
+				<span class="vPer vPerNum1">100.0%</span>
+				<span class="vNumber">400000票</span>
+				<a href="javascript:;" class="vBtn">投票</a>
+			</div>
+		</li>
+		<li>
+			<span>A：</span><h3>找工作很难，没有方向</h3>
+			<div class="clear">
+				<div class="vTotalLen"><div class="vPerLen vp2"></div></div>
+				<span class="vPer vPerNum2">50.7%</span>
+				<span class="vNumber">400票</span>
+				<a href="javascript:;" class="vBtn">投票</a>
+			</div>
+		</li>
+		<li>
+			<span>A：</span><h3>找工作很难，没有方向</h3>
+			<div class="clear">
+				<div class="vTotalLen"><div class="vPerLen vp3"></div></div>
+				<span class="vPer vPerNum3">69.8%</span>
+				<span class="vNumber">40票</span>
+				<a href="javascript:;" class="vBtn">投票</a>
+			</div>
+		</li>
+		<li>
+			<span>A：</span><h3>找工作很难，没有方向</h3>
+			<div class="clear">
+				<div class="vTotalLen"><div class="vPerLen vp4"></div></div>
+				<span class="vPer vPerNum4">10.6%</span>
+				<span class="vNumber">4票</span>
+				<a href="javascript:;" class="vBtn">投票</a>
+			</div>
+		</li>
+	</ul>
+</div>
+<!--投票结束-->
+<script type="text/javascript">
+	var vp1=(parseFloat($('.vPerNum1').html())/100)*parseFloat($('.vTotalLen').width());
+	$('.vp1').width(vp1);
+	
+	var vp2=(parseFloat($('.vPerNum2').html())/100)*parseFloat($('.vTotalLen').width());
+	$('.vp2').width(vp2);
+	
+	var vp3=(parseFloat($('.vPerNum3').html())/100)*parseFloat($('.vTotalLen').width());
+	$('.vp3').width(vp3);
+	
+	var vp4=(parseFloat($('.vPerNum4').html())/100)*parseFloat($('.vTotalLen').width());
+	$('.vp4').width(vp4);
+
+$('.vBtn').click(function(){
+	$('.vBtn').css('display','none');
+	$(this).css({'display':'inline-block','background-color':'#c9c9c9','color':'#fff'}).html('已投');
+});
+
+
+</script>
+
+<div class="part">
+	<div class="talk">
+		<h2 class="bm">最新评论</h2>
+		<div class="talk_list" id="talk_container">
+			<ul id="talk_list">
+				<li class="male"><span>$!{item.user_name}</span>：</li>
+				<li class="female"><span>$!{item.user_name}</span>：</li>
+				<li class="male"><span>$!{item.user_name}</span>：</li>
+				<li class="female"><span>$!{item.user_name}</span>：</li>
+				<li class="male"><span>$!{item.user_name}</span>：</li>
+				<li class="female"><span>$!{item.user_name}</span>：</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="part" >
+	<div class="box" >
+		<input type="button" value="提交" id="comment_btn" class="btn"/>
+		<input type="text" value="" maxlength="300" placeholder="说点什么吧！" id="comment_txt" class="txt" />
+	</div>
+</div>
+<script src="http://bluebee.b0.upaiyun.com/static/js/jquery-1.10.2.min.js"></script>
+<script src="http://bluebee.b0.upaiyun.com/static/js/zoom.js"></script>
+<script type="text/javascript">
+#if(${playStatus} == 2)
+var alineId = $!{newAlineId};
+var generatedCount = 0;
+var comment_is_end = false;
+function pullDownAction () {
+	if(generatedCount == 1) return;
+	generatedCount = 1;
+	
+	alineId = 0;
+	comment_is_end = false;
+	getData(1);
+}
+function pullUpAction () {
+	if(comment_is_end) return;
+	if(generatedCount == 1) return;
+	generatedCount = 1;
+	
+	getData(2);
+}
+
+function getData(t){
+	var type = t;
+	$.ajax({
+		url : '/web/community/video/comment/$!{videoId}',
+		data : {'alineId':alineId},
+		type : 'post',
+		dataType : 'json',
+		beforeSend: function(xhr){
+			xhr.setRequestHeader('$!{Const.getRequest_header_encrypt()}', '$!{encrypt}');
+			$('#pullUp').show();
+		},
+		success : function(result){
+			if(type == 1) {
+				$('#comment_list').empty();
+				$('#wrapper').scrollTop(0);
+			}
+			if(typeof result.commentList != 'undefined' && result.commentList.length > 0) {
+				var s = '';
+				for(i in result.commentList) {
+					var item = result.commentList[i];
+					s += '<dl>';
+					s += '<dt class="c_face"><div class="c_div"><p class="c_p"><img src="'+item.user_face+'" /></p></div></dt>';
+					s += '<dd>';
+					s += '<h3>'+item.user_name+'</h3>';
+					s += '<span class="time">'+item.create_date+'</span>';
+					s += '<p>'+item.content+'</p>';
+					s += '</dd>';
+					s += '</dl>';
+				}
+				$('#comment_list').append(s);
+				alineId = result.newAlineId;
+			} else{
+				comment_is_end = true;
+			}
+		},
+		error : function(){
+			comment_is_end = true;
+		},
+		complete : function(){
+			generatedCount = 0;
+			$('#pullUp').hide();
+		}
+	});
+}
+#else
+var talkTimer = null;
+var talk_container = $('#talk_container');
+var talk_list = $('#talk_list');
+var lastTalkId = $!{newAlineId};
+var commentSize = $!{commentSize};
+function initTalk(){
+	talk_container.scrollTop(talk_list.height());
+	talkTimer = setTimeout(function(){
+		timerTalk();
+	},3000);
+}
+function timerTalk(){
+	$.ajax({
+		url : '/web/community/video/talk/$!{videoId}',
+		data : {'lastTalkId':lastTalkId},
+		type : 'post',
+		dataType : 'json',
+		beforeSend: function(xhr){xhr.setRequestHeader('$!{Const.getRequest_header_encrypt()}', '$!{encrypt}');},
+		success : function(result){
+			if(typeof result.data != 'undefined') {
+				if(result.data.size > 0) {
+					for(i in result.data.list) {
+						var item = result.data.list[i];
+						talk_list.append('<li class="'+(item.sex==1?'male':(item.sex==2?'female':''))+'"><span>'+item.user_name+'</span>：'+item.content+'</li>');
+					}
+					
+					commentSize += result.data.size;
+					//console.log('x'+lastTalkId);
+					lastTalkId = result.data.lastTalkId;
+					//console.log(lastTalkId);
+					
+					if(talk_list.height() - talk_container.scrollTop() - 300 < 100) {
+						talk_container.scrollTop(talk_list.height());
+					}
+				} else {
+					if(commentSize > 100) {
+						talk_list.find('li:first').remove();
+					}
+				}
+			}
+		},
+		complete : function(xhr, ts){
+			xhr = null;
+			talkTimer = setTimeout(function(){
+				//console.log(talk_list.height()+'---'+talk_container.scrollTop());
+				timerTalk();
+			},3000);
+		}
+	});
+}
+#end
+
+var totalTime = $!{video.video_time};
+var videoPlayer;
+var isTouchDrag = false;
+var startTime = $!{startTime};
+var serverTime = ${currTime};
+var beginTimer = null , hideControlTimer = null;
+var pageZoom = 1;
+var dragLeft = 52 , twidth = 210;
+var playerFinish = false;
+var url = '$!{Const.getCdnImage($!{video.video})}';
+var currPaly = false;
+function initPlayer(type){
+	var h = '<audio id="videoPlayer" autoplay="autoplay">';
+	if(url.indexOf('mp4') > -1) {
+		h += '<source src="'+url+'" type="audio/mp4" />';
+	} else if(url.indexOf('aac')>-1 || url.indexOf('acc')>-1) {
+		h += '<source src="'+url+'" type="audio/mp4" />';
+	} else if(url.indexOf('ogg')>-1) {
+		h += '<source src="'+url+'" type="audio/ogg" />';
+	} else {
+		h += '<source src="'+url+'" type="audio/mpeg" />';
+	}
+	h += '</audio>';
+	
+	$('#player').append(h);
+
+	videoPlayer = $('#videoPlayer').get(0);
+	videoPlayer.addEventListener("timeupdate", progressBar, true);
+	videoPlayer.addEventListener("playing", function(){
+		if(currPaly) return;
+		currPaly = true;
+		audioHasLoad = true;
+		if(type==0) $('#bofangTxt').html('正在直播');
+    	//计算当前播放到什么时候了。
+        if(startTime + totalTime > serverTime) {
+        	//alert(videoPlayer.currentTime+'=='+serverTime+'=='+startTime);
+        	//alert(serverTime - startTime);
+        	videoPlayer.currentTime = serverTime - startTime;
+        }
+    	$('#loading').hide();
+        
+    	$('#player').unbind('click').bind("click",function(){
+    		if(playerFinish || startTime+totalTime>serverTime) return;
+    		if($(".progressbar").attr('data-hide')=="1"){
+    			$(".ctrl,.but").hide();
+    			$(".progressbar").show().attr('data-hide','0');
+    		} else {
+    			$(".progressbar").hide().attr('data-hide','1');
+    			$(".ctrl,.but").show(0);
+    			
+    			startShowController();
+    		}
+    	});
+	}, true);
+	//当播放暂停
+	videoPlayer.addEventListener("pause", function(){
+		$(".but").css("background-image","url('http://bluebee.b0.upaiyun.com/app/community/start.png')");
+		if($(".progressbar").attr('data-hide','0')) {
+			$(".progressbar").hide().attr('data-hide','1');
+			$(".ctrl,.but").show();
+		}
+		
+		if(hideControlTimer != null) {
+			clearInterval(hideControlTimer);
+			hideControlTimer = null;
+		}
+	},true);
+	
+	//当播放暂停
+	videoPlayer.addEventListener("pause", function(){
+		stop();
+	},true);
+	
+	$('#loading').show();
+}
+
+function progressBar(){
+	if(startTime+totalTime > serverTime && videoPlayer.currentTime < serverTime - startTime) {
+		var c = serverTime - startTime;
+		if(videoPlayer.currentTime < c) {
+			videoPlayer.currentTime = c;
+		}
+	}
+	
+	var elapsedTime = videoPlayer.currentTime;
+	//console.log(elapsedTime);
+	setPrce(Math.round(videoPlayer.currentTime));
+}
+
+function formatTime(t){
+	var min = ~~(t/60);
+	var sec = t%60;
+	//console.log(min+'--'+sec);
+	
+	return (min<10?'0'+min:min)+':'+(sec<10?'0'+sec:sec);
+}
+
+function setPrce(currTime){
+	var c = currTime/totalTime*100;
+	$('#bar_2').css({'width':c+'%'});
+	
+	if(!isTouchDrag) {
+		var l = twidth*c/100+dragLeft;
+		$('#drag').css("left",l+"px");
+		$('#bar_1').css({'width':c+'%'});
+	}
+	
+	$('#stime').text(formatTime(currTime));
+	
+	if(currTime >= totalTime) {
+		stop();
+		if(hideControlTimer != null) {
+			clearInterval(hideControlTimer);
+			hideControlTimer = null;
+		}
+		playerFinish = true;
+	}
+}
+
+function play(){
+	videoPlayer.play();
+	playerFinish = false;
+	startShowController();
+	$(".but").css("background-image","url('http://bluebee.b0.upaiyun.com/app/community/stop.png')");
+}
+
+function stop(){
+	videoPlayer.pause();
+	currPaly = false;
+	$(".but").css("background-image","url('http://bluebee.b0.upaiyun.com/app/community/start.png')");
+	if($(".progressbar").attr('data-hide','0')) {
+		$(".progressbar").hide().attr('data-hide','1');
+		$(".ctrl,.but").show();
+	}
+	
+	if(hideControlTimer != null) {
+		clearInterval(hideControlTimer);
+		hideControlTimer = null;
+	}
+}
+function replay(){
+	videoPlayer.currentTime = 0;
+	play();
+}
+
+function startShowController(){
+	//此处开启定时器
+	if(hideControlTimer != null) return;
+	var countDown = 0;
+	hideControlTimer = setInterval(function(){
+		countDown++;
+		if(countDown > 5) {
+			$(".ctrl,.but").hide();
+			$(".progressbar").show().attr('data-hide','0');
+			once = 1;
+			
+			if(hideControlTimer != null) clearInterval(hideControlTimer);
+			hideControlTimer = null;
+		}
+	},1000);
+}
+
+var audioHasLoad = false;
+$(document).ready(function(){
+	$('html').on('touchstart',function(){
+		if(startTime <= serverTime) {
+			if(audioHasLoad == false) {
+				if(videoPlayer.paused){
+					videoPlayer.load();
+					videoPlayer.play();
+					audioHasLoad = true;
+				}
+			}
+		}
+	});
+	
+	pageZoom = $("html").css("zoom");
+    $(":text").focus(function(){
+		$(".box").css('padding-bottom',$(window).height()/pageZoom/2);
+	});
+	$(":text").blur(function(){
+		setTimeout("$('.box').css('padding-bottom',10)",10);
+	});
+	var wrapper = $('#wrapper') , comment_list = $('#comment_list') , wrapperMaxTop = wrapper.height();
+	wrapper.scroll(function(){
+		var top = wrapper.scrollTop();
+		//$('#bofangTxt').text(top);
+		//此处需要加载历史
+		if(comment_list.height() - wrapperMaxTop - top < 100) {
+			pullUpAction();
+		}
+	});
+	/*wrapper.get(0).addEventListener('touchend' , function(){
+		var top = wrapper.scrollTop();
+		$('#bofangTxt').text(top);
+	},true);
+	wrapper.get(0).addEventListener('touchstart' , function(){
+		var top = wrapper.scrollTop();
+		$('#bofangTxt').text(top);
+	},true);
+	wrapper.get(0).addEventListener('touchmove' , function(){
+		var top = wrapper.scrollTop();
+		$('#bofangTxt').text(top);
+	},true);*/
+	//回放音频按钮
+	var h = $(".head").height()+$(".tl .bott").height()+($(".tl img").height()-$(".but").height())/2;
+	var w = ($(".tl img").width()-$(".but").width())/2;
+	$(".but").css({"top":h+"px","left":w+"px"});	
+	$(".but").bind("click",function(e){
+		var but = $(this);
+		e.stopPropagation();
+		if(videoPlayer.paused){
+			if(playerFinish) {
+				replay();
+			} else {
+				play();
+			}
+		} else {
+			stop();
+		}	
+	});
+	$(".ctrl").bind("click",function(e){e.stopPropagation();});
+	//回放音频进度条
+	var top = $(".head").height()+$(".tl .bott").height()+$(".tl img").height()-$(".ctrl").height()+3;
+	$(".ctrl").css({"top":top+"px","left":0+"px"});
+	
+	$('#player').get(0).addEventListener('touchstart' , function(){
+		//console.log(2);
+		if(playerFinish || startTime+totalTime>serverTime) return;
+		if(hideControlTimer != null) {
+			clearInterval(hideControlTimer);
+			hideControlTimer = null;
+		}
+	});
+	$('#player').get(0).addEventListener('touchend', function(event) {
+		//console.log(3);
+		if(playerFinish || startTime+totalTime>serverTime) return;
+		//此处开启定时器
+		startShowController();
+	});
+	
+	//拖拽bar
+	var origin = $(".dragbar").position().left;
+	var drag = document.getElementById('drag');
+    drag.addEventListener('touchmove', function(event) {
+		var drag = $(this);
+		event.preventDefault();//阻止其他事件
+		// 如果这个元素的位置内只有一个手指的话
+		if (event.targetTouches.length == 1 && startTime+totalTime<serverTime) {
+			var touch = event.targetTouches[0];  // 把元素放在手指所在的位置
+			var posX = touch.pageX/pageZoom;
+			//console.log(posX);
+			if(posX>=dragLeft && posX<=(twidth+dragLeft)){
+				drag.css("left",posX+"px");
+				
+				var c = (posX-dragLeft)/twidth*100;
+				$("#bar_1").css("width",c+"%");
+			}else{
+				if(posX<dragLeft){
+					drag.css("left",dragLeft+"px");
+					$("#bar_1").css("width","0px");
+				}
+				if(posX>(twidth+dragLeft)){
+					drag.css("left",(twidth+dragLeft)+"px");
+					$("#bar_1").css("width","100%");
+				}
+			} 
+		}
+   }, false);
+    
+    
+	drag.addEventListener('touchstart' , function(){
+		//console.log('xx');
+		isTouchDrag = true;
+	});
+    drag.addEventListener('touchend' , function(){
+    	//console.log('yy');
+    	isTouchDrag = false;
+    	
+    	if(startTime+totalTime<serverTime) {
+    		var c = parseFloat($('#bar_1').css('width'))/212;
+        	//console.log(c);
+        	var currTime = ~~(totalTime*c);
+        	//console.log(currTime);
+        	
+        	videoPlayer.currentTime = currTime;
+    	}
+    });
+   
+    //直播还未开始，则默认启动一个线程
+   if(startTime > serverTime) {
+	   beginTimer = setInterval(function(){
+		   serverTime+=1;
+		   if(startTime <= serverTime) {
+			   clearInterval(beginTimer);
+			   initPlayer(0);
+		   }
+	   },1000);
+   } else if(startTime+totalTime>serverTime){
+	   beginTimer = setInterval(function(){
+		   serverTime += 1;
+	   },1000);
+	   initPlayer(1);
+   } else {
+	   initPlayer(2);
+   }
+    
+   $('#comment_btn').bind('click',function(){
+	   var content = $.trim($('#comment_txt').val());
+	   $('#comment_txt').val(content);
+	   if(content == '') {
+		   alert('请输入你想评论的内容');
+		   return;
+	   }
+	   if(content.length > 300) {
+		   alert('评论内容不能超过300个字');
+		   return;
+	   }
+	   $('#comment_txt').val('');
+	   $.ajax({
+			url : '/web/community/video/$!{videoId}/comment',
+			data : {'content':content , 'videoId' : $!{videoId}},
+			type : 'post',
+			dataType : 'json',
+			beforeSend: function(xhr){xhr.setRequestHeader('$!{Const.getRequest_header_encrypt()}', '$!{encrypt}');},
+			success : function(result){
+				if(result.code==0) {
+					console.log('comment success');
+					#if(${playStatus} != 2)
+					talk_container.scrollTop(talk_list.height());
+					if(talkTimer != null) clearTimeout(talkTimer);
+					timerTalk();
+					#else
+					pullDownAction();
+					#end
+				} else {
+					alert(result.codemsg);
+				}
+			}
+	   });
+   });
+   $('#comment_txt').keyup(function(event){
+	   if(event.keyCode==13) {
+		   $('#comment_btn').click();
+		   $('#comment_txt').blur();
+	   }
+   });
+   #if(${playStatus} != 2)
+   initTalk();
+   #end
+});
+</script>
+#parse("information/bdjs.html")
+</body>
+</html>

@@ -1,0 +1,145 @@
+/*loading页面*/
+.loading{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: #fff;z-index: 200;}
+.loading figure{position: absolute;top: 30%;left: 50%;z-index: 201;width: 200px;margin-left: -100px;text-align: center;}
+.loading figcaption{color: #333333;text-align: center;text-indent: 1em;}
+/*登录页面*/
+.loginWraper{width: 100%;height:978px;background: #3A4350;padding-top: 60px;}
+.loginWraper form{width: 380px;margin: 0 auto;text-align: center;}
+.loginWraper label{width: 64px;height:40px;line-height: 40px;color: #fff;float: left;}
+.loginWraper form input{width: 312px;height:38px;line-height:38px;border: 1px solid #fff;border-radius: 50px;-webkit-border-radius: 50px;-moz-border-radius: 50px;background: transparent;text-indent: 2em;color: #fff;margin-bottom: 20px;font-size: 13px;outline:none;cursor: text;float: right;}
+.loginWraper form input.loginBtn{width: 170px;height:40px;line-height:40px;color: #333;background: #ccc;font-weight: bold;font-size: 18px;cursor:pointer;text-indent: 0px;float: none;margin-left: 64px;}
+img.logo1{margin-bottom: 20px;width: 100%;}
+img.logo2{width: 840px;height: auto;position: absolute;bottom: 60px;left: 0;opacity: 0.1;filter:Alpha(opacity=10)}
+/*登录页面结束*/
+
+/*===主导航===*/
+.active{background: #0B519D;}
+nav{height: 75px;line-height:75px;width:1280px;min-width:100%;background: #333;position: fixed;top: 0;left: 0;z-index: 1000;}
+nav .navLogo{position: absolute;left: 0;top: 0;width: 20%;}
+nav img{height: 75px;width: auto;}  /*导航里logo*/
+nav ul{/*display: inline-block;*display: inline;*zoom: 1;*/margin: 0 20%;}
+nav ul li{float: left;text-align: center;width: 15%;}
+nav ul li a{display: block;color: #fff;font-size: 1.5em;font-weight: bold;}
+nav ul li a:hover{background: rgb(9,60,117);}
+    /*导航右边登录状态*/
+ nav div{position: absolute;top: 0;right: 0;width:20%;}
+ nav div a,.indexWraper nav div span a{display:inline;font-size: 16px;color: #fff;text-decoration: underline;margin-right: 10px;}
+ nav div span img{width: 20px;height: auto;padding: 0;vertical-align: middle;padding-right: 5px;}
+
+/*1024  1280  1366  1440  1680  1920*/
+/*===主导航结束===*/
+
+/*=======index=======*/
+.indexWraper{padding-top: 75px;position: relative;width: 1440px;min-width: 100%;overflow: hidden;}
+/*index副导航*/
+.iactive{text-decoration: underline;}
+.iSubNav{width: 100%;height: 65px;background: #ccc;position: relative;left: 0;top:0;}
+.iSubNav ul{padding-left: 300px;width: 200px;}
+.iSubNav ul li{float: left;line-height: 65px;width: 100px;}
+.iSubNav ul li a{color: #333;font-size: 20px;display: block;}
+/*index副导航结束*/
+
+#basicAttr{position: relative;top:0;left: 0;width: 100%;transition: 0.5s left linear;overflow: hidden;}/*用户属性--基本属性*/
+#MTAttr{position: absolute;top: 140px;left: 100%;width: 100%;transition: 0.5s left linear;}/*用户属性--终端属性*/
+
+.dataTime{font-size: 14px;color: #ccc;text-align: left;padding-bottom: 20px;}
+header{font-size: 28px;color: #333;text-align: center;font-weight: bold;padding-bottom: 20px;font-family: "微软雅黑";}
+/*index基本属性--模块1 性别比例，年龄分布*/
+#iModule1{width: 95%;height:520px;background: #fafafa;padding:2.5%;font-weight: bold;}
+#age{width:640px;float: left;}
+#age ul,#CommuntTime ul{width:100%;}
+#age ul li,#CommuntTime ul li{width:100%;margin-bottom: 20px;}
+#age ul li hgroup h2,#CommuntTime ul li hgroup h2{font-size: 18px;font-weight: bold;}
+#age ul li hgroup p,#CommuntTime ul li hgroup p{color: #62DDD0;font-size: 24px;}
+.ageTotal,.CommuntTotal{width: 100%;height: 30px;background: #E4CFBA;color: #333;}
+.ageTotal div{height: 30px;background: #62DDD0;}
+/*index基本属性--模块2 学历分布*/
+#iModule2{width: 95%;height:380px;background: #FCF9F6;padding:2.5%;font-weight: bold;text-align: center;}
+#iModule2 ul{padding-top: 40px;width: 1000px;margin: 0 auto;}
+#iModule2 ul li{float: left;height: 180px;width: 160px;margin-right: 50px;zoom: 1;}
+#iModule2 ul li:nth-last-of-type(1){margin-right: 0px;}
+#iModule2 ul li div{height: 130px;line-height:130px;background: #E4CFBA;color: #333;font-size: 43px;}
+#iModule2 ul li p{height: 50px;line-height:50px;background: #62DDD0;color: #008489;font-size: 28px;}
+#iModule2 ul li.max div{background: #F68E56;color: #fff;}
+
+/*index基本属性--模块3 休闲娱乐指数*/
+#iModule3{width: 95%;height:678px;background: #2E302F;padding:2.5%;font-weight: bold;text-align: center;}
+#entertainment h2{color: #fff;font-size: 28px;}
+#entertainment h3{color: #ccc;font-size: 14px;margin-bottom: 20px;}
+#entertainment ul{width: 670px;margin: 0 auto;}
+#entertainment ul li{float: left;width: 50%;}
+.shoppingWraper p{color: #F5C326;font-size: 28px;}
+.parkWraper p{color: #975EAC;font-size: 28px;}
+.movieWraper p{color: #71BC19;font-size: 28px;}
+.travelWraper p{color: #EA4E5B;font-size: 28px;}
+.eatWraper p{color: #5982C4;font-size: 28px;}
+.singWraper p{color: #ED72A1;font-size: 28px;}
+.shoppingWraper p:nth-of-type(1),.parkWraper p:nth-of-type(1),.movieWraper p:nth-of-type(1),.travelWraper p:nth-of-type(1),.eatWraper p:nth-of-type(1),.singWraper p:nth-of-type(1){margin-top: 60px;}
+
+/*index终端属性--模块1 手机占有率排名，手机操作系统占比*/
+#mtModule1{width: 95%;height:520px;padding:2.5%;font-weight: bold;text-align: left;}
+#phonemodel{width:540px;padding-right: 90px;}
+#phonemodel ul{margin-top: 14px;}
+#phonemodel li{margin-bottom: 10px;}
+.RankNum{width: 25px;height: 25px;line-height:25px;color: #fff;margin-right:15px;text-align: center;}
+.phoneName{height: 25px;line-height:25px;border-radius: 50px;-webkit-border-radius: 50px;color: #fff;padding: 0 3%;}
+.phoneTitle{width: 94%;}
+/*index终端属性--模块2 活跃用户分辨率*/
+#mtModule2{width: 95%;height:520px;padding:2.5%;font-weight: bold;text-align: center;background: #f5f5f5;}
+
+/*======index结束=======*/
+
+/*======用工分析======*/
+#LModule1{width: 95%;height: 518px;background: #fafafa;margin-top: 75px;padding: 2.5%;}
+#LModule2,#LModule3,#LModule4,#LModule5{width: 95%;background: #fff;padding: 2.5%;}
+#LModule2{height: 615px;}
+#LModule4{background: #fafafa;}
+/*收入分析*/
+#income {width: 60%;margin: 0 auto;}
+#income ul{margin: 0 auto;text-align: center;}
+#income ul li{float: left;text-align: center;}
+#income ul li div.incomeTotal{height: 390px;position: relative;}
+#income ul li div section{width: 36px; background: #E4CFBA;position: absolute;bottom:0;margin: 10px auto;left: 50%;}
+#income ul li div section div{width: 100%;background: #62DDD0;position: absolute;bottom:0;left: 0;color: #3E675F;font-size: 12px;}
+#income ul li p{font-size: 21px;color: #483924;}
+#income ul li h2{position: absolute;line-height: 40px;width: 100%;left: 50%;margin-left: -50%;}
+
+/*通勤时间*/
+.CTD{width: 600px;text-align: center;}
+.CTD h2{font-size: 16px;color: #333;}
+#CommuntTime{float: right;text-align: center;width:600px;text-align: left;padding-left: 40px;}
+.CommuntTotal div{height: 30px;background: #62DDD0;}
+/*通勤时间结束*/
+/*社保缴纳率*/
+.province{width: 1010px;margin: 0 auto;position: relative;}
+.province label{position: absolute;right: 0;top: 0;}
+.province label select{width: 100px;}
+select::-ms-expand { display: none; }
+.insuranceRate{width: 400px;padding-right: 150px;padding-top:94px;}
+.insuranceRate span{line-height: 30px;font-size: 24px;font-weight: bold;}
+.insuranceRate li{padding-bottom: 10px;}
+/*.insuranceRate li p{margin-bottom: 3px;}*/
+.insuranceTotal,.SocialSecTotal{width: 350px;height: 30px;margin-top: 5px;}
+.regular{height: 30px;background: #62DDD0;}
+.irregular{height: 30px;background: #E4CFBA;}
+/*不正常缴纳男女占比*/
+.insuranceIrregular{text-align: center;padding-top: 70px;width: 460px;}
+.irregularTotal{width: 230px;height: 230px;border-radius: 50%;}
+.insuranceIrregular li{float: left;text-align: center;}
+.male,.female{border-radius: 50%;margin: 0 auto;font-size: 26px;}
+.female{background: #66CC66;}
+.male{background: #FFCC66;}
+.irregularTotal p{font-size: 26px;line-height: 46px;}
+
+.userDistribWraper{padding-top: 75px;width: 1270px;padding-left: 100px;}
+
+/*====用户分布====*/
+.topList{width:600px;padding-top:55px;}
+.topList header{color: #fff;text-align: left;}
+.topList ul li{padding-bottom: 5px;}
+.topList ul li span{width: 16px;height: 16px;border-radius: 50px;-webkit-border-radius: 50px;display: inline-block;vertical-align: middle;}
+.topList ul li h2{color: #fff;display: inline-block;*display: inline;*zoom: 1;font-size: 16px;padding-left: 8px;padding-right: 15px;}
+.topList .starts{display: inline-block;*display: inline;*zoom: 1;}
+.topList ul li span.top3{background: #FF6600;}
+.topList ul li span.top5{background: #D17D00;}
+.topList ul li span.last4{background: #A88600;}

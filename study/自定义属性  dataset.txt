@@ -1,0 +1,6 @@
+<div id='aa' data-drink='coffee' ></div>
+
+var aa=document.getElementById('aa');
+
+js:  aa.dataset.drink-->coffee;
+css: #aa[data-drink='coffee']{font-size:12px;};

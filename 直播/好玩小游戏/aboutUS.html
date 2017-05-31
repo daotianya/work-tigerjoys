@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<script src="js/jquery.1.11.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--以下兼容IE浏览器-->
+		<script src="js/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+		<!--[if IE 6]>
+			<script src="js/DD_belatedPNG_0.0.8a.js"></script>
+			<script>
+				DD_belatedPNG.fix('*');
+			</script>
+		<![endif]-->
+		<title>撩妹游戏</title>
+		
+	</head>
+	<body style="background: #FAFAFA;">
+		<div id="outter">
+			<div id="header" class="center">
+				<div id="logo"><img src="img/logo.png"/></div>
+				<div class="links">
+					<a href="index.html">首页</a>
+					<a href="aboutUS.html" style="margin-right: 0;" class="current">关于我们</a>
+				</div>
+			</div>
+			<div id="main">
+				<div class="aboutUS center">
+					<div class="hgroup fl">
+						<p>移动万象（北京）科技有限公司</p>
+						<!--<p>电话：010-82660219</p>-->
+						<p>地址：北京市海淀区中关村大街1号海龙大厦</p></p>
+						<!--<p>邮箱：bd@lanmifeng.com</p>-->
+					</div>
+					<img src="img/map.png"/>
+				</div>
+			</div>
+			<div id="footer" class="center clear">
+				<div class="fl group1">
+					<p>移动万象（北京）科技有限公司</p>
+				</div>
+				<div class="fl group2">
+					<p>地址：北京市海淀区中关村大街1号海龙大厦</p>
+					<p>
+						<span>京ICP备17002648号</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				function resizeWidth(){
+					var width=$(window).width();
+					var padd=(width-1200)/2+'px';
+					$(".center").css({'padding-left':padd,'padding-right':padd});
+					
+				};
+				resizeWidth();
+				
+				$(window).resize(function(){
+					resizeWidth();
+				});
+				
+				(function resizeHeight(){
+					var winHeight=window.screen.height;
+					var targetDiv=$(".aboutUS");
+					targetDiv.height(winHeight-220-70+'px');
+				})();
+				
+			});
+				
+			
+				
+			
+		</script>
+	</body>
+</html>

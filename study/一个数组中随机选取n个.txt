@@ -1,0 +1,14 @@
+function randomArr(iAll,iNow){
+				var funArr=[];
+				var nowArr=[];
+				for (var i =1; i <= iAll; i++) {
+					funArr.push(i);
+				}
+				for (var i = 0; i < iNow; i++) {
+					nowArr.push(funArr.splice(Math.round(Math.random()*funArr.length),1)) ;
+				}
+				return nowArr;
+			}
+
+
+ randomArr(25,8)

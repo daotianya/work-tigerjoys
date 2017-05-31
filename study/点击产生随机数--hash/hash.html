@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>onhashChange</title>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="点击产生随机数组" />
+		<div id="result"></div>
+		
+		<script type="text/javascript">
+		window.onload = function(){	
+			
+			var oInput=document.getElementById("btn");
+			var oDiv=document.getElementById("result");
+			oInput.onclick=function(){
+				var arr1=randomArr(20,3);
+				oDiv.innerHTML=arr1;
+				window.location.hash=arr1;
+			}
+			window.onhashchange=function(){
+				oDiv.innerHTML=window.location.hash.substring(1);
+			}
+			function randomArr(iAll,iNow){
+				var funArr=[];
+				var nowArr=[];
+				for (var i =1; i <= iAll; i++) {
+					funArr.push(i);
+				}
+				for (var i = 0; i < iNow; i++) {
+					nowArr.push(funArr.splice(Math.round(Math.random()*funArr.length),1)) ;
+				}
+				return nowArr;
+			}
+		}
+		</script>
+	</body>
+</html>
