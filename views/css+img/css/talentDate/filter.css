@@ -1,0 +1,86 @@
+/*===筛选表单====*/
+.mainCon{
+	margin-top: 64px;
+}
+.filter-title{
+	background: #eee;
+	font-size: 13px;
+	color: #999;
+	height: 30px;
+	line-height: 30px;
+	padding-left:12px;
+}
+.filter1-cell{
+	text-align: center;
+	width: 50%;
+	height: 20px;
+	margin: 10px 0;
+	float: left;
+}
+.filter2 ul li{
+	padding: 0 12px;
+	border-bottom: 1px solid #eee;
+}
+.filter2 ul li p{
+	float: left;
+	font-size: 16px;
+	color: #999;
+	height:44px;
+	line-height: 44px;
+}
+.filter2-cell{
+	text-align: center;
+	padding: 0 15px;
+	line-height: 44px;
+	color: #999;
+	float: left;
+}
+.filter2-age{
+	position: relative;
+}
+
+.right_arrow{
+	width: 22px;
+	position: absolute;
+	right: 12px;
+	top: 12px;
+}
+/*input自定义样式结束*/
+input[type="radio"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	display:none;
+}
+label{
+	width:100%;
+	height:100%;
+	display:inline-block;
+	cursor:pointer;
+}
+label span{
+	display: inline-block;
+	font-size: 16px;
+	color: #999;
+}
+
+
+input[type="radio"]:checked + span{
+	color: #FF3B5E;
+	
+}
+/*input自定义样式结束*/
+
+/*mobiscroll 组件*/
+#ageRange_dummy{
+	font-size: 16px;
+	color: #FF3B5E;
+	height:44px;
+	line-height: 44px;
+	text-align: right;
+	padding-right: 32px;
+}
+.mbsc-ios .mbsc-fr-btn{
+	color: #FF3B5E;
+}
+

@@ -1,0 +1,186 @@
+
+.mainBox{
+	margin-top: 64px;
+}
+/*第一部分 头像 约会标题等*/
+.cellBox1{
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+}
+.headerImg{
+	width: 100px;
+	height: 100px;
+	margin-right: 15px;
+	overflow: hidden;
+	background: url(../../../libs/img/default_bg.png) no-repeat;
+	background-size: contain;
+	-webkit-background-size: contain;
+}
+.cellBox1 ul{
+	width: 60%;
+}
+.cellBox1 ul li{
+	width: 100%;
+	font-size: 15px;
+	color:  #666;
+	margin-bottom: 15px;
+}
+.cellBox1 ul li:nth-of-type(2){
+	color: #FF3B5E;
+}
+.cellBox1 ul li:nth-of-type(3){
+	font-size: 13px;
+	color: #999;
+}
+/*第二部分 约会类型*/
+.cellBox2{
+	padding: 15px 12px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 0;
+}
+.cellBox2 h4{
+	font-size: 15px;
+	color:  #333;
+	margin-bottom: 15px;
+}
+
+.cellBox2 ul li{
+	float: left;
+	width: 33%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+/*input自定义样式结束*/
+.cellBox2 input[type="radio"],.cellBox4 input[type="radio"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	display:none;
+}
+.cellBox2 ul li label,.cellBox4 ul li label{
+	width:100%;
+	height:100%;
+	display:inline-block;
+	cursor:pointer;
+}
+.cellBox2 ul li label span,.cellBox4 ul li label span{
+	display: inline-block;
+	text-align: center;
+	height: 26px;
+	line-height: 24px;
+	padding: 0 4px;
+	border-radius: 13px;
+	-webkit-border-radius: 13px;
+	border: 1px solid #bbb;
+	font-size: 14px;
+	color: #666;
+	margin: 0 auto;
+	background: transparent;
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.cellBox2 ul li label span{
+	width: 75px;
+}
+.cellBox4 ul li label span{
+	width: 65px;
+}
+
+.cellBox2 input[type="radio"]:checked + span,.cellBox4 input[type="radio"]:checked + span{
+	background: #FF3B5E;
+	color: #fff;
+	border: none;
+}
+/*input自定义样式结束*/
+
+/*第三部分 约会时间，时长，地点*/
+.cellBox3 li{
+	padding: 0 12px;
+	height: 45px;
+	border-bottom: 1px solid #ddd;
+}
+.cellBox3 li h4{
+	float: left;
+	font-size: 15px;
+	color: #333;
+	line-height: 45px;
+}
+.cellBox3 li a.right_arrow{
+	float: right;
+	width: 22px;
+	height: 22px;
+	margin-top: 11.5px;
+	margin-left: 4px;
+}
+
+.cellBox3 li span.addressBox,#datetimeLength_dummy,#datetime{
+	text-align: right;
+	float: right;
+	font-size: 13px;
+	color: #666;
+	height: 45px;
+	line-height: 45px;
+	width: 60%;
+}
+
+/*第四部分 提供车费*/
+.cellBox4{
+	padding: 15px 12px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 0;
+}
+.cellBox4 h4{
+	font-size: 15px;
+	color: #333;
+	margin-bottom: 15px;
+}
+.cellBox4 h4 small{
+	font-size: 11px;
+	color: #999;
+}
+
+.cellBox4 ul li{
+	float: left;
+	width: 25%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+/*第五部分 注意事项*/
+.cellBox5{
+	padding: 15px 12px 20px 12px;
+	margin-bottom: 44px;
+}
+.cellBox5 p{
+	font-size: 11px;
+	color: #999;
+	padding-bottom: 10px;
+}
+/*底部footer*/
+.footer{
+	position: fixed;
+	bottom: 0;
+	border-top: 1px solid #ddd;
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	background: #fff;
+}
+.footer p:nth-of-type(1){
+	float: left;
+	padding-left: 12px;
+	font-size: 14px;
+	color: #666;
+}
+.footer span{
+	font-size: 14px;
+	color: #FF3B5E;
+}
+.footer .footbtn{
+	float: right;
+	width: 130px;
+	height: 100%;
+	background: #FF3B5E;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	
+}

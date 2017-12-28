@@ -1,0 +1,151 @@
+/*===cellBox===*/
+
+.cellBox{
+	margin-top: 64px;
+}
+.cellBox1{
+	padding: 15px 12px;
+	background: #fff;
+	border-bottom: 10px solid #eee;
+	position: relative;
+}
+/*约会标题*/
+.date-title{
+	font-size: 14px;
+	color:  #333;
+	margin-bottom: 15px;
+	max-width: 60%;
+}
+
+.headerImg{
+	width: 100px;
+	height: 100px;
+	margin-right: 15px;
+	overflow: hidden;
+}
+.nickname{
+	font-size: 13px;
+	color: #666;
+	max-width: 58%;
+}
+
+.sex{
+	width: 25px;
+	height: 13px; /* 高度与 nickname 字体大小相同*/
+	line-height: 13px;
+	font-size: 10px;
+	color: #fff;
+	padding-left: 12px;
+	margin: 0 8px;
+	background-repeat: no-repeat;
+	background-origin: padding-box;
+	-webkit-background-origin: padding-box;
+	background-position: center;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	margin-top:3px;
+	margin-left: 10px;
+	margin-right: 8px;
+}
+.vip{
+	display: inline-block;
+	vertical-align: middle;
+	width: 25px;
+	height: 13px;
+	margin-top:3px;
+}
+.cellBox1 ul li{
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 8px;
+}
+/*支付方式列表*/
+.payMode{
+	
+}
+
+.payMode li{
+	position: relative;
+	height: 55px;
+	line-height: 55px;
+	font-size: 14px;
+	color: #333;
+	border-bottom: 1px solid #F1F1F1;
+	padding: 0 13px;
+}
+.payMode li:nth-of-type(1){
+	height: 45px;
+	line-height: 45px;
+}
+/*input自定义样式开始*/
+.payMode input[type="radio"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	display:none;
+}
+.payMode label{
+	width:100%;
+	height:100%;
+	display:inline-block;
+	cursor:pointer;
+}
+.payMode label a.radioIcon{
+	display: inline-block;
+	font-size: 14px;
+	color: #333;
+}
+.payMode label a.radioIcon img{
+	width:35px;
+	height:35px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.payMode label input[type="radio"] + span.radioCircle{
+	width:22px;
+	height:22px;
+	display:inline-block;
+	border-radius: 11px;
+	-webkit-border-radius: 11px;
+	border: 1px solid #bbb;
+	position: absolute;
+	right: 13px;
+	top: 50%;
+	margin-top: -11px;
+}
+.payMode label input[type="radio"]:checked + span.radioCircle{
+	background:url(../../img/talentDate/radioChecked_icon.png) no-repeat;
+	background-position:0 0;
+	background-size: contain;
+	border: none;
+}
+/*input自定义样式结束*/
+.right_arrow{
+	display: inline-block;
+	width:22px;
+	position: absolute;
+	right: 13px;
+	top: 50%;
+	margin-top: -11px;
+}
+/*礼貌约会 提示*/
+.tips{
+	font-size: 12px;
+	color: #333;
+	padding: 13px;
+}
+.tips a{
+	color: #3C76F9;
+}
+
+footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	background: #FF3B5E;
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+}

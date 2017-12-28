@@ -1,0 +1,208 @@
+body{
+	background: #F9F8FC;
+}
+.navbar-item-right {
+	font-size: 14px;
+}
+/*顶部VIP或信用分不足提示*/
+.topTip{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background: #eee;
+	font-size: 12px;
+	color:  #FF3B5E;
+	padding-left: 12px;
+	position: fixed;
+	top: 64px;
+	left: 0;
+	z-index: 100;
+}
+/*===cellBox===*/
+
+.cellBox{
+	border-bottom: 10px solid #eee;
+}
+.cellBox1{
+	padding: 15px 12px;
+	background: #fff;
+	border-bottom: 1px solid #F1F1F1;
+	position: relative;
+}
+/*约会标题*/
+.date-title{
+	font-size: 14px;
+	color:  #333;
+	margin-bottom: 15px;
+	max-width: 60%;
+}
+
+.headerImg{
+	width: 100px;
+	height: 100px;
+	margin-right: 15px;
+	overflow: hidden;
+}
+.nickname{
+	font-size: 13px;
+	color: #666;
+	max-width: 58%;
+}
+
+.sex{
+	width: 25px;
+	height: 13px; /* 高度与 nickname 字体大小相同*/
+	line-height: 13px;
+	font-size: 10px;
+	color: #fff;
+	padding-left: 12px;
+	margin: 0 8px;
+	background-repeat: no-repeat;
+	background-origin: padding-box;
+	-webkit-background-origin: padding-box;
+	background-position: center;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	margin-top:3px;
+	margin-left: 10px;
+	margin-right: 8px;
+}
+.vip{
+	display: inline-block;
+	vertical-align: middle;
+	width: 25px;
+	height: 13px;
+	margin-top:3px;
+}
+.cellBox1 ul li{
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 8px;
+}
+/*约会状态 2种颜色*/
+.dateState{
+	position: absolute;
+	top: 15px;
+	right: 12px;
+	font-size: 14px;
+}
+/*红色*/
+.state-1{
+	color: #FF3B5E;
+}
+/*蓝色*/
+.state-2{
+	color: #3C76F9;
+}
+
+
+/*cellBox2 按钮组*/
+.cellBox2{
+	background: #FBFBFB;
+	padding: 10px 12px;
+}
+.btnGroup{
+	margin-bottom: 8px;
+}
+
+.cellBtn{
+	float: right;
+	text-align: center;
+	width: 61px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 12px;
+	background: transparent;
+	border-radius: 12.5px;
+	-webkit-border-radius: 12.5px;
+	margin: 0 5px;
+}
+/*按钮样式1：灰边，灰色字*/
+.cellBtn-1{
+	color: #666;
+	border: 1px solid #bbb;
+}
+/*按钮样式2：红边，红字*/
+.cellBtn-2{
+	color: #FF3B5E;
+	border: 1px solid #FF3B5E;
+}
+/*按钮样式3：蓝底，白字*/
+.cellBtn-3{
+	background: #3C76F9;
+	color: #fff;
+}
+/*车费*/
+.carCost{
+	font-size: 12px;color: #FF3B5E;line-height: 25px;
+}
+.hide{
+	display: none;
+}
+/*无数据*/
+.noRecord{
+	display: none;
+	width: 175px;
+	margin: 0 auto;
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	padding-top: 120px;
+}
+.noRecord img{
+	padding-bottom: 20px;
+}
+/*给小费提示框*/
+.toastCon-fee{
+	padding-top: 12px;
+}
+
+/*头像*/
+.headerImg-toast{
+	position: relative;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	-webkit-border-radius: 40px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+/*视频认证标志*/
+.v_icon{
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+/*给小费输入框*/
+.feeInput label{
+	font-size: 25px;
+}
+.feeInput input[type="text"]{
+	width: 70px;
+	height: 25px;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	font-size: 23px;
+	color: #fff;
+}
+.footBtn-one{
+	width: 150px;
+	border-radius: 22px;
+	-webkit-border-radius: 22px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	background: #FF3B5E;
+	float: none;
+	display: block;
+	margin: 0 auto;
+}
+.confirm-ft>a:not(:last-child):after {
+    border-right: 0px;
+}

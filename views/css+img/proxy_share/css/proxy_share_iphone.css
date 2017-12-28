@@ -1,0 +1,102 @@
+body{
+	background-color: #fff;
+}
+.m-cell{
+	margin: 0;
+}
+.cell-item{
+	padding:13px 12px 30px 12px;
+	border-bottom: 1px solid #eee;
+}
+.cell-left{
+	color: #333;
+	font-size: 16px;
+	padding-bottom: 8px;
+}
+.cell-right{
+	padding-right: 0;
+	min-height: 0;
+	position: absolute;
+	top: 26px;
+	right: 12px;
+}
+
+.cell-left span{
+	margin-right: 10px;
+}
+.cell-icon{
+	width: 20px;
+}
+.cell-item:not(:last-child):after, .m-cell:after{
+	border-bottom: 1px solid #eee;
+}
+.time{
+	position: absolute;
+	bottom: 15px;
+	left: 12px;
+	font-size: 12px;
+	color: #999;
+}
+/*2017-11-13修改：添加各渠道下 达人数*/
+.drNum{
+	position: absolute;
+	bottom: 15px;
+	right: 50px;
+	font-size: 12px;
+	color: #999;
+}
+.confirm-hd{
+	display: none;
+}
+.m-confirm{
+	background: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 250px;
+	height: 150px;
+	padding: 37px 25px 0 25px;
+}
+.confirm-bd{
+	padding: 0;
+}
+.confirm-bd input{
+	border: 0;
+	border-bottom: 1px solid #eee;
+	color: #333;
+	width: 200px;
+	height: 38px;
+	line-height: 38px;
+	padding: 5px;
+	font-size: 18px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.confirm-ft{
+	margin-top: 15px;
+}
+.confirm-ft:after{
+	border: 0;
+}
+.confirm-ft>a{
+	padding: 0;
+	width: 90px;
+	height: 35px;
+	line-height: 35px;
+	border-radius: 17.5px;
+	font-size: 15px;
+}
+.confirm-ft>a.confirm-btn.default{
+	color: #999;
+	border: 1px solid #eee;
+	margin-right:10px;
+}
+.confirm-ft>a.confirm-btn.primary{
+	color: #fff;
+	margin-left: 10px;
+	background: #FF5771;
+}
+.confirm-ft>a:not(:last-child):after{
+	border-right: 0;
+}
+input::-ms-input-placeholder{text-align: center;color: #999;}
+input::-webkit-input-placeholder{text-align: center;color: #999;}

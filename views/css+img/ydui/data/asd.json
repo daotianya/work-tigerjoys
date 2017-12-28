@@ -1,0 +1,84 @@
+{
+	"code": 0,
+	"codemsg": "成功",
+	"data": [
+		{
+			"id": 158,
+			"userid": "24061583506342144",
+			"nickname": "jiujiu",
+			"photo": "http://192.168.20.30/upload/user/2017/10/16/1508122447952_1450.png?t=user150",
+			"age": 27,
+			"vip": 0,
+			"sex": 2,
+			"signature": "几个八年级家家户户",
+			"content": "123",
+			"video": "http://yoyo-test.b0.upaiyun.com/upload/dynamic/video/2017/10/16/1508146914767_394.mp4",
+			"foreground": "http://192.168.20.30/upload/dynamic/video/snap/2017/10/16/1508146915605_6690.jpg?t=com150",
+			"audience_count": 3,
+			"favor_count": 2,
+			"favor_status": false,
+			"type": 2,
+			"date": "2017-10-16 17:41"
+		}, {
+			"id": 156,
+			"userid": "24061583506342144",
+			"nickname": "jiujiu",
+			"photo": "http://192.168.20.30/upload/user/2017/10/16/1508122447952_1450.png?t=user150",
+			"age": 27,
+			"vip": 1,
+			"sex": 1,
+			"signature": "几个八年级家家户户",
+			"paths": [
+				"http://192.168.20.30/upload/dynamic/picture/2017/10/16/1508146588421_369.png?t=com150",
+				"http://192.168.20.30/upload/dynamic/picture/2017/10/16/1508125765343_6595.png?t=com150"
+			],
+			"bigPaths": [
+				"http://192.168.20.30/upload/dynamic/picture/2017/10/16/1508146588421_369.png"
+			],
+			"audience_count": 3,
+			"favor_count": 1,
+			"favor_status": true,
+			"type": 1,
+			"date": "2017-10-16 17:36"
+		}, {
+			"id": 129,
+			"userid": "24061583506342144",
+			"nickname": "jiujiu",
+			"photo": "http://192.168.20.30/upload/user/2017/10/16/1508122447952_1450.png?t=user150",
+			"age": 27,
+			"vip": 1,
+			"sex": 1,
+			"signature": "几个八年级家家户户",
+			"paths": [
+				"http://192.168.20.30/upload/dynamic/picture/2017/10/16/1508125765343_6595.png?t=com150"
+			],
+			"bigPaths": [
+				"http://192.168.20.30/upload/dynamic/picture/2017/10/16/1508125765343_6595.png"
+			],
+			"audience_count": 3,
+			"favor_count": 0,
+			"favor_status": false,
+			"type": 1,
+			"date": "2017-10-16 11:49"
+		}, {
+			"id": 124,
+			"userid": "24061583506342144",
+			"nickname": "jiujiu",
+			"photo": "http://192.168.20.30/upload/user/2017/10/16/1508122447952_1450.png?t=user150",
+			"age": 27,
+			"vip": 1,
+			"sex": 1,
+			"signature": "几个八年级家家户户",
+			"content": "123",
+			"video": "http://yoyo-test.b0.upaiyun.com/upload/dynamic/video/2017/10/16/1508123518626_4927.mp4",
+			"foreground": "http://192.168.20.30/upload/dynamic/video/snap/2017/10/16/1508123520561_4867.jpg?t=com150",
+			"audience_count": 10,
+			"favor_count": 2,
+			"favor_status": false,
+			"type": 2,
+			"date": "2017-10-16 11:12"
+		}
+	],
+	"stamp": 0,
+	"nextPage": false
+}

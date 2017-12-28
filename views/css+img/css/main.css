@@ -1,0 +1,68 @@
+#outerWrapper{width: 18rem;height: auto;}
+.pos{position: fixed;top: 2.4rem;display: block;z-index: 99;}
+/*头部*/
+.header{width: 18rem;height: 2.4rem;line-height:2.3rem;background-color: #333;text-align: center;color: #fff;position: fixed;top: 0;z-index: 99;}
+.backBtn img{width: 1.5rem;height:1.5rem;position: absolute;top: 0.45rem;left: 0.35rem;}
+.collect{color: #fff;font-size: 0.6rem;position: absolute;right: 0.6rem;top:0.575rem;width: 2.75rem;height: 1.25rem;line-height: 1.25rem;border: 1px solid #FFFFFF;border-radius: 0.25rem;-webkit-border-radius: 0.25rem;}
+#videoName{display: inline-block; width: 10rem; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/*视频观看人数*/
+#viwers{width: 18rem;height: 2.75rem;line-height:2.75rem;font-size: 0.6rem;color: #333333;background: #FFFFFF;box-sizing: border-box;-webkit-box-sizing: border-box;padding:0 0.8rem;position: relative;}
+.viwerLikes img{width: 0.75rem;vertical-align: middle;margin-top:-0.2rem;margin-right: 0;}
+a.viwerLikes{color: #333;}
+
+/*评论列表*/
+#comment{width: 18rem;height: auto;}
+.commentTitle{width: 100%;height: 1.5rem;line-height: 1.5rem;background: #eee;color: #333;font-size: 0.7rem;box-sizing: border-box;-webkit-box-sizing: border-box;padding-left: 0.6rem;}
+.commentWrapper{overflow:auto;}
+.item{display: block; width: 18rem;border-bottom: 1px solid #e5e5e5;position: relative;z-index: 98;box-sizing: border-box;-webkit-box-sizing: border-box;padding: 0.7rem 0 0.7rem 0.75rem;}
+
+.userDesc{display: inline-block;text-align: left;width: 13.35rem;}
+.userIcon{width: 2.5rem;height: 2.5rem;border-radius: 50%;-webkit-border-radius: 50%;margin-right: 0.5rem;}
+.userName{font-size: 0.8rem;color: #333333;font-weight: normal;margin-bottom: 0.25rem;margin-top: 0.05rem;} 
+.userMsg{font-size: 0.65rem;color: #666;margin-bottom: 0.25rem;}
+.userTime{font-size: 0.6rem;color: #999;}
+
+.likes{position: absolute;top: 0.6rem;right: 2.5rem;z-index: 99;}
+.likes img{width:0.75rem;height: auto;margin-top: 0.3rem;margin-right: 0.15rem;}
+.likes span{font-size: 0.6rem;color: #999;}
+
+a.replyBtn{font-size: 0.6rem;color: #999;position: absolute;top: 0.85rem;right: 0.75rem;z-index: 99;}
+
+.replyCon{width: 13.35rem;line-height: 1rem; background: #E5E5E5;color: #333333;font-size: 0.65rem;margin-left: 3rem;margin-top: 0.5rem;padding: 0.1rem;}
+.dropWrap{overflow: auto;}
+/*底部发送评论消息input框*/
+.sendMsgWraper{position:fixed;bottom:0;z-index:99;}
+.sendMsg{width: 18rem;height: 2.4rem;box-sizing: border-box;-webkit-box-sizing: border-box;padding-top: 0.225rem;background: #fafafa;border-top: 1px solid #e5e5e5;}
+.inputWrapper{width: 100%;height: 2.175rem;box-sizing: border-box;-webkit-box-sizing: border-box;background: #fff;}
+.padd{padding: 0.3rem 0.75rem 0 1.5rem;}
+.box1{float: left; width: 12.5rem;height: 1.5rem;padding-top:0.3rem;border: 1px solid #999;border-radius: 0.25rem;-webkit-border-radius: 0.25rem;box-sizing: border-box;-webkit-box-sizing: border-box;margin-right: 0.75rem;font-size: 0.6rem;color: #999;background: transparent;}
+.btn1{float: right; background: #fff;width: 2.5rem;height: 1.5rem;border: 1px solid #999;border-radius: 0.25rem;-webkit-border-radius: 0.25rem;box-sizing: border-box;-webkit-box-sizing: border-box;font-size: 0.65rem;color: #999;}
+.closeBtn{width: 18rem;height: 2.4rem;background: #FF0C5C;text-align: center;position: fixed;top: 0;z-index: 111;display: none;}
+.closeBtn img{width: 1.2rem;height:1.2rem;position: absolute;top: 0.6rem;left: 0.6rem;}
+#replyIpt,#replyBtn{display: none;}
+
+
+.opacity{
+    -webkit-animation: opacity 0.3s linear;
+    animation: opacity 0.3s linear;
+}
+@-webkit-keyframes opacity {
+    0% {
+       opacity:0;
+    }
+    100% {
+       opacity:1;
+    }
+}
+@keyframes opacity {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+
+

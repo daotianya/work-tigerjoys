@@ -1,0 +1,98 @@
+body{
+	background: #F8F8Fc;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.padd{
+	padding: 0 0.24rem;
+}
+.overflow_ellipsis{
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/*tab导航栏切换*/
+.tabNav{
+	position: fixed;
+	top: 0.96rem;
+	width: 100%;
+	background: #fff;
+}
+.tabNav li{
+	float: left;
+	text-align: center;
+	width: 50%;
+	height: 0.81rem;
+	line-height: 0.81rem;
+	font-size: 15px;
+	color: #666;
+	
+}
+.tabNav li.active{
+	border-bottom: 2px solid #FF3B5E;
+	color: #FF3B5E;
+}
+.hide{display: none;}
+
+/*.tabItem{
+	width: 100%;
+	position: absolute;
+	top: 1.78rem;
+}*/
+/*顶部 "总人数"/"总结算单数"*/
+.topBox{
+	width: 100%;
+	background: #fff;
+	height: 2.3rem;
+	padding-top: 0.36rem;
+	margin-bottom: 0.1rem;
+}
+.topBox li{
+	float: left;
+	width: 50%;
+	text-align: center;
+	/*border-right: 1px solid #FF3B5E;*/
+}
+
+.topBox li h2{
+	font-size: 0.72rem;
+	font-weight: normal;
+	padding-bottom: 0.1rem;
+}
+.topBox li p{
+	font-size: 0.24rem;
+	color: #666;
+}
+/*列表*/
+.list-item{
+	background: #fff;
+	position: relative;
+	height: 1.3rem;
+	padding: 0rem 0.24rem;
+	border-bottom: 1px solid #EEEEEE;
+}
+.list-item h2{
+	font-size: 0.32rem;
+	color: #333;
+	font-weight: normal;
+	padding-top: 0.2rem;
+	padding-bottom: 0.15rem;
+	width: 90%;
+}
+.list-item p{
+	font-size:0.26rem;
+	/*line-height:0.26rem;*/
+	color: #999;
+	width: 90%;
+}
+.list-item p span{
+	display: inline-block;
+	width: 45%;
+}
+.red{
+	color: #FF3B5E;
+}
+.list-item .right_arrow{
+	position: absolute;
+	width: 0.44rem;
+	right: 0.24rem;
+	top: 0.43rem;
+}

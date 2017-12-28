@@ -1,0 +1,50 @@
+.topBox{
+	background: #fff;
+	margin-top: 64px;
+	padding:15px;
+	margin-bottom:10px;
+}
+.grids-item{
+	text-align: center;
+}
+.grids-item h2{
+	font-size: 26px;
+	color: #333;
+	font-weight: normal;
+	padding-bottom:10px;
+}
+.grids-item p{
+	font-size: 10px;
+	color: #666;
+}
+.m-grids-2 .grids-item:not(:nth-child(2n)):before {
+	border-right: 1px solid #FF3B5E;
+}
+.list-item{
+	background: #fff;
+	position: relative;
+	height: 70px;
+	padding: 0px 12px;
+	border-bottom: 1px solid #EEEEEE;
+}
+.list-item h2{
+	font-size: 14px;
+	font-weight: normal;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	width: 90%;
+}
+.list-item p{
+	font-size: 12px;
+	color: #666;
+	width: 90%;
+}
+.list-item .right_arrow{
+	width: 22px;
+	position: absolute;
+	right: 12px;
+	top: 24px;
+}
+.overflow_ellipsis{
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}

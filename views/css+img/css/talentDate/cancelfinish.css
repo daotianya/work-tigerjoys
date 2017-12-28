@@ -1,0 +1,12 @@
+.part1{
+	background-size: cover;
+	-webkit-background-size: cover;
+}
+.part1 img{
+	margin-top: 38px;
+	margin-bottom: 28px;
+}
+.part1 p{
+	margin: 0 auto;
+}
+

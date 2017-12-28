@@ -1,0 +1,188 @@
+
+.overflow_ellipsis{
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.padd{
+	padding: 0 12px;
+}
+h4,p,a{
+	font-weight: normal;
+}
+/*iOS需要的导航条s*/
+.iphone_top{
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+	background: #FF3B5E;
+	height: 20px;
+	width: 100%;
+}
+
+/*header标题栏*/
+.header_left_icon img, 
+.header_right_icon img{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	margin-top: 4px;
+}
+.header_left_text, 
+.header_right_text{
+	font-size: 14px;
+	color: #fff;
+	line-height: 42px;
+}
+.header_left_icon,.header_left_text{
+	padding-left: 12px;
+}
+.header_right_icon,.header_right_text{
+	padding-right: 12px;
+}
+/*自定义toast提示框*/
+.toast{
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 200px;
+	margin-left: -150px;
+	margin-top: -100px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	background: url(../../img/talentDate/toastBG.png) no-repeat center center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	z-index: 100;
+}
+.toastCloseBtn{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 30px;
+	height: 30px;
+}
+.toastCon{
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+	padding-top: 75px;
+}
+.toastFooter{
+	position: absolute;
+	bottom: 25px;
+	width: 100%;
+	padding:0 13px;
+}
+.footBtn{
+	float: left;
+	width: 125px;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 22px;
+	-webkit-border-radius: 22px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+}
+.footBtn-red{
+	background: #FF3B5E;
+	margin-right: 12px;
+}
+.footBtn-yellow{
+	background: #FFCD05;
+	margin-left: 12px;
+}
+.mask{
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 99;
+}
+/*ydui-toast样式*/
+.m-confirm {
+	position: relative;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+	-webkit-border-radius: 8px;
+	background: url(../../img/talentDate/toastBG.png) no-repeat center center;
+	background-size: cover;
+	-webkit-background-size: cover;
+}
+.confirm-hd{
+	height: 75px;
+}
+/*充当关闭按钮*/
+.confirm-title img{
+	width: 30px;
+	height: 30px;
+	float: right;
+}
+.confirm-bd {
+    text-align: center;
+    font-size: 18px;
+	color: #fff;
+	text-align: center;
+    word-break: break-all;
+    padding: 0px;
+}
+.confirm-ft {
+    position: absolute;
+    line-height: 44px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 13px;
+    width: 100%;
+    bottom: 25px;
+    margin-top: 0px;
+}
+.confirm-ft:after{
+	border-top: 0px;
+}
+.confirm-ft > a.confirm-btn.primary {
+    background: #FFCD05;
+    color: #fff;
+    margin-left: 24px;
+}
+.confirm-ft > a.confirm-btn.default {
+	background: #FF3B5E;
+	color: #fff;
+	margin-right: 24px;
+}
+.confirm-ft > a {
+	border-radius: 22px;
+	-webkit-border-radius: 22px;
+    position: relative;
+    text-align: center;
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0 2px;
+}
+
+/*固定底部样式*/
+footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	background: #FF3B5E;
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+}
+
+/*mobiscroll组件 "确定/取消"按钮颜色*/
+.mbsc-ios .mbsc-fr-btn{
+	color: #FF3B5E;
+}

@@ -1,0 +1,54 @@
+body{
+	background: #f8f8fc;
+}
+.cell{
+	height:55px;
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	padding: 0 12px;
+	padding-top: 6px;
+}
+
+.record{
+	font-size:16px;
+	color: #333;
+	padding-bottom: 4px;
+}
+.record2{
+	font-size:12px;
+	color: #333;
+}
+.time{
+	/*padding-top: 10px;*/
+	font-size:12px;
+	color: #999;
+	padding-bottom:5px;
+}
+.state{
+	font-size: 15px;
+	text-align: right;
+}
+
+/*===========*/
+.success{
+	color: #ffcd05;
+}
+.wait{
+	color: #3c76f9;
+}
+.reject{
+	color: #FF5771;
+}
+
+.noRecord{
+	display: block;
+	width: 175px;
+	margin: 0 auto;
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	padding-top: 120px;
+}
+.noRecord img{
+	padding-bottom: 20px;
+}

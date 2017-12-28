@@ -1,0 +1,126 @@
+.topBox{
+	background: #fff;
+	margin-top: 0.96rem;
+	padding: 0.3rem;
+	margin-bottom: 0.2rem;
+}
+.overflow_ellipsis{
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.grids-item{
+	text-align: center;
+}
+.grids-item h2{
+	font-size: 0.52rem;
+	color: #333;
+	font-weight: normal;
+	padding-bottom: 0.1rem;
+}
+.grids-item p{
+	font-size: 0.2rem;
+	color: #666;
+}
+.m-grids-2 .grids-item:not(:nth-child(2n)):before {
+	border-right: 1px solid #FF3B5E;
+}
+.list-item{
+	background: #fff;
+	position: relative;
+	height: 1.8rem;
+	padding:0.26rem 0.24rem;
+}
+/*默认头像*/
+.headerImg{
+	background-size:contain ;
+	-webkit-background-size: contain;
+	float: left;
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-right: 0.2rem;
+	border-radius:0.55rem;
+	-webkit-border-radius: 0.55rem;
+}
+.headerImg img{
+	display: block;
+	width: 1.1rem;
+	height: 1.1rem;
+	border-radius: 0.55rem;
+	-webkit-border-radius: 0.55rem;
+}
+.list-item{
+	border-bottom: 1px solid #eee;
+}
+.list-item-center{
+	float: left;
+	width: 76%;
+}
+.info{
+	font-size: 0.32rem;
+	color: #333;
+}
+.nickName{
+	display: inline-block;
+	vertical-align: middle;
+	width: 30%;
+}
+.age{
+	/*display: inline-block;*/
+	height: 0.26rem;
+	line-height:0.26rem;
+	margin: 0 0.14rem;
+	padding-left: 0.22rem;
+	padding-right: 0.08rem;
+	font-size: 0.14rem;
+	color: #fff;
+	border-radius:2px;
+	-webkit-border-radius: 2px;
+	vertical-align: middle;
+}
+.male{
+	background-size: 0.2rem 0.2rem;
+}
+.female{
+	background-size: 0.2rem 0.2rem;
+}
+.vip{
+	/*display: inline-block;*/
+	height: 0.26rem;
+	line-height:0.26rem;
+	padding:0 0.1rem;
+	background: #ffcd05;
+	color: #fff;
+	font-size: 0.14rem;
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	vertical-align: middle;
+}
+
+.hour-long{
+	font-size: 0.26rem;
+	color: #333;
+	padding: 0.16rem 0;
+}
+.profit{
+	font-size: 0.26rem;
+	color: #666;
+}
+.time{
+	font-size: 0.2rem;
+	color: #666;
+	position: absolute;
+	right: 0.24rem;
+	top:0.3rem;
+}
+.noRecord{
+	padding-top: 2rem;
+	text-align: center;
+}
+.noRecord img{
+	width: 3.5rem;
+	height: 1.9rem;
+	padding-bottom: 0.2rem;
+}
+.noRecord p{
+	font-size: 0.12rem;
+	color: #666;
+}
