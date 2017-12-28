@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="stylesheet" href="$!{Const.getCdn('/ydui/css/ydui.css')}" />
+		<link rel="stylesheet" href="$!{Const.getCdn('/ydui/css/main.css')}" />
+		<script src="$!{Const.getCdn('/ydui/js/ydui.flexible.js')}"></script>
+		<style type="text/css">
+		.list-donetip{background-color: #f8f8fc;}
+		.tab-panel .tab-panel-item{padding:0;}
+		.m-list{padding: .25rem;padding-bottom: 0;}
+		.list-mes .list-mes-item{display:block;clear:both;}
+		.list-mes .list-title{float:left;}
+		.list-mes .dy_time{float:right;}
+		.tab-nav{
+			border-bottom: 1px solid #eee;
+		}
+		.tab-nav-item{
+			line-height: 0.8rem;
+			font-size: 0.3rem;
+			color: #666;
+		}
+		.tab-nav-item.tab-active{
+			color: #FF3B5E;
+		}
+		</style>
+		<title></title>
+	</head>
+
+	<body>
+		<div class="g-flexview">
+			<div class="iphone_top"></div>
+			<header class="m-navbar navbar-fixed header_default">
+				<div class="navbar-center"><span class="navbar-title">动态</span></div>
+				<span class="navbar-item" onclick="umeng_add()"><img src="$!{Const.getCdn('/ydui/img/add_icon.png')}" class="navbar_icon"  data-ydui-actionsheet="{target:'#actionSheet',closeElement:'#cancel,.actionsheet-item'}"/></span>
+			</header>
+			
+			<div id="dy_Tab" class="m-tab" style="height:100%;overflow:hidden;">	
+				<ul class="tab-nav">
+			        <li class="tab-nav-item"><span>关注</span></li>
+			        <li class="tab-nav-item tab-active"><span>最新</span></li>
+			    </ul>
+			    
+				<div class="tab-panel" style="height:100%;overflow:hidden;margin-top: 0rem;padding-top: 1.85rem;">
+			        <div class="tab-panel-item" style="height:100%;overflow:hidden;">
+			        	<div id="dy_List_att" class="g-scrollview">
+			        		<div id="dy_ListContent_att"></div>
+			        	</div>
+			        </div>
+			        <div class="tab-panel-item tab-active" style="height:100%;overflow:hidden;">
+			        	<div id="dy_List_newest" class="g-scrollview">
+			        		<div id="dy_ListContent_newest"></div>
+			        	</div>
+			        </div>
+			    </div>
+			</div>
+			
+			<div class="m-actionsheet" id="actionSheet">
+			    <span class="actionsheet-item" onclick="gotoDyImageFragment()">图片动态</span>
+			    <span class="actionsheet-item" onclick="gotoDyVideoFragment()">视频动态</span>
+			    <span class="actionsheet-action" id="cancel">取消</span>
+			</div>
+		</div>
+		<script id="dy_ListHtml" type="text/html">
+			{{each list as data listIndex}}
+				<div class="m-list list-theme4">
+					<!--头像/昵称部分-->
+					<div class="list-item">
+						<div class="list-img" onclick="gotoHomePage('{{data.userid}}')">
+							<img class="lazy" src="$!{Const.getCdn('/ydui/img/default_header.png')}" data-url="{{data.photo}}">
+						</div>
+						<div class="list-mes">
+							<div class="list-mes-item">
+								<h3 class="list-title">
+									<span class="dy_nickname fl">{{data.nickname | formatenickname : data.nickname}}</span>
+									{{if data.sex == 1}}
+										<span class="dy_icon dy_sex"><img src="$!{Const.getCdn('/ydui/img/male_icon.png')}"/><em class="dy_age">{{data.age}}</em></span>
+									{{/if}}
+									{{if data.sex == 2}}
+										<span class="dy_icon dy_sex"><img src="$!{Const.getCdn('/ydui/img/female_icon.png')}"/><em class="dy_age">{{data.age}}</em></span>
+									{{/if}}
+									{{if data.vip != 0}}
+										<span class="dy_icon dy_vip"><img src="$!{Const.getCdn('/ydui/img/vip_icon.png')}"/></span>
+									{{/if}}
+								</h3>
+								<div class="dy_time">{{data.date}}</div>
+							</div>
+							<p class="dy_signature">{{data.signature}}</p>
+						</div>
+					</div>
+					<!--动态标题-->
+					<h3 class="dy_title">{{data.content}}</h3>
+					<!--图片/视频-->
+					{{if data.type == 1}}
+						<div class="m-grids-3">
+							{{each data.paths as dyImages dyImagesIndex}}
+								<div class="grids-item" onclick="appshowImg('{{data.bigPaths.join()}}','{{data.id}}','{{dyImagesIndex}}','{{listIndex}}')">
+									<div class="grids-icon">
+										<img class="lazy dy_images" src="$!{Const.getCdn('/ydui/img/default_bg.png')}" data-url="{{dyImages}}" />
+									</div>
+								</div>
+							{{/each}}
+						</div>
+					{{/if}}
+					{{if data.type == 2}}
+						<div class="m-grids-3">
+							<div class="grids-item" onclick="appshowVideo('{{data.video}}','{{data.id}}')">
+								<div class="grids-icon">
+									<img class="lazy dy_foreground" src="$!{Const.getCdn('/ydui/img/default_bg.png')}" data-url="{{data.foreground}}" />
+									<img class="dy_video_btn" src="$!{Const.getCdn('/ydui/img/video_play_btn.png')}"/>
+								</div>
+							</div>
+						</div>
+					{{/if}}
+					<!--观看/点赞-->
+					<div class="m-cell">
+						<div class="cell-item">
+							<div class="cell-left"><span class="cell-icon"><img src="$!{Const.getCdn('/ydui/img/watch_icon.png')}" /></span><span class="audience_count_{{data.id}}">{{data.audience_count}}</span></div>
+							{{if data.favor_status == false}}
+								<div class="cell-right"><span class="cell-icon dy_favor" onclick="addFavor('{{data.id}}')"><img src="$!{Const.getCdn('/ydui/img/unlike_icon.png')}" /></span><span class="favor_count favor_count_{{data.id}}">{{data.favor_count}}</span></div>
+							{{/if}}
+							{{if data.favor_status == true}}
+								<div class="cell-right"><span class="cell-icon dy_favor"><img src="$!{Const.getCdn('/ydui/img/liked_icon.png')}" /></span><span class="favor_count" id="favor_count_{{data.id}}">{{data.favor_count}}</span></div>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</script>
+		<script src="$!{Const.getCdn('/ydui/js/jquery.2.1.4.min.js')}" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn('/ydui/js/template.js')}" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn('/ydui/js/ydui.js')}"></script>
+		<script type="text/javascript">
+			var httpHeader = '$!{encrypt}';
+			var listRequestUrl = "${rc.contextPath}/api/dynamic/list";
+			var addaudienceRequestUrl = "${rc.contextPath}/api/dynamic/addaudience";
+			var addfavorRequestUrl = "${rc.contextPath}/api/dynamic/addfavor";
+			
+			var Tab = $('#dy_Tab');
+			var fansInif = false;
+
+		    Tab.tab({
+		        nav: '.tab-nav-item',
+		        panel: '.tab-panel-item',
+		        activeClass: 'tab-active'
+		    });
+		
+		    Tab.find('.tab-nav-item').on('open.ydui.tab', function (e) {
+		        console.log('索引：%s - [%s]正在打开', e.index, $(this).text());
+		        
+		        if(!fansInif) {
+		        	fansInitFunction();
+		        	fansInif = true;
+		        }
+		    });
+		
+		    Tab.find('.tab-nav-item').on('opened.ydui.tab', function (e) {
+		        console.log('索引：%s - [%s]已经打开了', e.index, $(this).text());
+		    });
+			
+			
+			
+			function phoneType() {
+				if(YDUI.device.isAndroid){
+					return 'android';
+				}else if(YDUI.device.isIOS){
+					return 'iphone';
+				}
+			}
+			var mobileType = phoneType();
+			
+			if(mobileType == 'android'){
+				$("header").removeClass('header_default').addClass('header_android');
+			}else if(mobileType == 'iphone'){
+				$("header").removeClass('header_default').addClass('header_iphone').css({'top':'20px'});
+				$("#dy_List").css({'margin-top':'64px'});
+				$(".tab-nav").css({'top':'64px'});
+//				$(".tab-panel").css({'margin-top':'106px'});
+				$(".navbar_icon").css({'width':'22px'});
+				$(".navbar-item,.navbar-center").css({'height':'44px'});
+				$(".navbar-center .navbar-title").css({'font-size':'18px'});
+				$(".tab-nav-item").css({'line-height':'40px','font-size':'15px'})
+				$(".iphone_top").show();
+			}
+			
+			function umeng_add(){
+				if(mobileType == 'android'){
+					window.target.umengBuriedPoint('Dongtai_Add');
+				}else if(mobileType == 'iphone'){
+					window.webkit.messageHandlers.umShare.postMessage({'str':'Dongtai_Add'});
+				}
+			}
+			
+			
+			function gotoHomePage(userid) {
+				var userParamAndroid = {
+					"strValue1":userid
+				};
+				var userParamWebkit = {
+					"personId": userid
+				};
+				if(mobileType == 'android') {
+					window.target.gotoAppPage('HomepageFragment',JSON.stringify(userParamAndroid));
+				} else if(mobileType == 'iphone') {
+					window.webkit.messageHandlers.showPersonHomePage.postMessage(userParamWebkit);
+				}
+			}
+			
+			function gotoDyImageFragment(){
+				if(mobileType == 'android') {
+					window.target.gotoAppPage('DynamicPublishFragment','{"strValue1":0}');
+				} else if(mobileType == 'iphone') {
+					window.webkit.messageHandlers.issueMoment.postMessage(1);
+				}
+			}
+			
+			function gotoDyVideoFragment(){
+				if(mobileType == 'android') {
+					window.target.gotoAppPage('DynamicPublishFragment','{"strValue1":1}');
+				} else if(mobileType == 'iphone') {
+					window.webkit.messageHandlers.issueMoment.postMessage(2);
+				}
+			}
+			
+			
+			function appshowImg(imgArr, itemId, cl_index, pa_index) {
+				var newImageArr = imgArr.split(",");
+				
+				var NumIndex = Number(cl_index);
+				var imgListWebKit = {
+					'imageArray': newImageArr,
+					'index':NumIndex
+				};
+				
+				var imgListAndroid = {
+					"strValue1": cl_index,
+					"strValue2": newImageArr
+				}
+
+				if(mobileType == 'android') {
+					window.target.gotoAppPage('GalleryDialog', JSON.stringify(imgListAndroid));
+					window.target.umengBuriedPoint('Dongtai_Look');
+					
+				} else if(mobileType == 'iphone') {
+					window.webkit.messageHandlers.showImages.postMessage(imgListWebKit);
+					window.webkit.messageHandlers.umShare.postMessage({'str':'Dongtai_Look'});
+				}
+				
+				var paramAudience = {
+					'dynamicId': itemId
+				}
+				
+				$.ajax({
+					url: addaudienceRequestUrl,
+					type: 'post',
+					data:JSON.stringify(paramAudience),
+					contentType: 'application/json;charset=utf-8',
+					headers: {
+						'header-encrypt-code' : httpHeader
+					},
+					dataType: "json"
+				});
+				
+				var itemAudienceObj = $('.audience_count_'+itemId);
+				itemAudienceObj.html(parseInt(itemAudienceObj.html())+1);
+				
+			}
+			
+			function appshowVideo(video, itemId) {
+				
+				var videoWebkit = {
+					"videoUrl": video
+				}
+				var videoAndroid = {
+					"strValue1": video
+				}
+
+				if(mobileType == 'android') {
+					window.target.gotoAppPage('VideoPlayDlg', JSON.stringify(videoAndroid));
+					window.target.umengBuriedPoint('Dongtai_Look');
+					
+				} else if(mobileType == 'iphone') {
+					window.webkit.messageHandlers.showVideo.postMessage(videoWebkit);
+					window.webkit.messageHandlers.umShare.postMessage({'str':'Dongtai_Look'});
+				}
+				
+				var paramAudience = {
+					'dynamicId': itemId
+				}
+				$.ajax({
+					url: addaudienceRequestUrl,
+					type: 'post',
+					data:JSON.stringify(paramAudience),
+					contentType: 'application/json;charset=utf-8',
+					headers: {
+						'header-encrypt-code' : httpHeader
+					},
+					dataType: "json"
+				});
+				
+				var itemAudienceObj = $('.audience_count_'+itemId);
+				itemAudienceObj.html(parseInt(itemAudienceObj.html())+1);
+			}
+			
+			function addFavor(itemId){
+				
+				if(mobileType == 'android') {
+					window.target.umengBuriedPoint('Dongtai_Good');
+				} else if(mobileType == 'iphone') {
+					window.webkit.messageHandlers.umShare.postMessage({'str':'Dongtai_Good'});
+				}
+				
+				
+				var itemFavorObj = $('.favor_count_'+itemId);
+				if(itemFavorObj.prev().data('favor')) {
+					return;
+				}
+				
+				var paramFavor = {
+					'dynamicId': itemId
+				}
+				$.ajax({
+					url: addfavorRequestUrl,
+					type: 'post',
+					data:JSON.stringify(paramFavor),
+					contentType: 'application/json;charset=utf-8',
+					headers: {
+						'header-encrypt-code' : httpHeader
+					},
+					dataType: "json"
+				});
+				
+				itemFavorObj.html(parseInt(itemFavorObj.html())+1);
+				itemFavorObj.prev().find('img').attr('src','$!{Const.getCdn('/ydui/img/liked_icon.png')}');
+				itemFavorObj.prev().data('favor',true);
+				
+			}
+			
+			template.helper("formatenickname",function(nickname){
+				var nickname_len = nickname.length;
+				var newNickname = '';
+				var firstName = '';
+				if(nickname_len > 4){
+					firstName = nickname.substring(0,4);
+					newNickname = firstName + '...' ;
+				}else{
+					newNickname = nickname;
+				}
+				return newNickname;
+			});
+			
+			
+			! function() {
+				var newStamp = '';
+				var ifNextPage = false;
+				var firstPage = true;
+				var noRecord = '<div id="dy_ListContent_newest_noRecord" class="noRecord" style="display:block"><img src="$!{Const.getCdn('/ydui/img/no_dynamic.png')}" /><p>没有动态</p></div>';
+				
+				var loadTop = function(callback) {
+					var paramTop = {
+						"pagesize": 0,
+						"stamp": 0,
+						"type":2
+					}
+					
+					$.ajax({
+						url: listRequestUrl,
+						type: 'post',
+						data:JSON.stringify(paramTop),
+						contentType: 'application/json;charset=utf-8',
+						headers: {
+							'header-encrypt-code' : httpHeader
+						},
+						dataType: "json",
+						success: function(ret) {
+							if(ret.data.length > 0) {
+								$('#dy_ListContent_newest').html(template('dy_ListHtml', {
+									list: ret.data
+								}));
+								
+								newStamp = ret.stamp;
+								ifNextPage = ret.nextPage;
+								
+								$(".lazy").lazyLoad({binder: '#dy_List_newest'});
+							}else{
+								$('#dy_ListContent_newest').html(noRecord);
+							}
+							
+							typeof callback == 'function' && callback(ret);
+						},
+						complete: function() {
+							//typeof callback == 'function' && callback();
+						}
+					});
+				};
+				
+				$('#dy_ListContent_newest').pullRefresh({
+					initLoad:false,
+		            pageSize: 10,
+					loadListFn: function() {
+						var def = $.Deferred();
+
+						loadTop(function(ret) {
+							def.resolve(ret.data,ret.nextPage,1);
+						});
+
+						return def.promise();
+					}
+				});
+				
+				var loadBottom = function (callback) {
+					
+					var paramBottom = {
+						"pagesize": 0,
+						"stamp": newStamp,
+						"type":2
+					}
+					
+					
+		            $.ajax({
+		               url: listRequestUrl,
+						type: 'post',
+						data:JSON.stringify(paramBottom),
+						contentType: 'application/json;charset=utf-8',
+						headers: {
+							'header-encrypt-code' : httpHeader
+						},
+						dataType: "json",
+		                success: function (ret) {
+		                	typeof callback == 'function' && callback(ret);
+		                }
+		            });
+		        };
+		       
+				$('#dy_ListContent_newest').infiniteScroll({
+		            binder: '#dy_List_newest',
+		            pageSize: 10,
+		            initLoad: true,
+		            doneTxt:"没有更多数据",
+		            loadingHtml: '<img id="loading" src="http://static.ydcss.com/uploads/ydui/loading/loading10.svg"/>',
+		            loadListFn: function () {
+		            	var def = $.Deferred();
+		                loadBottom(function (listArr) {
+		                	newStamp = listArr.stamp;
+							ifNextPage = listArr.nextPage;
+		                	
+		                	var html = '';
+		                	if(listArr.data.length > 0) {
+		                		firstPage = false;
+		                		
+		                		html = template('dy_ListHtml', {list: listArr.data});
+		                		$('#dy_ListContent_newest').append(html).find('.lazy').lazyLoad({binder: '#dy_List_newest'});
+		                	}else{
+		                		if(firstPage) {
+		                			$('#dy_ListContent_newest').html(noRecord);
+		                		}
+		                	}
+							
+							def.resolve(listArr.data,listArr.nextPage);
+		                });
+		
+		                return def.promise();
+		            }
+		        });
+				
+			}();
+			
+			/////////////////////////////
+			
+			function fansInitFunction(){
+				! function() {
+					
+					var newStamp = '';
+					var ifNextPage = false;
+					var firstPage = true;
+					var noRecord = '<div id="dy_ListContent_att_noRecord" class="noRecord" style="display:block"><img src="$!{Const.getCdn('/ydui/img/no_dynamic.png')}" /><p>没有动态</p></div>';
+					
+					var loadTop = function(callback) {
+						var paramTop = {
+							"pagesize": 0,
+							"stamp": 0,
+							"type":1
+						}
+						
+						$.ajax({
+							url: listRequestUrl,
+							type: 'post',
+							data:JSON.stringify(paramTop),
+							contentType: 'application/json;charset=utf-8',
+							headers: {
+								'header-encrypt-code' : httpHeader
+							},
+							dataType: "json",
+							success: function(ret) {
+								if(ret.data.length > 0) {
+									$('#dy_ListContent_att').html(template('dy_ListHtml', {
+										list: ret.data
+									}));
+									
+									newStamp = ret.stamp;
+									ifNextPage = ret.nextPage;
+									
+									$(".lazy").lazyLoad({
+										binder: '#dy_List_att'
+									});
+								}else{
+									$('#dy_ListContent_att').html(noRecord);
+								}
+								
+								typeof callback == 'function' && callback(ret);
+							},
+							complete: function() {
+								//typeof callback == 'function' && callback();
+							}
+						});
+					};
+					
+					$('#dy_ListContent_att').pullRefresh({
+						initLoad:false,
+			            pageSize: 10,
+			            name : 'att',
+						loadListFn: function() {
+							var def = $.Deferred();
+
+							loadTop(function(ret) {
+								def.resolve(ret.data,ret.nextPage,1);
+							});
+
+							return def.promise();
+						}
+					});
+					
+					var loadBottom = function (callback) {
+						
+						var paramBottom = {
+							"pagesize": 0,
+							"stamp": newStamp,
+							"type":1
+						}
+						
+						
+			            $.ajax({
+			               url: listRequestUrl,
+							type: 'post',
+							data:JSON.stringify(paramBottom),
+							contentType: 'application/json;charset=utf-8',
+							headers: {
+								'header-encrypt-code' : httpHeader
+							},
+							dataType: "json",
+			                success: function (ret) {
+			                	typeof callback == 'function' && callback(ret);
+			                }
+			            });
+			        };
+			       
+					$('#dy_ListContent_att').infiniteScroll({
+			            binder: '#dy_List_att',
+			            pageSize: 10,
+			            name : 'att',
+			            initLoad: true,
+			            doneTxt:"没有更多数据",
+			            loadingHtml: '<img id="loading" src="http://static.ydcss.com/uploads/ydui/loading/loading10.svg"/>',
+			            loadListFn: function () {
+			            	var def = $.Deferred();
+			                loadBottom(function (listArr) {
+			                	newStamp = listArr.stamp;
+								ifNextPage = listArr.nextPage;
+		                	
+			                	var html = '';
+			                	if(listArr.data.length > 0) {
+			                		firstPage = false;
+			                		
+			                		html = template('dy_ListHtml', {list: listArr.data});
+			                		$('#dy_ListContent_att').append(html).find('.lazy').lazyLoad({binder: '#dy_List_att'});
+			                	}else{
+			                		if(firstPage) {
+			                			$('#dy_ListContent_att').html(noRecord);
+			                		}
+			                	}
+								
+								def.resolve(listArr.data,listArr.nextPage);
+			                });
+			
+			                return def.promise();
+			            }
+			        });
+					
+				}();
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+<meta name="screen-orientation" content="portrait" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="format-detection" content="telephone=no">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<title>收益明细</title>
+<style type="text/css">
+html, body, address, div, form, input, textarea, button, select, h1, h2,
+	h3, h4, h5, h6, p, ul, ol, li, dd, dt, dl, tbody, table, td, tr, th,
+	thead, tfoot, a, em, i, img, span, strong, sub, sup {
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft YaHei", "微软雅黑", Arial, Georgia,
+		"Times New Roman", STXihei, "华文细黑", sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-transform: none;
+}
+
+ul, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+
+a:active, a:hover {
+	outline: none;
+}
+
+img {
+	border: none;
+	vertical-align: top;
+	max-width: 100%;
+	width: 100%;
+	-ms-interpolation-mode: bicubic;
+}
+
+.clear {
+	zoom: 1;
+}
+
+.clear:after, .clear:before {
+	content: "";
+	display: block;
+	clear: both;
+	line-height: 0;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+/*<!--禁止用户选中-->*/
+.user-select-none {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+/*===================*/
+body {
+	background: #f8f8fc;
+}
+
+.noRecord {
+	padding-top: 10.5rem;
+	text-align: center;
+}
+
+.noRecord img {
+	width: 8.75rem;
+	height: 4.75rem;
+	padding-bottom: 1rem;
+}
+
+.noRecord p {
+	font-size: 0.6rem;
+	color: #666;
+}
+
+.cell {
+	padding: 0.75rem 0.6rem;
+	position: relative;
+	border-bottom: 1px solid #ddd;
+}
+
+.result {
+	font-size: 0.8rem;
+	color: #333;
+	padding-bottom: 0.5rem;
+}
+
+.all {
+	font-size: 0.65rem;
+	color: #666;
+}
+
+.time {
+	padding-top: 0.15rem;
+	font-size: 0.6rem;
+	color: #999;
+	padding-bottom: 0.5rem;
+}
+
+.reason {
+	font-size: 0.65rem;
+	color: #666;
+}
+</style>
+<script type="text/javascript" src="$!{Const.getCdn()}/static/js/jquery.min.js"></script>
+</head>
+<body>
+	<!--没有 交易记录时显示-->
+	<div class="noRecord">
+		<img src="$!{Const.getCdn()}/img/noRecord.png" />
+		<p>您还没有记录</p>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+	    	$.ajax({
+				url : '$!{rc.contextPath}/api/income/cash/list/ajax',
+				type : 'post',
+				dataType : 'json',
+				beforeSend: function(xhr){
+					xhr.setRequestHeader('header-encrypt-code', '$!{header}');
+				},
+				success : function(data){
+					if(0 == data.code){
+			    		var list = data.data;
+			    		if(list){
+			    			var html = '';
+			    			for(var index in list){
+			    				var el = list[index];
+			    				html += '<div class="cell clear">\n';
+			    				html += '<div class="fl">\n';
+			    				html += '<p class="result">'+el.title+'</p>\n';
+			    				html += '<p class="all">'+el.description+'</p>\n';
+			    				html += '</div>\n';
+			    				html += '<div class="fr">\n';
+			    				html += '<p class="time">'+el.date+'</p>\n';
+			    				html += '<p class="reason">'+el.via+'</p>\n';
+			    				html += '</div>\n';
+			    				html += '</div>\n';
+			    			}
+			    			$(".noRecord").remove();
+			    			$("body").prepend(html);
+			    		}
+			    	}
+				}
+			});
+		});
+		
+		var timeInMs = Date.now();
+		//安卓 “返回” 
+		function requestGoBack() {
+			window.target.setResultData("用户请求回退，并更新数据"+timeInMs);
+			window.target.action(1);
+		}
+		
+		function fontSize(doc, win, fontSize, baseSize) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize', recalc = function() {
+
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth)
+					return;
+				docEl.style.fontSize = fontSize * (clientWidth / baseSize)
+						+ 'px';
+			};
+
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		}
+
+		var ua = navigator.userAgent.toLowerCase();
+		if (/android (\d+\.\d+)/.test(ua)) {
+			//安卓手机
+			fontSize(document, window, 20, 360);
+		} else if (ua.indexOf('iphone') > -1) {
+			//苹果手机
+			fontSize(document, window, 20.8333, 375);
+		}
+	</script>
+</body>
+</html>

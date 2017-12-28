@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="screen-orientation" content="portrait" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		<title>没有交易记录</title>
+		<style type="text/css">
+			html, body, address, div,form,input,textarea,button,select, h1, h2, h3, h4, h5, h6, p, ul,ol,li,dd,dt,dl,tbody,table,td,tr,th,thead,tfoot,a, em, i, img,span,strong,sub,sup{
+			    margin: 0;
+			    padding: 0;
+			    font-family:"Microsoft YaHei", "微软雅黑",Arial, Georgia, "Times New Roman",STXihei, "华文细黑",sans-serif;
+			    -ms-text-size-adjust: 100%;
+			    -webkit-text-size-adjust: 100%;
+			    text-transform: none;
+			}
+			ul,li{list-style:none;}
+			a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);cursor:pointer;}
+			a:active,a:hover {outline: none;}
+			img{border:none;vertical-align:top; max-width:100%;width:100%; -ms-interpolation-mode: bicubic;}
+			.clear{zoom:1;}
+			.clear:after,.clear:before{content:"";display:block;clear:both;line-height:0;width: 0;height: 0;visibility:hidden;}
+			.fl{float:left;}
+			.fr{float:right;}
+			/*<!--禁止用户选中-->*/
+			.user-select-none {
+		    -webkit-user-select: none;  
+		    -moz-user-select: none;     
+		    -ms-user-select: none;
+		    } 
+		    /*=====================*/
+		    body{
+				background: #f8f8fc;
+				letter-spacing: 1px;
+			}
+			
+			.noRecord{
+				padding-top: 10.5rem;
+				text-align: center;
+			}
+			.noRecord img{
+				width: 8.75rem;
+				height: 4.75rem;
+				padding-bottom: 1rem;
+			}
+			.noRecord p{
+				font-size: 0.6rem;
+				color: #666;
+			}
+			.header{
+				width: 100%;
+				height: 2.4rem;
+				line-height: 2.4rem;
+				background: #FF3B5E;
+				text-align: center;
+				color: #fff;
+				font-size: 0.9rem;
+				position: fixed;
+				top: 0px;
+				z-index: 1;
+			}
+			.backBtn{
+				width: 1.1rem;
+				height: 1.1rem;
+				position: absolute;
+				top: 0.65rem;
+				left: 0.6rem;
+			}
+			.iphone_status_bar{
+			    width: 100%;
+			    height: 20px;
+			    background: #FF3B5E;
+			    position: fixed;
+				top: 0px;
+				z-index: 1;
+			    display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--没有 交易记录时显示-->
+		<div class="iphone_status_bar"></div>
+		<div class="header clear">
+			<img src="$!{Const.getCdn('/img/back_btn.png')}" class="backBtn" onclick="gotoAppBack()"/>
+			<p>代理分成明细</p>
+		</div>
+		<div class="noRecord">
+			<img src="$!{Const.getCdn('/img/noRecord.png')}"/>
+			<p>您还没有记录</p>
+		</div>
+		
+		<script src="$!{Const.getCdn('/js/jquery.min.js')}" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var timeInMs = Date.now();
+			//安卓 “返回” 
+			function requestGoBack() {
+				window.target.setResultData("用户请求回退，并更新数据"+timeInMs);
+				window.target.action(1);
+			}
+
+		    function fontSize(doc, win,fontSize,baseSize) {
+		        var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function () {
+		         
+				  var clientWidth = docEl.clientWidth;
+		          if (!clientWidth) return;
+		          docEl.style.fontSize = fontSize * (clientWidth / baseSize) + 'px';		
+				};
+		
+		      if (!doc.addEventListener) return;
+		      win.addEventListener(resizeEvt, recalc, false);
+		      doc.addEventListener('DOMContentLoaded', recalc, false);
+		    }
+		    
+			var ua=navigator.userAgent.toLowerCase();
+			if (/android (\d+\.\d+)/.test(ua)) {
+				//安卓手机
+				fontSize(document,window,20,360);
+			} else if(ua.indexOf('iphone') > -1){
+				//苹果手机
+				fontSize(document,window,20.8333,375);	
+			}
+			
+			//分辨设备
+			function phoneType (){
+				if (/android (\d+\.\d+)/.test(ua)) {
+					return "andorid";
+				} else if(ua.indexOf('iphone') > -1){
+					return "iphone";
+				}else{
+					return "其他设备";
+				}
+			};
+			var mobileType = phoneType();
+
+			//点击页面中"返回按钮"时调用
+			function gotoAppBack(){
+				if (mobileType == 'andorid') {
+					requestGoBack();
+				} else if(mobileType == 'iphone'){
+					window.webkit.messageHandlers.backPage.postMessage(0);
+				}
+			}
+			
+			//给iphone添加状态栏20px
+			if(mobileType == 'iphone'){
+				$(".iphone_status_bar").show();
+				$(".header").css({
+					'height':'44px',
+					'line-height':'44px',
+					'top':'20px'
+				});
+			}
+		</script>
+	</body>
+</html>

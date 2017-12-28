@@ -1,0 +1,65 @@
+<!--
+	百宝箱--仅支持ios
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="stylesheet" type="text/css" href="http://cdn.yoyo.liaomeivideo.com/libs/reset_v1.0.1/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="http://cdn.yoyo.liaomeivideo.com/libs/ydui-0.1.3/css/ydui_common.css" />
+		
+		<title></title>
+		<style type="text/css">
+			.mainBox{
+				margin-top: 64px;
+				position: relative;
+				
+			}
+			.mainBox li.item{
+				position: absolute;
+				top: 15px;
+				left: 12px;
+				text-align: center;
+			}
+			.mainBox li.item img{
+				width: 105px;
+				height: auto;
+				margin-bottom: 5px;
+			}
+			.mainBox li.item p{
+				font-size: 15px;
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone_top" style="display: block;"></div>
+		<header class="m-navbar header_iphone">
+			<span class="navbar-item navbar-item-left" onclick="gotoAppBack()"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+			<div class="navbar-center"><span class="navbar-title">百宝箱</span></div>
+		</header>
+		<ul class="mainBox clear">
+			<li class="item" onclick="gotoDiscover()">
+				<img src="$!{Const.getCdn()}/img/venueReserve/treasureBox1.png"/>
+				<p>场馆预定</p>
+			</li>
+		</ul>
+		<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			//header返回键
+			function gotoAppBack() {
+				window.webkit.messageHandlers.backPage.postMessage(0);
+			}
+			
+			//跳转到“发现页”
+			function gotoDiscover(){
+				window.location.href = "${rc.contextPath}/web/appointsite/home?showBackBtn=1"
+			}
+		</script>
+	</body>
+</html>

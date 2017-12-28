@@ -1,0 +1,145 @@
+<!--
+	任务模块-提现页面
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/reset_v1.0.1/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/ydui-0.1.3/css/ydui_common.css" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/css/task/tx.css?aa=12061724"/>
+		<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.device.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			/*.navbar-title{
+				margin-left:-35%;
+			}*/
+			.navbar-center{
+				margin-left:25%;
+			}
+			.mainBox{
+				top: 64px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone_top"></div>
+		<header class="m-navbar navbar-fixed header_default">
+			<span class="navbar-item navbar-item-left" onclick="goBack()"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+			<div class="navbar-center"><span class="navbar-title">提现</span></div>
+			<span class="navbar-item navbar-item-right" onclick="gototxRecord()">提现记录</span>
+		</header>
+		<div class="mainBox">
+			<div class="topBox">
+				<h2>$!{balance}</h2>
+				<p>可提现（元）</p>
+			</div>
+			<form id="txForm">
+			    <input type="number" id="" value="" class="txMoney" placeholder="输入提现金额"/>
+				<input type="text" id="" value="" class="txName" placeholder="输入姓名"/>
+				<input type="text" id="" value="" class="zfbAccount" placeholder="输入支付宝账号"/>
+				<div class="txBtn #if(0 == $!{allow})tx_disable#end">申请提现</div>
+			</form>
+			<div class="txCaption">
+				<h3>提现规则</h3>
+				<p>1、每$!{date}天限提现一次，每次提取不低于$!{limit}元；</p>
+				<p>2、提现将在5个工作日内完成；</p>
+				<p>3、由于您填写信息错误导致转账失败或错误，本平台概不负责；</p>
+				<p>4、最终解释权归官方所有。</p>
+			</div>
+		</div>
+		<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui-old.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//momobileType 1-安卓,2-ios
+			if(mobileType == 1) {
+				$("header").addClass('header_android');
+				$(".mainBox").css({
+					"top":"0.96rem"
+				});
+			} else if(mobileType == 2) {
+				$(".iphone_top").show();
+				$("header").addClass('header_iphone').removeClass('header_default').removeClass('navbar-fixed');
+			}
+			//页面头部 返回图标方法
+			function goBack() {
+				//window.history.go(-1);
+				window.location.href = "$!{Const.getWebSite()}/api/task/home/list";
+			}
+			
+			//安卓 按手机自带返回键时接口  函数名必须为requestGoBack 否则安卓不识别 函数体可以自定义
+			function requestGoBack() {
+				//window.history.go(-1);
+				window.location.href = "$!{Const.getWebSite()}/api/task/home/list";
+			}
+			
+			//跳转到提现页面
+			function gototxRecord(){
+				window.location.href = "$!{Const.getWebSite()}/api/task/withdrawal/list";
+			}
+			
+			!function (win, $) {
+				var dialog = win.YDUI.dialog;
+				var txMoney = '';
+				var txName = '';
+				var zfbAccount = '';
+				
+				function validateForm(){
+					txMoney = $(".txMoney").val();// 提现金额
+					if(!(/^[1-9][0-9]*$/.test(txMoney))){
+						dialog.toast('提现金额必须是正整数', 'none', 1500);
+						return false;
+					}
+					txName = $(".txName").val(); //姓名
+					if(txName.length<=0){
+						dialog.toast('姓名不能为空', 'none', 1500);
+						return false;
+					}
+					zfbAccount = $(".zfbAccount").val(); //支付宝账户
+					if(zfbAccount.length<=0){
+						dialog.toast('支付宝账号不能为空', 'none', 1500);
+						return false;
+					}
+					return true;
+				}
+				
+				$(".txBtn").not(".tx_disable").on('click',function(){
+					if(validateForm()){
+						$.ajax({
+							type: 'post',
+				            url: '$!{rc.contextPath}/api/task/withdrawal/apply',
+				            dataType: 'json',
+				            data:JSON.stringify({'name':txName,'account':zfbAccount,'money':txMoney}),
+							contentType: 'application/json;charset=utf-8',
+							headers: {
+								'header-encrypt-code' : '$!{header}'
+							}, 
+				            success: function(ret){
+				            	//接口调用成功
+				            	if(ret.code == 0){
+				            		dialog.toast('申请提现成功', 'none', 1000);
+				            		$(".topBox>h2").text(ret.data.balance);
+				            		//输入框清空
+				            		$(".txMoney").val("");
+				            		$(".txName").val("");
+				            		$(".zfbAccount").val("");
+				            	}else{
+				            		dialog.toast(ret.codemsg, 'none', 1000);
+				            	}
+				            },
+						});
+					}
+				});
+				
+				$('.txMoney, .txName, .zfbAccount').on('touchstart',function () {
+			           $(this).focus();
+			    });
+			}(window, jQuery);
+		</script>
+	</body>
+</html>

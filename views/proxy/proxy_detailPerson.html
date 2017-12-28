@@ -1,0 +1,249 @@
+<!--
+	代理人员详情
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/ydui-0.1.3/css/ydui_common.css" />
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/mescroll/mescroll.min.css"/>
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/css/myproxy/myProxy_detail2.1.1.css?aa=12061255"/>
+	<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.device.js" type="text/javascript" charset="utf-8"></script>
+	<title></title>
+	<style type="text/css">
+		.mescroll{
+			position: fixed;
+			top:64px;
+			bottom: 0;
+			height: auto;
+		}
+		.navbar_icon{
+			margin-top: 2px;
+		}
+		.navbar-center{
+			margin-left:20%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="iphone_top"></div>
+	<header class="m-navbar navbar-fixed header_default">
+		<span class="navbar-item" onclick="goBack()"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+		<div class="navbar-center"><span class="navbar-title"><span class="subTitle overflow_ellipsis fl">${mappingName}</span><span class="fr" style="width: 50%;">-人员明细</span></span></div>
+	</header>
+	<div id="mescroll" class="mescroll">
+		<ul class="topBox clear">
+		    <li class="overflow_ellipsis">
+		        <h2>0</h2>
+		        <p>总人数</p>
+		    </li>
+		    <li class="overflow_ellipsis">
+		        <h2 class="red">0</h2>
+		        <p>达人数</p>
+		    </li>
+		</ul>
+		<!--有订单时显示-->
+		<ul class="list-wrap" id="dataList"></ul>
+		<!--没有订单时显示-->
+		<div class="noRecord">
+			<img src="$!{Const.getCdn()}/libs/img/noRecord.png"/>
+			<p>暂无数据</p>
+		</div>
+	</div>
+
+<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="$!{Const.getCdn()}/libs/mescroll/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="$!{Const.getCdn()}/libs/arttemplate/template.js" type="text/javascript" charset="utf-8"></script>
+<!--template.js 模板语法拼接字符串-->
+<script id="listHtml" type="text/html">
+	{{each list as data}}
+		<li class="listItem padd clear">
+			<span class="fl headerImg "><img src="{{data.photo}}"/></span>
+			<ul class="fl info">
+				<li class="infoTop clear">
+					<span class="nickname overflow_ellipsis fl">{{data.nickName}}</span>
+					{{if data.sex == 1}}
+					<span class="sex fl" style="background-image:url($!{Const.getCdn()}/libs/img/male_iconColor.png);">{{data.age}}</span>
+					{{/if}}
+					{{if data.sex == 2}}
+					<span class="sex fl" style="background-image:url($!{Const.getCdn()}/libs/img/female_iconColor.png);">{{data.age}}</span>
+					{{/if}}
+					{{if data.vip ==true}}
+					<span class="vip fl"><img src="$!{Const.getCdn()}/libs/img/vip_icon.png"/></span>
+					{{/if}}
+				</li>
+				{{if data.talent == true}}
+				<li class="infoCenter">达人</li>
+				{{/if}}
+				{{if data.talent == false}}
+				<li class="infoCenter">普通用户</li>
+				{{/if}}
+				{{if data.talent == true}}
+				<li class="infoBottom"><span class="overflow_ellipsis">约会：<a class="red">{{data.times}}</a>单</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="overflow_ellipsis">分成：<a class="red">{{data.amount}}</a>元</span></li>
+				{{/if}}
+			</ul>
+			<p class="time fl">{{data.createTime}}</p>
+		</li>
+	{{/each}}
+</script>
+<script type="text/javascript">
+		
+	function addCSS(href) {
+		var link = document.createElement('link');
+		link.type = 'text/css';
+		link.rel = 'stylesheet';
+		link.href = href;
+		document.getElementsByTagName("head")[0].appendChild(link);
+	}
+	//mobileType : 1--安卓,2--ios
+	if(mobileType == 1) {
+		//addCSS("$!{Const.getCdn()}/css/myproxy/myProxy_detail2.1.1_andriod.css?aa=12061255");
+		$("header").addClass('header_android');
+		$(".mescroll").css({
+			"top":"0.96rem"
+		});
+	} else if(mobileType == 2) {
+		$(".iphone_top").show();
+		$("header").addClass('header_iphone').removeClass('header_default').removeClass('navbar-fixed');
+	}
+		
+	//页面头部 返回图标方法
+	function goBack() {
+		window.history.go(-1);
+	}
+	
+	//安卓 按手机自带返回键时接口  函数名必须为requestGoBack 否则安卓不识别 函数体可以自定义
+	function requestGoBack() {
+		window.history.go(-1);
+	}
+	
+	var mappingid = "${mappingid}";
+	$(function(){
+		//创建MeScroll对象
+		var mescroll = new MeScroll("mescroll", {
+			down: {
+				auto: false, //是否在初始化完毕之后自动执行下拉回调callback; 默认true
+				callback: downCallback //下拉刷新的回调
+			},
+			up: {
+				auto: true, //是否在初始化时以上拉加载的方式自动加载第一页数据; 默认false
+				callback: upCallback, //上拉回调,此处可简写; 相当于 callback: function (page) { upCallback(page); }
+				toTop:{ //配置回到顶部按钮
+					src : "$!{Const.getCdn()}/libs/img/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+					//offset : 1000
+				}
+			}
+		});
+		
+		/*下拉刷新的回调 */
+		function downCallback(){
+			//联网加载数据
+			getListDataFromNet(0, 1, function(curPageData){
+				stamp = 0;
+				//联网成功的回调,隐藏下拉刷新的状态
+				mescroll.endSuccess();
+				//设置列表数据
+				setListData(curPageData, false);
+			}, function(){
+				//联网失败的回调,隐藏下拉刷新的状态
+                mescroll.endErr();
+			});
+		}
+		
+		/*上拉加载的回调 page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+		function upCallback(page){
+			//联网加载数据
+			getListDataFromNet(page.num, page.size, function(curPageData, hasNext){
+				//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+				//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+				console.log("page.num="+page.num+", page.size="+page.size+", curPageData.length="+curPageData.length);
+				
+				//方法一(推荐): 后台接口有返回列表的总页数 totalPage
+				//mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+				
+				//方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+				//mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+				
+				//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+				mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+				
+				//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.
+				//mescroll.endSuccess(curPageData.length);
+				
+				//设置列表数据
+				setListData(curPageData, true);
+			}, function(){
+				//联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+                mescroll.endErr();
+			});
+		}
+		
+		/*设置列表数据*/
+		function setListData(curPageData,isAppend) {
+			if(curPageData.length > 0){
+				if(isAppend){
+					//加在列表的后面,上拉加载
+					$("#dataList").append(template('listHtml', {
+						list: curPageData
+					}));
+				}else{
+					//覆盖列表,下拉刷新
+					$("#dataList").html(template('listHtml', {
+						list: curPageData
+					}));
+				}
+				
+			}else if(curPageData.length <= 0){
+				$(".noRecord").show()
+			}
+			
+		}
+		
+		/*联网加载列表数据*/
+		var httpHeader = '$!{encrypt}';
+		var requestUrl = "${rc.contextPath}/api/proxy/personnelDesc";
+		var stamp = 0;
+		function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+	    	$.ajax({
+	            type: 'post',
+	            url: requestUrl,
+	            dataType: 'json',
+	            data:JSON.stringify({"stamp":stamp,"pageSize":10,"mappingid":mappingid}),
+				contentType: 'application/json;charset=utf-8',
+				headers: {
+					'header-encrypt-code' : httpHeader
+				},
+	            success: function(ret){
+	            	console.log(ret);
+	            	
+	            	stamp = ret.stamp;
+	            	$(".topBox li:nth-of-type(1) h2").html(ret.data.totalNum); //总人数
+		            $(".topBox li:nth-of-type(2) h2").html(ret.data.talentNum); //总达人数
+		            
+            		var listData=[];
+					for (var i = 0; i < 10; i++) {
+	            		if(i==ret.data.userList.length) break;
+	            		listData.push(ret.data.userList[i]);
+	            	}
+					successCallback(listData, ret.nextPage);
+	            	
+	            	
+	            },
+	            error: errorCallback
+	        });
+		}
+		
+});
+			
+</script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn('/libs/reset.css')}"/>
+		<script src="$!{Const.getCdn('/libs/jquery-2.1.4/jquery.min.js')}" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn('/libs/ydui-0.1.3/js/ydui.flexible.js')}" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn('/libs/ydui-0.1.3/js/ydui.device.js')}" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn('/libs/android/requestGoBack.js')}" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function gotoDarenListFragment(){
+				if(mobileType == 1){
+					window.target.gotoAppPage('MainHomeFragment','{"strValue1":2}');
+				}else if(mobileType == 2){
+					window.webkit.messageHandlers.datePeople.postMessage(0);
+				}
+			}
+		</script>
+		<title>达人认证</title>
+		<style type="text/css">
+			header{
+				position: relative;
+			}
+			header p{
+				font-size: 12px;
+				color: #9d5353;
+				position: absolute;
+				bottom: 0.2rem;
+				left: 50%;
+				margin-left: -54px;
+			}
+			.authen_content{
+				
+				background: url("$!{Const.getCdn('/daren_authentication/img/authentication_bg.png')}") no-repeat center center;
+				background-size: contain;
+				-webkit-background-size: contain;
+			}
+			.authen_icon{
+				width: 6rem;
+				height: 6rem;
+				margin: 0 auto;
+				margin-bottom: 0.24rem;
+			}
+			.authen_btn{
+				width: 5rem;
+				height: 0.9rem;
+				line-height: 0.9rem;
+				background: url("$!{Const.getCdn('/daren_authentication/img/authentication_btn.png')}") no-repeat center center;
+				background-size: contain;
+				-webkit-background-size: contain;
+				margin: 0 auto;
+				color: #333;
+				font-size: 0.36rem;
+				text-align: center;
+				margin-bottom: 0.6rem;
+			}
+			.authen_txt{
+				padding: 0 0.24rem 0.3rem 0.24rem;
+				line-height: 18px;
+			}
+			.authen_txt h3{
+				font-size: 14px;
+				color: #666;
+			}
+			.authen_txt p{
+				font-size: 12px;
+				color: #666;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="authen_wrap">
+			<header>
+				<img src="$!{Const.getCdn('/daren_authentication/img/authentication_header.png')}"/>
+				<p>截止时间2017-11-30</p>
+			</header>
+			<section class="authen_content">
+				<div class="authen_icon"><img src="$!{Const.getCdn('/daren_authentication/img/authentication_icon.png')}"/></div>
+				<div class="authen_btn" onclick="gotoDarenListFragment()">立即认证</div>
+				<div class="authen_txt">
+					<h3>活动说明：</h3>
+					<p>1.达人认证后，即可发布付费约会，获得丰厚收益;</p>
+					<p>2.活动期间免交500元达人认证金，活动结束后恢复费用;</p>
+					<p>3.送1个月的达人VIP，只需1元，活动结束后恢复118元/月;</p>
+					<p>4.此活动男女用户都可参加;</p>
+					<p>5.活动截止时间为2107年11月30日;</p>
+					<p>6.活动解释权归YOYO官方所有;</p>
+					<p>关注官方微信号“YoYo社交”，咨询更多内容~</p>
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

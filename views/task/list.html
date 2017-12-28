@@ -1,0 +1,224 @@
+<!--
+	任务管理体系页面
+	$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/reset_v1.0.1/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/ydui-0.1.3/css/ydui_common.css" />
+	<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/css/task/task.css"/>
+	<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.device.js" type="text/javascript" charset="utf-8"></script>
+	<script src="$!{Const.getCdn()}/libs/android/requestGoBack.js" type="text/javascript" charset="utf-8"></script>
+	<title></title>
+	<style type="text/css">
+		.navbar-center{
+			margin-left:25%;
+		}
+		#mainCon{
+			margin-top: 0.96rem;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="iphone_top"></div>
+	<header class="m-navbar navbar-fixed header_default">
+		<span class="navbar-item" onclick="gotoAppBack()"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+		<div class="navbar-center"><span class="navbar-title">我的任务</span></div>
+	</header>
+	<div id="mainCon">
+		<!--任务进度条模块-->
+		<div class="progressBarBox">
+			<div class="progress">
+                <div class="progress-bar" style="width:$!{progress}%;"></div>
+            </div>
+            <p>已完成$!{count}项任务，总共$!{amount}项</p>
+		</div>
+		
+		<!--奖励金模块-->
+		<div class="awardBox">
+			<div class="titleBox">奖励详情</div>
+			<ul class="clear">
+				<li class="totalAward ">
+					<h2>$!{total}</h2>
+					<p>累计奖励金</p>
+				</li>
+				<li class="presentAward">
+					<h2>$!{daily}</h2>
+					<p>今日奖励金</p>
+				</li>
+			</ul>
+			#if(1==$!{withdrawal})
+			<a href="javascript:goToTx();" class="tx">提现</a>
+			#end
+		</div>
+		<!--任务列表模块-->
+		<div style="position: relative;">
+			<div class="titleBox">任务详情</div>
+			<div class="taskListBox">
+				<ul class="taskList">
+					#foreach($task in $!{tasks})
+					<li class="taskListItem clear fl">
+						<ul class="fl taskInfo">
+							<li><span>$!{task.title}</span><span>#if(8==$!{task.code})（服务额外分成：$!{task.award}%）#else（奖励：￥$!{task.award}元）#end</span></li>
+							<li><span>任务时间：$!{task.duration}</span><span>&nbsp;&nbsp;任务次数：$!{task.times}次</span><span>&nbsp;&nbsp;进度：$!{task.rate}/$!{task.times}</span></li>
+							<li>$!{task.desc}</li>
+						</ul>
+						<div class="stateBtnBox fr">
+							#if(0==$!{task.status})
+							<a href="javascript:;" class="overTime stateBtn">已过期</a>
+							#elseif(1==$!{task.status})
+							<a href="javascript:;" class="finished"><img src="$!{Const.getCdn()}/img/task/finished_icon.png"/></a>
+							#elseif(2==$!{task.status})
+							<a href="javascript:goToFragment($!{task.code});" class="onTime stateBtn">去完成</a>
+							#else
+							<a href="javascript:;" class="beforeTime stateBtn">时间未到</a>
+							#end
+						</div>
+					</li>
+					#end
+				</ul>
+			</div>
+		</div>
+		<!--任务说明模块-->
+		<div class="taskCaption">
+			<div class="titleBox">任务说明</div>
+			<ul>
+				<li>1、每一个任务必须在规定的时间内完成才算有效；</li>
+				<li>2、任务次数是指该任务要做相应的次数才算完成；</li>
+				<li>3、对于虚假注册用户，刷任务等行为，官方视为无效；</li>
+				<li>4、最终解释权归YoYo官方所有。</li>
+			</ul>
+		</div>
+	</div>
+
+<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//momobileType 1-安卓,2-ios
+	if(mobileType == 1) {
+		$("header").addClass('header_android');
+	} else if(mobileType == 2) {
+		$(".iphone_top").show();
+		$("header").addClass('header_iphone').removeClass('header_default').removeClass('navbar-fixed');
+		$("#mainCon").css({
+			"margin-top":"64px"
+		});
+	}
+	function goToTx(){
+		window.location.href = "$!{Const.getWebSite()}/api/task/withdrawal/page";
+	}
+	
+	//TaskCategoryEnum
+	function goToFragment(code) {
+		switch (code) {
+		case 1:
+			gotoUserInfoFragment();
+			break;
+		case 2:
+			gotoPayDateFragment();
+			break;
+		case 3:
+		case 4:
+			gotoMyDynamicFragment();
+			break;
+		case 5:
+			gotoIndexFragment();
+			break;
+		case 6:
+			gotoAlbumFragment();
+			break;
+		case 7:
+			gotofreeDateFragment();
+			break;
+		case 8:
+			gotoDrDateFragment();
+			break;
+		default:
+			;
+		}
+	}
+
+	//header返回键
+	function gotoAppBack() {
+		if (mobileType == 1) {
+			window.target.action(1);
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.backPage.postMessage(0);
+		}
+	}
+
+	//跳转到“完善个人信息页”
+	function gotoUserInfoFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('UserInfoFragment', '');
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.DetailMessageView.postMessage(0);
+		}
+	}
+
+	//跳转到“付费约列表页”
+	function gotoPayDateFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('MainHomeFragment', '{"strValue1":2}');
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.PayDateView.postMessage(0);
+		}
+	}
+
+	//跳转到“我的动态页”
+	function gotoMyDynamicFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('WebSingleSaveFragment','{"strValue1":"$!{Const.getWebSite()}/api/dynamic/mydynamic"}');
+		} else if (mobileType == 2) {
+			window.location.href = "$!{Const.getWebSite()}/api/dynamic/mydynamic"
+		}
+	}
+
+	//跳转到“个人相册页”
+	function gotoAlbumFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('AlbumFragment', '');
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.MyPhotoes.postMessage(0);
+		}
+	}
+
+	//跳转到“首页”
+	function gotoIndexFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('MainHomeFragment', '{"strValue1":0}');
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.FirstPageView.postMessage(0);
+		}
+	}
+
+	//跳转到“普通约会列表页”
+	function gotofreeDateFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('MainHomeFragment', '{"strValue1":1}');
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.DataPageView.postMessage(0);
+		}
+	}
+
+	//跳转到 “我的-达人的约会”
+	function gotoDrDateFragment() {
+		if (mobileType == 1) {
+			window.target.gotoAppPage('ServiceOrderOwn', '');
+		} else if (mobileType == 2) {
+			window.webkit.messageHandlers.DaRenDateView.postMessage(0);
+		}
+	}
+</script>
+	
+</body>
+</html>
+
+

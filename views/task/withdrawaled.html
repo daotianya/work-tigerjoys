@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/libs/ydui-0.1.3/css/ydui_common.css" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/css/task/txRecord.css"/>
+		<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn()}/libs/ydui-0.1.3/js/ydui.device.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			.navbar-center{
+				margin-left:20%;
+			}
+			.mainBox{
+				margin-top: 64px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone_top"></div>
+		<header class="m-navbar navbar-fixed header_default">
+			<span class="navbar-item navbar-item-left" onclick="goBack()"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+			<div class="navbar-center"><span class="navbar-title">提现记录</span></div>
+		</header>
+		<div class="mainBox">
+			#if($!{Tools.isNotNull($!{logs})})
+			<!--循环体开始-->
+			#foreach($log in $!{logs})
+			<div  class="cell clear">
+				<div class="fl">
+					<p class="record">$!{log.title}</p>
+					<p class="record2">$!{log.description}</p>
+				</div>
+				<div class="state fr">
+					<p class="time">$!{log.date}</p>
+					#if(0 == $!{log.status})
+					<p class="wait">审核中</p><!--"审核中"--wait--蓝色-->
+					#elseif(1 == $!{log.status})
+					<p class="success">已结算</p> <!--"已结算" --success--黄色-->
+					#else
+					<p class="reject">被拒绝</p> <!--"被拒绝"--reject--红色-->
+					#end
+				</div>
+			</div>
+			#end
+			<!--循环体结束-->
+			#else
+			<!--没有数据时显示-->
+			<div class="noRecord">
+				<img src="$!{Const.getCdn()}/libs/img/noRecord.png"/>
+				<p>暂无数据</p>
+			</div>
+			#end
+		</div>
+		
+		
+		<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		   //momobileType 1-安卓,2-ios
+			if(mobileType == 1) {
+				$("header").addClass('header_android');
+				$(".mainBox").css({
+					"margin-top": "0.96rem"
+				})
+			} else if(mobileType == 2) {
+				$(".iphone_top").show();
+				$("header").addClass('header_iphone').removeClass('header_default').removeClass('navbar-fixed');
+			}
+			//页面头部 返回图标方法
+			function goBack() {
+				//window.history.go(-1);
+				window.location.href = "$!{Const.getWebSite()}/api/task/withdrawal/page";
+			}
+			
+			//安卓 按手机自带返回键时接口  函数名必须为requestGoBack 否则安卓不识别 函数体可以自定义
+			function requestGoBack() {
+				//window.history.go(-1);
+				window.location.href = "$!{Const.getWebSite()}/api/task/withdrawal/page";
+			}
+	
+		</script>
+	</body>
+</html>

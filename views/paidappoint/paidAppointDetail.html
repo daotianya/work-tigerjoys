@@ -1,0 +1,340 @@
+<!--
+	达人约详情页
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="stylesheet" type="text/css" href="/res/libs/reset_v1.0.1/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="/res/libs/ydui-0.1.3/css/ydui_common.css"/>
+		<link rel="stylesheet" type="text/css" href="/res/css/talentDate/talentDateCommon.css"/>
+		<link rel="stylesheet" type="text/css" href="/res/css/talentDate/detail.css"/>
+		<title></title>
+		
+	</head>
+	<body>
+		<div class="iphone_top" style="display: block;"></div>
+		<header class="m-navbar header_iphone">
+		  	<span class="navbar-item header_left_icon" onclick="gotoDateListPage()"><img src="/res/libs/img/back_icon.png"/></span>
+			<div class="navbar-center"><span class="navbar-title">达人秀</span></div>
+			<span class="navbar-item header_right_text">和Ta聊</span>
+		</header>
+		<div id="talentDetail">
+			<!--第一部分：头像，约会标题等-->
+			<div class="md-card" id="part1">
+		        <div class="md-card-bg" style="background-image: url($!{dto.user.bigHead})">
+		        	<span class="video-icon" onclick="appshowVideo($!{dto.user.videoAuth})"><img src="/res/img/talentDate/video_icon.png"/></span>
+		        	<h4 class="date-title">$!{dto.user.title}</h4>
+		        </div>
+		        <div class="md-card-text clear">
+		            <span class="headerImg" style="background-image: url($!{dto.user.head});">
+		            	<a href="javascript:;" class="v_icon"><img src="/res/img/talentDate/v_icon.png"/></a>
+		            </span>
+					<ul class="md-card-text-desc fl">
+						<li class="nickname overflow_ellipsis">$!{dto.user.nickname}</li>
+						<li>
+							<!--女female.男male-->
+							#if ($!{dto.user.gender} == 1)
+								<span class="sex" style="background-image:url(/res/libs/img/male_iconColor.png);">$!{dto.user.age}</span>
+							#end
+							#if ($!{dto.user.gender} == 2)
+								<span class="sex" style="background-image:url(/res/libs/img/female_iconColor.png);">$!{dto.user.age}</span>
+							#end
+		            		<span class="talent_icon"><img src="/res/img/talentDate/talent_icon.png"/></span>
+						</li>
+						<li class="talent_desc2">
+							<span>$!{dto.cityName}</span>
+			            	<span>$!{dto.userExt.zodiac}</span>
+			            	<span>$!{dto.userExt.stature}cm</span>
+						</li>
+					</ul>
+					<div class="datePrice fr">
+						<h4>$!{dto.startHours}小时起约</h4>
+						<p>(￥$!{dto.price}/小时)</p>
+					</div>
+		        </div>
+			</div>
+			<!--第二部分：技能类型部分-->
+			<div id="part2">
+				<h4 class="cut_title">技能类型</h4>
+				<ul class="grids clear">
+				    #foreach($skill in $!{dto.typeList})
+				    	<li><span class="ellipse_btn_hollow overflow_ellipsis">$skill.name</span></li>
+				    #end
+				</ul>
+			</div>
+			#if ($!{dto.drink} == 1)
+			<div id="part3">
+				<p>可礼仪性饮酒</p>
+			</div>
+			#end
+			<div id="part4">
+				<h4 class="cut_title">约会说明</h4>
+				<p>$!{dto.description}</p>
+			</div>
+			<div id="part5" class="clear">
+				<h4 class="cut_title">综合评价</h4>
+				<div class="score fl">
+					#if ($!{dto.comment.avgTotalScore} > 0)
+						<p>$!{dto.comment.avgTotalScore}分</p>
+					#end
+					#if ($!{dto.comment.avgTotalScore} == 0)
+						<p>暂无评价</p>
+					#end
+				</div>
+				<ul class="star-list fr">
+					<li class="clear">
+						<span class="star-list-text">守时</span>
+						#if ($!{dto.comment.avgOntimeScore} == 0)
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgOntimeScore} == 1)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgOntimeScore} == 2)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgOntimeScore} == 3)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgOntimeScore} == 4)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgOntimeScore} == 5)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+						#end
+					</li>
+					<li class="clear">
+						<span class="star-list-text">谈吐</span>
+						#if ($!{dto.comment.avgSpeachScore} == 0)
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgSpeachScore} == 1)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgSpeachScore} == 2)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgSpeachScore} == 3)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgSpeachScore} == 4)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgSpeachScore} == 5)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+						#end
+					</li>
+					<li class="clear">
+						<span class="star-list-text">态度</span>
+						#if ($!{dto.comment.avgAttitudeScore} == 0)
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgAttitudeScore} == 1)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgAttitudeScore} == 2)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgAttitudeScore} == 3)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgAttitudeScore} == 4)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgAttitudeScore} == 5)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+						#end
+					</li>
+					<li class="clear">
+						<span class="star-list-text">专业</span>
+						#if ($!{dto.comment.avgProfessionScore} == 0)
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgProfessionScore} == 1)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgProfessionScore} == 2)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgProfessionScore} == 3)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgProfessionScore} == 4)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star2_icon.png"/></span>
+						#end
+						#if ($!{dto.comment.avgProfessionScore} == 5)
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+							<span class="star"><img src="/res/libs/img/star_icon.png"/></span>
+						#end
+					</li>
+				</ul>
+			</div>
+			<!--点击“约Ta”，进入约会详情页面判断信用分是否够-->
+			<div class="footer" onclick="gotoChooseDatePage()">
+				<p>约Ta</p>
+			</div>
+		</div>
+		
+		<div class="toast">
+			<a class="toastCloseBtn" onclick="closeToast()"><img src="/res/img/talentDate/close_btn.png"/></a>
+			<div class="toastCon">
+				<p>您的信用低于60分，不能约会</p>
+			</div>
+			<div class="toastFooter clear">
+				<span class="footBtn footBtn-red" onclick="closeToast()">取消</span>
+				<span class="footBtn footBtn-yellow" onclick="gotoCredit()">购买信用分</span>
+			</div>
+		</div>
+		<script src="/res/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//头部返回键 跳转到"达人约列表页"
+			function gotoDateListPage(){
+				window.location.href = "/web/paid/appoint/list";
+				//window.history.go(-1);
+			}
+		    //跳转到"聊天页"
+		    function gotoChatPage(){
+		    	window.webkit.messageHandlers.xxx.postMessage(0);
+		    }
+			
+			//播放视频
+			function appshowVideo(video) {
+				var videoiOS = {
+					"videoUrl": video
+				}
+				window.webkit.messageHandlers.showVideo.postMessage(videoiOS);
+			}
+			//跳转到"购买信用分"页
+			function gotoCredit(){
+				
+			}
+			
+			//点击"约Ta"跳转到选择约会页  如果信用分不够 toast
+			function gotoChooseDatePage(){
+				if(false){
+					//信用分够用
+					window.location.href = "xxx.html";
+				}else if(true){
+					//信用分不够用
+					showToat();
+				}
+			}
+
+			//显示toast
+			function showToat(){
+				$(".toast").show();
+				$("body").css({
+					"overflow-y":"hidden"
+				});
+			}
+			
+			//关闭toast
+			function closeToast(){
+				$(".toast").hide();
+				$("body").css({
+					"overflow-y":"auto"
+				});
+			}
+		</script>
+	</body>
+</html>

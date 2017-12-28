@@ -1,0 +1,365 @@
+<!--达人的约会-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="/res/libs/reset_v1.0.1/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/res/libs/ydui-0.1.3/css/ydui_common.css"/>
+<link rel="stylesheet" type="text/css" href="/res/css/talentDate/talentDateCommon.css"/>
+<link rel="stylesheet" type="text/css" href="/res/css/talentDate/tradeDate.css"/>
+<link rel="stylesheet" type="text/css" href="/res/libs/mescroll/mescroll-1.3.1.min.css"/>
+<title></title>
+<style type="text/css">
+.mescroll{position: fixed;top: 94px;bottom: 0;left: 0;height: auto;}
+</style>
+</head>
+
+<body>
+<div class="iphone_top" style="display: block;"></div>
+<header class="m-navbar header_iphone">
+	<span class="navbar-item backBtn header_left_icon" ><img src="/res/libs/img/back_icon.png" class="navbar_icon"/></span> <!--返回方法没写，因为不知道返回到哪里-->
+	<div class="navbar-center"><span class="navbar-title">达人的约会</span></div>
+	<span class="navbar-item navbar-item-right header_right_text">修改服务</span><!--"达人的约会才显示"-->
+</header>
+<!--topTip有两种，一、达人VIP不足/过期 点击跳转到 达人VIP充值页；二、信用分不足 点击跳转到信用分购买页-->
+<h4 class="topTip" id="topTip" style="display:none;"></h4>
+<div id="mescroll" class="mescroll">
+	<!--有数据时显示-->
+	<div id="dataList"></div>
+	
+	<!--没有数据时显示-->
+	<div class="noRecord">
+		<img src="/res/libs/img/noRecord.png"/>
+		<p>暂无数据</p>
+	</div>
+</div>
+
+<!--自己写的toast 专用做 给小费-->
+<div class="toast">
+	<a class="toastCloseBtn" onclick="closeToast()"><img src="/res/img/talentDate/close_btn.png"/></a>
+	<div class="toastCon toastCon-fee">
+		<div class="headerImg-toast" style="background-image: url(/res/img/test.png);">
+           	<a href="javascript:;" class="v_icon"><img src="/res/img/talentDate/v_icon.png"/></a>
+           </div>
+           <div class="feeInput">
+           	<label for="feeIpt">￥：</label>
+           	<input type="text" name="feeIpt" id="feeIpt" autofocus=""/>
+           </div>
+	</div>
+	<div class="toastFooter" style="bottom: 15px;">
+		<span class="footBtn footBtn-one" id="feeToastBtn">给小费</span>
+	</div>
+</div>
+<script src="/res/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/res/libs/mescroll/mescroll-1.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/res/libs/arttemplate/template.js" type="text/javascript" charset="utf-8"></script>
+<script src="/res/ydui/js/ydui.js" type="text/javascript" charset="utf-8"></script>
+<!--template.js 模板语法拼接字符串-->
+<script id="listHtml" type="text/html">
+{{each list as data index}}
+	<div class="cellBox" id="data_{{data.orderId}}">
+		<div class="cellBox1">
+			<p class="date-title overflow_ellipsis">{{data.title}}</p>
+				<div class="date-info clear">
+					<span class="headerImg fl" onclick="gotoUserMainPage('{{data.user.userid}}')"><img src="{{data.user.head}}"/></span>
+					<ul class="fl" style="width: 60%;">
+						<li class="clear">
+							<span class="nickname overflow_ellipsis fl">{{data.user.nickname}}</span>
+							<span class="sex fl" style="background-image:url(/res/libs/img/{{if data.user.gender==2 }}female{{else}}male{{/if}}_iconColor.png);">{{data.user.age}}</span>
+							{{if data.user.vip>0 }}<span class="vip fl"><img src="/res/libs/img/vip_icon.png"/></span>{{/if}}
+						</li>
+						<li>
+							<p>见面时间：{{data.time}}</p>
+						</li>
+						<li>
+							<p>约会时长：{{data.hours}}小时&nbsp;&nbsp;共{{data.money}}元</p> 
+						</li>
+						<li>
+							<p>见面地点：{{data.address}}</p> 
+						</li>
+					</ul>
+				</div>
+				<p class="dateState" style="color:{{data.statusColor}}">{{data.statusDesc}}</p>
+			</div>
+			<div class="cellBox2">
+				<div class="btnGroup clear" data-orderid="{{data.orderId}}">
+					{{if data.canSignOrder>0}}<span class="cellBtn cellBtn-2" onclick="signToast(this)">签到</span>{{/if}}
+					{{if data.canAgreeOrder>0}}<span class="cellBtn cellBtn-2" onclick="agreeAction(this)">同意</span>{{/if}}
+					{{if data.canRejectOrder>0}}<span class="cellBtn cellBtn-1" onclick="rejectToast(this)">拒绝</span>{{/if}}
+					{{if data.canCancel>0}}<span class="cellBtn cellBtn-1" onclick="cancelOrder(this);">撤销</span>{{/if}}
+					{{if data.canCommend>0}}<span class="cellBtn cellBtn-1" onclick="commendOrder(this);">评价</span>{{/if}}
+					{{if data.canEvidence>0}}<span class="cellBtn cellBtn-1" onclick="consumeEvidence(this);">上传凭证</span>{{/if}}
+					{{if data.canReport>0}}<span class="cellBtn cellBtn-1" onclick="complaintToast(this)">投诉</span>{{/if}}
+				</div>
+				<div class="clear">
+					{{if data.farePrice>0}}<p class="fl carCost">车费：{{data.farePrice}}元</p>{{/if}}
+					{{if data.canTalk>0}}<span class="cellBtn cellBtn-3">和Ta聊</span>{{/if}}
+				</div>
+			</div>
+		</div>
+	{{/each}}
+</script>
+<script type="text/javascript">
+var httpHeader = '$!{encrypt}';
+var dialog;
+
+//显示自定义toast
+function showToat(){
+	$(".toast").show();
+	$("body").css({
+		"overflow-y":"hidden"
+	});
+}
+
+//关闭自定义toast
+function closeToast(){
+	$(".toast").hide();
+	$("body").css({
+		"overflow-y":"auto"
+	});
+}
+
+//关闭 ydui组件 的toast
+function closeToast2(){
+	$(".mask-black-dialog").hide();
+}
+
+//"拒绝"按钮 toast
+function rejectToast(object){
+	var orderId = $(object).parent().data('orderid');
+	dialog.confirm('<img src="/res/img/talentDate/close_btn.png" onclick="closeToast2()"/>','真的要残忍拒绝吗？', [{
+        txt: '取消',
+        color: false
+    },
+    {
+    	txt: '确定',
+        color: true,
+        callback: function () {
+        	ajaxAction('${rc.contextPath}/api/paid/appoint/seller/reject',{orderId:orderId},replaceData,replaceData);
+        }
+   	}]);
+}
+function agreeAction(object){
+	var orderId = $(object).parent().data('orderid');
+	ajaxAction('${rc.contextPath}/api/paid/appoint/seller/agree',{orderId:orderId},replaceData,replaceData);
+}
+
+function ajaxAction(url , data , succ , err) {
+	$.ajax({
+		type:'post',
+		url : url,
+		data : JSON.stringify(data),
+		dataType: 'json',
+		contentType: 'application/json;charset=utf-8',
+		headers: {
+			'header-encrypt-code' : httpHeader
+		},
+		success: function(ret){
+			if(ret.code == 0) {
+				//此处处理最后的逻辑
+				succ(ret.data);
+			} else {
+				dialog.toast(ret.codemsg, 'none', 1000);
+				if(typeof ret.data != 'undefined') {
+					//处理
+					err(ret.data);
+				}
+			}
+		},
+		error: function(){
+			dialog.toast('服务器发生异常', 'none', 1000);
+		}
+	});
+}
+//替换元素
+function replaceData(item){
+	var oldDom = $('#data_'+item.orderId);
+	var nextDom = oldDom.next();
+
+	oldDom.remove();
+	//如果有下一个原则，添加在下一个元素
+	if(nextDom && nextDom.length > 0) {
+		nextDom.before(template('listHtml', {list: [item]}));
+	} else {
+		$("#dataList").append(template('listHtml', {list: [item]}));
+	}
+}
+       	
+//"投诉"按钮 toast
+function complaintToast(){
+	var orderId = $(object).parent().data('orderid');
+	
+	dialog.confirm('<img src="/res/img/talentDate/close_btn.png" onclick="closeToast2()"/>','投诉之前先沟通一下呗？', [{
+		txt: '投诉',
+        color: false, 
+        callback: function () {
+        	dialog.toast('你点了投诉', 'none', 1000);
+            //跳转到app内页--"投诉页"
+        }
+    },
+    {
+    	txt: '聊一聊',
+        color: true,
+        callback: function () {
+        	dialog.toast('你点了投诉-聊一聊', 'none', 1000);
+            //跳转到app内页--"聊天页"
+        }
+    }]);
+}
+       	
+//签到按钮 
+function signToast(object){
+	//dialog.toast('签到距离大于500m', 'none', 1000);
+	//此处调用IOS的定位信息
+	var latlng = {'lng':116.322523,'lat':39.989991};
+	
+	var orderId = $(object).parent().data('orderid');
+	ajaxAction('${rc.contextPath}/api/paid/appoint/seller/sign',{orderId:orderId,lng:latlng.lng,lat:latlng.lat},replaceData,replaceData);
+}
+
+//上传凭证,跳转至上传凭证页面app
+function consumeEvidence(object){
+	var orderId = $(object).parent().data('orderid');
+}
+
+//撤销订单,跳转至撤销页面h5
+function cancelOrder(object){
+	var orderId = $(object).parent().data('orderid');
+}
+
+//评价订单,跳转至评价页面h5
+function commendOrder(object){
+	var orderId = $(object).parent().data('orderid');
+}
+
+//跳转到"个人主页"
+function gotoUserMainPage(userid){
+
+}
+
+!function (win, $) {
+	//实例化ydui的dialog组件
+	dialog = win.YDUI.dialog;
+	//====下拉刷新，上拉加载=====
+	//创建MeScroll对象
+	var mescroll = new MeScroll("mescroll", {
+		down: {
+			auto: false, //是否在初始化完毕之后自动执行下拉回调callback; 默认true
+			callback: downCallback //下拉刷新的回调
+		},
+		up: {
+			auto: true, //是否在初始化时以上拉加载的方式自动加载第一页数据; 默认false
+			callback: upCallback, //上拉回调,此处可简写; 相当于 callback: function (page) { upCallback(page); }
+			toTop:{ //配置回到顶部按钮
+				src : "/res/libs/img/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+				//offset : 1000
+			}
+		}
+	});
+			
+	/*下拉刷新的回调 */
+	function downCallback(){
+		//联网加载数据
+		getListDataFromNet(0, 1, function(curPageData){
+			//下拉时 stamp归零 回传给服务端
+			stamp = 0;
+			//联网成功的回调,隐藏下拉刷新的状态
+			mescroll.endSuccess();
+			//设置列表数据
+			setListData(curPageData, false);
+		}, function(){
+			//联网失败的回调,隐藏下拉刷新的状态
+            mescroll.endErr();
+		});
+	}
+			
+	/*上拉加载的回调 page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+	function upCallback(page){
+		//联网加载数据
+		getListDataFromNet(page.num, page.size, function(curPageData, hasNext){
+			//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+			//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+			console.log("page.num="+page.num+", page.size="+page.size+", curPageData.length="+curPageData.length);
+			
+			//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+			mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+			
+			//设置列表数据
+			setListData(curPageData, true);
+		}, function(){
+			//联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+           mescroll.endErr();
+		});
+	}
+	
+	/*设置列表数据*/
+	function setListData(curPageData, isAppend) {
+		if(curPageData.length > 0){
+			if(isAppend){
+				//加在列表的后面,上拉加载
+				$("#dataList").append(template('listHtml', {
+					list: curPageData
+				}));
+			}else{
+				//覆盖列表,下拉刷新
+				$("#dataList").html(template('listHtml', {
+					list: curPageData
+				}));
+			}
+			
+		}else if(curPageData.length <= 0){
+			$(".noRecord").show();
+		}
+		
+	}
+			
+	/*联网加载列表数据*/
+	var stamp = 0;
+	function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+    	$.ajax({
+            type: 'post',
+            url: "${rc.contextPath}/api/paid/appoint/seller/orderlist",
+            dataType: 'json',
+         	data:JSON.stringify({"stamp":stamp,"pageSize":10}),
+			contentType: 'application/json;charset=utf-8',
+			headers: {
+				'header-encrypt-code' : httpHeader
+			},
+            success: function(ret){
+            	console.log(ret);
+           		var listData=[];
+           		if(typeof ret.data.orderList != 'undefined') {
+           			for (var i = 0; i < ret.data.orderList.length; i++) {
+                		listData.push(ret.data.orderList[i]);
+                	}
+           		}
+           		
+           		if(typeof ret.data.tipsType != 'undefined') {
+           			if(ret.data.tipsType == 1) {//VIP提示
+           				$('#topTip').html('<span onclick="gotoTalentVIP()">'+ret.data.tips+'</span>').show();
+           			} else if(ret.tipsType == 2) {//信用提示
+           				$('#topTip').html('<span onclick="gotoCredit()">'+ret.data.tips+'</span>').show();
+           			}
+           			$('#mescroll').css('top','94px');
+           		} else {
+           			if(stamp == 0) {
+           				$('#topTip').hide();
+               			$('#mescroll').css('top','64px');
+           			}
+           		}
+
+            	stamp = ret.stamp;
+				successCallback(listData, ret.nextPage);
+            },
+            error: errorCallback
+        });
+	}
+    //====下拉刷新，上拉加载结束=====
+}(window, jQuery);
+</script>
+</body>
+</html>

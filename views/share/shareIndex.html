@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="screen-orientation" content="portrait" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="format-detection" content="telephone=no">
+		
+		<title>$!{appName}</title>
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn('/css/reset.css')}"/>
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn('/css/swiper-3.4.2.min.css')}"/>
+		<script src="$!{Const.getCdn('/js/jquery.min.js')}" type="text/javascript" charset="utf-8"></script>
+		<script src="$!{Const.getCdn('/js/swiper-3.4.2.min.js')}" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.swiper-slide {
+				background-image: #F8F8FC;
+				text-align: center;
+				width: 18rem;
+				position: relative;
+			}
+			.download_btn{
+				position: absolute;
+				bottom: 3.5rem;
+				left:4rem;
+				width: 10rem;
+				height: 2.25rem;
+				line-height: 2.25rem;
+				background: #fff;
+				border-radius:1.125rem;
+				-webkit-border-radius: 1.125rem;
+			}
+			.download_btn a{
+				color: #ff3b5e;
+				font-size: 0.9rem;
+			}
+			.txtGroup{
+				color: #333;
+				font-size: 0.85rem;
+				line-height:1.45rem;
+				position: absolute;
+				top: 12.15rem;
+				left: 4rem;
+			}
+			.swiper-pagination-bullet {
+				background: transparent;
+				border: 1px solid #fff;
+				opacity: 1;
+			}
+			.swiper-pagination-bullet-active{
+				background: #fff;
+			}
+			.wx{
+				font-size: 0.6rem;
+				color: #fff;
+				position: absolute;
+				bottom: 3rem;
+				left:6.6rem;
+				border-bottom: 1px solid #F8F8FC;
+				display: none;
+			}
+		</style>
+	</head>
+	<body style="background: #FF6981;">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide">
+		        	<img src="$!{Const.getCdn('/img/bg1.png')}"/>
+		        	<div class="txtGroup">
+		        		<p>我是一个美丽的人<br />邀请你加入"$!{appName}"一起约会<br />下载app注册成功后输入</p>
+		        		<p>邀请码&nbsp;<span>$!{inviteCode}</span></p>
+		        		<p>即可获得<span style="color: #FF3B5E;">100元奖励</span></p>
+		        	</div>
+		        	<div class="download_btn"><a onclick="appinstall()">立即下载</a></div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<img src="$!{Const.getCdn('/img/bg2.png')}"/>
+		        	<div class="download_btn"><a onclick="appinstall()">立即下载</a></div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<img src="$!{Const.getCdn('/img/bg3.png')}"/>
+		        	<div class="download_btn"><a onclick="appinstall()">立即下载</a></div>
+		        </div>
+		    </div>
+		    <!-- 如果需要分页器 -->
+		    <div class="swiper-pagination"></div>
+		</div>
+		
+		<script>
+			var mySwiper = new Swiper ('.swiper-container', {
+			    direction: 'horizontal',
+			    loop: false,
+			    pagination: '.swiper-pagination'
+			 
+			 });
+			
+			var timeInMs = Date.now();
+			//安卓 “返回” 
+			function requestGoBack() {
+				window.target.setResultData("用户请求回退，并更新数据"+timeInMs);
+				window.target.action(1);
+			}
+			//适配屏幕
+			 function fontSize(doc, win,fontSize,baseSize) {
+		        var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function () {
+		         
+				  var clientWidth = docEl.clientWidth;
+		          if (!clientWidth) return;
+		          docEl.style.fontSize = fontSize * (clientWidth / baseSize) + 'px';		
+				};
+		
+			    if (!doc.addEventListener) return;
+			    win.addEventListener(resizeEvt, recalc, false);
+			    doc.addEventListener('DOMContentLoaded', recalc, false);
+		    }
+		    
+			var ua=navigator.userAgent.toLowerCase();
+			if (/android (\d+\.\d+)/.test(ua)) {
+				//安卓手机
+				fontSize(document,window,20,360);
+			} else if(ua.indexOf('iphone') > -1){
+				//苹果手机
+				fontSize(document,window,20.8333,375);	
+			}else{
+				fontSize(document,window,20,360);
+			}
+			/*
+			//分辨设备
+			function phoneType (){
+				if (/android (\d+\.\d+)/.test(ua)) {
+					return "andorid";
+				} else if(ua.indexOf('iphone') > -1){
+					return "iphone";
+				}else{
+					return "其他设备";
+				}
+			};
+			mobileType = phoneType();
+			
+			if(mobileType=='andorid'){
+				
+			}else if(mobileType=='iphone'){
+				
+			}
+			*/
+			
+
+		 </script>
+
+ 
+
+<script type="text/javascript">
+	
+//	var data = {"testKey":"$!{inviteCode}"};//也可以是js Object
+//	var m=new OpenInstall({
+    //appKey必选参数，openinstall平台为每个应用分配的ID
+//    appKey : "$!{appKey}",
+//	}, data);
+
+	function appinstall(){
+		window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ydwx.yoyo";
+	}
+</script>
+			 
+		 
+	</body>
+</html>

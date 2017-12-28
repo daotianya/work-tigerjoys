@@ -1,0 +1,100 @@
+<!--
+	场馆预定详情页--只支持ios
+	$!{Const.getCdn()}
+	http://cdn.yoyo.liaomeivideo.com/
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		
+		<link rel="stylesheet" type="text/css" href="http://cdn.yoyo.liaomeivideo.com/libs/reset_v1.0.1/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="http://cdn.yoyo.liaomeivideo.com/libs/ydui-0.1.3/css/ydui_common.css" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/css/venueReserve/venueReserveDetail.css"/>
+		<title></title>
+		<style type="text/css">
+			.navbar_icon{
+				margin-top: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone_top" style="display: block;"></div>
+		<header class="m-navbar header_iphone">
+			<span class="navbar-item" onclick="goBack()"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+			<div class="navbar-center"><span class="navbar-title">场地详情</span></div>
+		</header>
+		<div class="topBox clear">
+			<span class="thum fl"><img src="$!{dto.picture}"/></span>
+			<div class="desc fl">
+				<p >$!{dto.title}</p>
+				<div class="star">
+						#foreach($re in $!{dto.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{dto.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+				</div>
+			</div>
+		</div>
+		<div class="venueDesc">
+			<p>1、预订成功后不接受退改；</p>
+			<p>2、场馆要求深色鞋底禁止入场；</p>
+			<p>3、如有疑问请提前致电客服咨询。</p>
+		</div>
+		<div class="venueInformation">
+			<h2>场馆信息</h2>
+			<p class="venueInformItem">
+				<span>营业时间：</span>
+				<span>$!{dto.businessTime}</span>
+			</p>
+		
+			<p class="venueInformItem">
+				<span>场馆设施：</span>
+				<span>休闲区  购物区 儿童区</span>
+			</p>
+			
+			<p class="venueInformItem">
+				<span>场馆费用：</span>
+				<span>$!{dto.cost}元/小时</span>
+			</p>
+			<p class="venueInformItem">
+				<span>客服咨询：</span>
+				<a href="tel:$!{dto.telephone}">$!{dto.telephone}</a>
+			</p>
+			<p class="venueInformItem">
+				<span>地址：</span>
+				<span>$!{dto.address}</span>
+			</p>
+		</div>
+		<div class="payBtn" onclick="gotoPayFragment()">预订场地</div>
+		
+		<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+			/*header返回按钮*/
+			function goBack() {
+				window.history.go(-1);
+			}
+			
+			function gotoPayFragment(){
+				
+				var publicPayParamIOS = {
+					"deliverData":'$!{deliver}',
+					"describe":'$!{describe}',
+					"money":'$!{money}',
+				}
+				//ios接口
+				window.webkit.messageHandlers.PublicPayAction.postMessage(publicPayParamIOS);
+
+				
+			}
+			
+		</script>
+	</body>
+</html>

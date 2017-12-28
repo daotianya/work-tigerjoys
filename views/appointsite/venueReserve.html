@@ -1,0 +1,331 @@
+<!--
+	场馆预定--只支持ios
+	$!{Const.getCdn()}
+	http://cdn.yoyo.liaomeivideo.com/
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		
+		<link rel="stylesheet" type="text/css" href="http://cdn.yoyo.liaomeivideo.com/libs/reset_v1.0.1/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="http://cdn.yoyo.liaomeivideo.com/libs/ydui-0.1.3/css/ydui_common.css" />
+		<link rel="stylesheet" type="text/css" href="$!{Const.getCdn()}/css/venueReserve/venueReserve.css"/>
+		<script src="$!{Const.getCdn()}/libs/fastclick/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			.navbar_icon{
+				margin-top: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone_top" style="display: block;"></div>
+		<header class="m-navbar header_iphone">
+			<span class="navbar-item backBtn" onclick="gotoAppBack()" style="display: none;"><img src="$!{Const.getCdn()}/libs/img/back_icon.png" class="navbar_icon"/></span>
+			<div class="navbar-center"><span class="navbar-title">发现</span></div>
+		</header>
+		<ul class="tabNav clear">
+			<li i="1">
+				<img src="$!{Const.getCdn()}/img/venueReserve/badminton_icon.png"/>
+				<p>羽毛球</p>
+			</li>
+			<li i="2">
+				<img src="$!{Const.getCdn()}/img/venueReserve/sport_icon.png"/>
+				<p>健身</p>
+			</li>
+			<li i="3">
+				<img src="$!{Const.getCdn()}/img/venueReserve/basketball_icon.png"/>
+				<p>篮球</p>
+			</li>
+			<li i="4">
+				<img src="$!{Const.getCdn()}/img/venueReserve/tennis_icon.png"/>
+				<p>网球</p>
+			</li>
+			<li i="5">
+				<img src="$!{Const.getCdn()}/img/venueReserve/yoga_icon.png"/>
+				<p>瑜伽</p>
+			</li>
+			<li i="6">
+				<img src="$!{Const.getCdn()}/img/venueReserve/swim_icon.png"/>
+				<p>游泳</p>
+			</li>
+			<li i="7">
+				<img src="$!{Const.getCdn()}/img/venueReserve/pingpong_icon.png"/>
+				<p>乒乓球</p>
+			</li>
+			<li i="8">
+				<img src="$!{Const.getCdn()}/img/venueReserve/dance_icon.png"/>
+				<p>舞蹈</p>
+			</li>
+		</ul>
+		<!--随机列表(tabItem0代表随机列表)-->
+		<div id="tabItem0" class="tabItemBox">
+			#foreach($site in $!{tabItem0})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		<!--随机列表结束-->
+		
+		
+		<!--具体分类列表-->
+		<!--tabItem1~8分别代表 羽毛球，健身，篮球，网球，瑜伽，游泳，乒乓球，舞蹈-->
+		<!--tabItem1 羽毛球-->
+		<div id="tabItem1" class="tabItemBox hide">
+			#foreach($site in $!{tabItem1})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+		<div id="tabItem2" class="tabItemBox hide">
+			#foreach($site in $!{tabItem2})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+			<div id="tabItem3" class="tabItemBox hide">
+			#foreach($site in $!{tabItem3})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+			<div id="tabItem4" class="tabItemBox hide">
+			#foreach($site in $!{tabItem4})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+			<div id="tabItem5" class="tabItemBox hide">
+			#foreach($site in $!{tabItem5})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+			<div id="tabItem6" class="tabItemBox hide">
+			#foreach($site in $!{tabItem6})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+		 <div id="tabItem7" class="tabItemBox hide">
+			#foreach($site in $!{tabItem7})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+		<div id="tabItem8" class="tabItemBox hide">
+			#foreach($site in $!{tabItem8})
+			<li class="tabItem clear" onclick="gotoDesc(${site.id})">
+				<span class="thum fl"><img src="$!{site.picture}"/></span>
+				<div class="desc fl">
+					<p class="overflow_ellipsis">$!{site.title}</p>
+					<div class="star">
+						#foreach($re in $!{site.rating})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star_icon.png"/>
+						#end
+						#foreach($re in $!{site.rating2})
+						<img src="$!{Const.getCdn()}/img/venueReserve/star2_icon.png"/>
+						#end
+					</div>
+					<p>$!{site.type}</p>
+				</div>
+			</li>
+			#end
+		</div>
+		
+		<!--分类列表结束-->
+		<script src="$!{Const.getCdn()}/libs/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+			/*跳转场馆预定详情页*/
+			function gotoDesc(id){
+				window.location.href = '${rc.contextPath}/web/appointsite/site/'+id;
+			}
+			
+			function UrlSearch() {
+				var urlName, urlValue;
+				var searchIndex, equalIndex; //"?" "=" 下标
+				var urlArr;
+				var urlStr = location.href; //取得整个地址栏
+				searchIndex = urlStr.indexOf("?");
+				urlStr = urlStr.substring(searchIndex + 1); //取得所有参数  name=vaule&name=value
+				
+				if(urlStr.indexOf("&") > 0){
+					urlArr = urlStr.split("&"); //各个参数放到数组里[name=value,name=value]
+					for(var i = 0; i < urlArr.length; i++) {
+						equalIndex = urlArr[i].indexOf("=");
+						if(equalIndex > 0) {
+							urlName = urlArr[i].substring(0, equalIndex);
+							urlValue = urlArr[i].substring(equalIndex + 1);
+							this[urlName] = urlValue;
+						}
+					}
+				}else{
+					equalIndex = urlStr.indexOf("="); //'name=value'
+					if(equalIndex > 0) {
+						urlName = urlStr.substring(0, equalIndex);
+						urlValue = urlStr.substring(equalIndex + 1);
+						this[urlName] = urlValue;
+					}
+				}
+				
+			}
+			var Request = new UrlSearch(); 
+			var showBack =Request.showBackBtn;
+			
+			function showBackBtn(){
+				if(showBack == 1){
+					$(".backBtn").show();
+				}
+			}
+			
+			//header返回键
+			function gotoAppBack() {
+				window.webkit.messageHandlers.backPage.postMessage(0);
+			}
+			
+			$(function(){
+				//处理点击延迟300ms及穿透问题
+				FastClick.attach(document.body);
+				
+				//调用showBackBtn方法
+				showBackBtn();
+				
+				//===8个tab分类切换功能===
+				var curNavIndex=0;
+				$(".tabNav li").click(function(){
+					var i=Number($(this).attr("i"));
+					//隐藏掉随机列表
+					$("#tabItem0").hide();
+					if(curNavIndex!=i) {
+						$(".tabNav li.active").removeClass("active");
+						$(this).addClass("active");
+						//隐藏当前tabItem
+						$("#tabItem"+curNavIndex).hide();
+						//显示对应的tabItem
+						curNavIndex=i;
+						$("#tabItem"+curNavIndex).show();
+					}
+				})
+				//===tab切换功能结束===
+				
+			})
+		</script>
+	</body>
+</html>

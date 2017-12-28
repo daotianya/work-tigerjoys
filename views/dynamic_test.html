@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<title></title>
+		<script type="text/javascript">
+			var timeInMs = Date.now();
+			//5、用户“返回” 传更改信息给客户端
+			function requestGoBack() {
+				window.target.setResultData("用户请求回退，并更新数据"+timeInMs);
+				window.target.action(1);
+			}
+			
+			//4、更新用户信息接口 
+			//接受到的str {
+					//header, --ajax请求头
+					//userinfo:{user(用户id),nickname,picture},
+					//resultData --B页面更改的数据
+			//    	}
+		
+//			function updateUserInfo(str) {
+//				var res = JSON.parse(str);
+//				var res_userInfo = JSON.parse(res.userinfo);
+//				
+//				var color= '#5CCDD3';
+//				setTimeout(function(){
+//					setColor(color);
+//				},100)
+//				
+//			}
+//			
+//			function setColor(color){
+//				var obj = document.getElementById("test");
+//				obj.style.backgroundColor  = color;
+//			}
+		</script>
+	</head>
+
+	<body>
+		<p style="font-size: 48px;" id="test">跳转后页</p>
+		
+		<a href="javascript:;" onclick="requestGoBack()" style="font-size: 48px;">返回</a>
+		
+		
+	</body>
+
+</html>
