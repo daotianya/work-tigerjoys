@@ -1,0 +1,84 @@
+.outerwrap{
+	width: 18rem;
+	height: auto;
+	overflow: auto;
+	padding-bottom: 1rem;
+}
+.header{
+	width: 18rem;
+	height: 2.4rem;  /*96px*/
+	line-height: 2.4rem;  
+	background: #06A2F3;
+	text-align: center;
+	font-size: 0.95rem;  /*38px*/
+	color: #fff;
+}
+.main li{
+	width:16.4rem;
+	height: 3rem;  /*120px*/
+	padding: 0.55rem 0.8rem;  /*22px 32px*/
+	border-bottom: 1px solid #e2e2e2;
+	position: relative;
+}
+/*阅读，游戏图标 为icon 宽高120px*/
+.icon{
+	width: 3rem;  /*120px*/
+	height: 3rem;  
+	margin-right: 0.6rem;  /*24px*/
+}
+/*video图标为icon2 200*120px*/
+.icon2{
+	width: 5rem;  /*200px*/
+	height:3rem; /*120px*/
+	margin-right: 0.6rem;  /*24px*/
+}
+.content{
+	width: 9.5rem;
+	height: 3rem;
+	overflow: hidden;
+}
+.title{
+	font-size: 0.7rem;  /*28px;*/
+	font-weight: normal;
+	color: #333;
+	padding-bottom: 0.15rem;
+}
+/*title2仅用于video.html*/
+.title2{
+	font-size: 0.7rem;  /*28px;*/
+	font-weight: normal;
+	color: #333;
+	line-height: 3rem;
+	/*margin-left: 0.6rem;*/
+}
+.txt{
+	font-size: 0.55rem;  /*22px;*/
+	font-weight: normal;
+	color: #b6b6b6;
+	
+}
+/*阅读，游戏下载按钮为椭圆 btn*/
+.btn{
+	width: 3rem;  /*120px*/
+	height: 1.35rem; /*54px*/
+	line-height: 1.4rem;
+	text-align: center;
+	-webkit-border-radius: 0.75rem;  /*30px*/
+	-moz-border-radius:0.75rem;
+	border-radius: 0.75rem;
+	background: #88C131;
+	font-size: 0.6rem; /*24px*/
+	color: #fff;
+	text-align: center;
+	position: absolute;
+	top:1.375rem;  
+	right: 0.6rem;
+}
+/*视频右侧为箭头 btn2*/
+.btn2{
+	width: 1.05rem; 
+	height: 1.05rem; /*42px*/
+	position: absolute;
+	top:1.525rem;  
+	right: 0.8rem;
+}
